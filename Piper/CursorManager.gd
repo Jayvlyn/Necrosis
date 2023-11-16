@@ -12,3 +12,4 @@ func _ready():
 	if n == 1:
 		Input.set_custom_mouse_cursor(new_cursor,Input.CURSOR_ARROW, Vector2(12,12))
 		Input.set_custom_mouse_cursor(cursorTwo,Input.CURSOR_IBEAM, Vector2(12,12))
+		Input.set_custom_mouse_cursor(cursorThree,Input.CURSOR_DRAG, Vector2(12,12))

@@ -18,3 +18,8 @@ offset_bottom = 137.0
 texture_filter = 1
 position = Vector2(-91, -50)
 texture = ExtResource("2_2urkj")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(315, 58)
+color = Color(0.513726, 1, 0.898039, 1)
+energy = 2.15
