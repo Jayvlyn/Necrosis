@@ -54,6 +54,7 @@ public partial class PlayerController : CharacterBody2D
         velocity = input * speed;
 		// Update the player's position
 		Position += velocity * (float)delta;
+
 	}
 
 	private void LookAtMouse()

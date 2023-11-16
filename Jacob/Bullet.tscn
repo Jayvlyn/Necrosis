@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dasiolstwj6cm"]
+
+[node name="Bullet" type="RigidBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-5, -101)
+scale = Vector2(0.892628, 0.934451)
+polygon = PackedVector2Array(5.60144, 109.155, 80.5131, 115.354, 80.5131, 139.967, 6, 148)

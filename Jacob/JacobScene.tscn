@@ -6,4 +6,5 @@
 position = Vector2(0, -1)
 
 [node name="PlayerController" parent="." instance=ExtResource("1_v8ts3")]
-position = Vector2(602, 311)
+position = Vector2(499, 299)
+scale = Vector2(0.5, 0.5)
