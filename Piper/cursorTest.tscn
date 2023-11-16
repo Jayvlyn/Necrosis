@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://delh3q8vg535m"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_hyvmp"]
+
+[node name="cursorTest" type="Node2D"]
+
+[node name="CursorManager" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CursorManager"]
+texture = SubResource("ImageTexture_hyvmp")
