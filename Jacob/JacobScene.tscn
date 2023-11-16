@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://cifffsdclvb0t"]
+[gd_scene load_steps=2 format=3 uid="uid://cifffsdclvb0t"]
+
+[ext_resource type="PackedScene" uid="uid://dxev88v1jnmt1" path="res://Jacob/PlayerController.tscn" id="1_v8ts3"]
 
 [node name="JacobScene" type="Node2D"]
+position = Vector2(0, -1)
+
+[node name="PlayerController" parent="." instance=ExtResource("1_v8ts3")]
+position = Vector2(602, 311)

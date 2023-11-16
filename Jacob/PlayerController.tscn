@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxev88v1jnmt1"]
+
+[ext_resource type="Texture2D" uid="uid://bbqins4y3357t" path="res://Jacob/JacobAssets/BlackCell.png" id="1_5i2f0"]
+[ext_resource type="Script" path="res://Jacob/PlayerController.cs" id="1_75o88"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gv2bd"]
+radius = 87.0057
+
+[node name="PlayerController" type="CharacterBody2D"]
+script = ExtResource("1_75o88")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gv2bd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5i2f0")
