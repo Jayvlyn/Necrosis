@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://r2fy2im1oikl"
-path="res://.godot/imported/cursorTest.png-aea8e0fbf52e423a503bc33ae9176bf1.ctex"
+uid="uid://ddnoyqcvd721m"
+path="res://.godot/imported/PinkTileset.png-ae227d1a463d35fb93dc049f202f38d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Piper/cursorTest.png"
-dest_files=["res://.godot/imported/cursorTest.png-aea8e0fbf52e423a503bc33ae9176bf1.ctex"]
+source_file="res://Athens/PinkTileset.png"
+dest_files=["res://.godot/imported/PinkTileset.png-ae227d1a463d35fb93dc049f202f38d0.ctex"]
 
 [params]
 

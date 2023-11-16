@@ -1,10 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://delh3q8vg535m"]
+[gd_scene load_steps=3 format=3 uid="uid://delh3q8vg535m"]
 
-[sub_resource type="ImageTexture" id="ImageTexture_hyvmp"]
+[ext_resource type="Script" path="res://Piper/CursorManager.gd" id="1_hk71x"]
+[ext_resource type="Texture2D" uid="uid://r2fy2im1oikl" path="res://Piper/assets/cursorTest.png" id="2_2urkj"]
 
 [node name="cursorTest" type="Node2D"]
 
 [node name="CursorManager" type="CanvasLayer" parent="."]
+script = ExtResource("1_hk71x")
 
-[node name="Sprite2D" type="Sprite2D" parent="CursorManager"]
-texture = SubResource("ImageTexture_hyvmp")
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 94.0
+offset_top = 106.0
+offset_right = 521.0
+offset_bottom = 137.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-91, -50)
+texture = ExtResource("2_2urkj")

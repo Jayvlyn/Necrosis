@@ -13,7 +13,7 @@ public partial class PlayerController : CharacterBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-    }
+	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -23,7 +23,7 @@ public partial class PlayerController : CharacterBody2D
 		LookAtMouse();
 	}
 
-    private void ProcessInput()
+	private void ProcessInput()
 	{
 		input = new Vector2();
 
@@ -46,12 +46,12 @@ public partial class PlayerController : CharacterBody2D
 
 		// Normalize input vector to prevent faster diagonal movement
 		input = input.Normalized();
-    }
+	}
 
 	private void MovePlayer(double delta)
 	{
-        // Set velocity based on input and speed
-        velocity = input * speed;
+		// Set velocity based on input and speed
+		velocity = input * speed;
 		// Update the player's position
 		Position += velocity * (float)delta;
 	}
