@@ -4,13 +4,15 @@
 [ext_resource type="Script" path="res://Jacob/PlayerController.cs" id="1_75o88"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gv2bd"]
-radius = 87.0057
+radius = 24.0
 
 [node name="PlayerController" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_75o88")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gv2bd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_5i2f0")
