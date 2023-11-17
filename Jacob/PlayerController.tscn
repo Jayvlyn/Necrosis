@@ -1,14 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxev88v1jnmt1"]
+[gd_scene load_steps=7 format=3 uid="uid://dxev88v1jnmt1"]
 
 [ext_resource type="Texture2D" uid="uid://bbqins4y3357t" path="res://Jacob/JacobAssets/BlackCell.png" id="1_5i2f0"]
 [ext_resource type="Script" path="res://Jacob/PlayerController.cs" id="1_75o88"]
+[ext_resource type="Script" path="res://Jacob/Health.cs" id="2_neoo6"]
+[ext_resource type="Script" path="res://Jacob/Gun.cs" id="3_bqqiv"]
+[ext_resource type="PackedScene" uid="uid://dasiolstwj6cm" path="res://Jacob/Bullet.tscn" id="4_ved4j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gv2bd"]
 radius = 24.0
 
-[node name="PlayerController" type="CharacterBody2D"]
+[node name="PlayerController" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_75o88")
+
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("2_neoo6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gv2bd")
@@ -16,3 +22,8 @@ shape = SubResource("CircleShape2D_gv2bd")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_5i2f0")
+
+[node name="Gun" type="Node2D" parent="."]
+position = Vector2(39, 0)
+script = ExtResource("3_bqqiv")
+bulletScene = ExtResource("4_ved4j")

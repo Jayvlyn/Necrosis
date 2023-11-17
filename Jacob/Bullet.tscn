@@ -1,8 +1,28 @@
-[gd_scene format=3 uid="uid://dasiolstwj6cm"]
+[gd_scene load_steps=4 format=3 uid="uid://dasiolstwj6cm"]
+
+[ext_resource type="Texture2D" uid="uid://bbqins4y3357t" path="res://Jacob/JacobAssets/BlackCell.png" id="1_dhwaw"]
+[ext_resource type="Script" path="res://Jacob/Bullet.cs" id="1_eji0l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pv4pw"]
 
 [node name="Bullet" type="RigidBody2D"]
+position = Vector2(-1, 4)
+gravity_scale = 0.0
+max_contacts_reported = 100
+contact_monitor = true
+lock_rotation = true
+script = ExtResource("1_eji0l")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-5, -101)
-scale = Vector2(0.892628, 0.934451)
-polygon = PackedVector2Array(5.60144, 109.155, 80.5131, 115.354, 80.5131, 139.967, 6, 148)
+[node name="GFX" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_dhwaw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pv4pw")
+
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

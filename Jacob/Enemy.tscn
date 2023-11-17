@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsq0unww631hw"]
+
+[ext_resource type="Script" path="res://Jacob/Enemy.cs" id="1_ltewp"]
+[ext_resource type="Texture2D" uid="uid://dml4idv61teb0" path="res://Jacob/JacobAssets/WhiteBloodCell.png" id="1_ox2j2"]
+[ext_resource type="Script" path="res://Jacob/Health.cs" id="2_4epnp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ft63"]
+radius = 22.2036
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c2aej"]
+radius = 56.0
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+motion_mode = 1
+script = ExtResource("1_ltewp")
+
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("2_4epnp")
+maxHealth = 50.0
+
+[node name="GFX" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_ox2j2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0ft63")
+
+[node name="AttackRange" type="Area2D" parent="."]
+position = Vector2(-1, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_c2aej")
+
+[connection signal="body_entered" from="AttackRange" to="." method="OnAttackRangeEnter"]
+[connection signal="body_exited" from="AttackRange" to="." method="OnAttackRangeExit"]
