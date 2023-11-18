@@ -11,26 +11,26 @@ public partial class Gun : Node2D
 	float fireRate;
 	float fireTimer = 0.0f;
 
-    public override void _Ready()
-    {
-        fireRate = 1 / bulletsPerSecond;
-    }
+	public override void _Ready()
+	{
+		fireRate = 1 / bulletsPerSecond;
+	}
 
-    public override void _Process(double delta)
-    {
-        if(Input.IsActionJustPressed("shoot") && fireTimer > fireRate)
-        {
-            RigidBody2D bullet = bulletScene.Instantiate<RigidBody2D>();
+	public override void _Process(double delta)
+	{
+		if(Input.IsActionJustPressed("shoot") && fireTimer > fireRate)
+		{
+			RigidBody2D bullet = bulletScene.Instantiate<RigidBody2D>();
 
-            bullet.Rotation = GlobalRotation;
-            bullet.GlobalPosition = GlobalPosition;
-            bullet.LinearVelocity = bullet.Transform.X * bulletSpeed;
+			bullet.Rotation = GlobalRotation;
+			bullet.GlobalPosition = GlobalPosition;
+			bullet.LinearVelocity = bullet.Transform.X * bulletSpeed;
 
-            GetTree().Root.AddChild(bullet);
-        }
-        else
-        {
-            fireTimer += (float)delta;
-        }
-    }
+			GetTree().Root.AddChild(bullet);
+		}
+		else
+		{
+			fireTimer += (float)delta;
+		}
+	}
 }
