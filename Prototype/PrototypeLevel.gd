@@ -4,6 +4,9 @@ var cursorTest = preload("res://Piper/assets/cursorTest.png")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_custom_mouse_cursor(cursorTest,Input.CURSOR_ARROW, Vector2(12,12))
+	$Layer1.play()
+	$Layer2.play()
+	playLayerOne()
 	pass # Replace with function body.
 
 
@@ -16,7 +19,17 @@ func playLayerOne():
 	$Layer2.volume_db = -80;
 	pass
 	
-func playeLayerTwo():
+func playLayerTwo():
 	$Layer2.volume_db = 0;
 	$Layer1.volume_db = -80;
 	pass
+
+
+func _on_area_2d_area_entered(area):
+	playLayerTwo()
+	pass
+
+
+func _on_area_2d_area_exited(area):
+	playLayerOne()
+	pass # Replace with function body.
