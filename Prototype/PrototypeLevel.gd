@@ -9,3 +9,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func playLayerOne():
+	$Layer1.volume_db = 0;
+	$Layer2.volume_db = -80;
+	pass
+	
+func playeLayerTwo():
+	$Layer2.volume_db = 0;
+	$Layer1.volume_db = -80;
+	pass
