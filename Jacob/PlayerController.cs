@@ -19,14 +19,14 @@ public partial class PlayerController : CharacterBody2D
 	{
 	}
 
-    public override void _PhysicsProcess(double delta)
-    {
+	public override void _PhysicsProcess(double delta)
+	{
 		// Rotates player to look at the mouse position
 		LookAt(GetGlobalMousePosition());
 		ProcessInput();
 		Velocity = input * speed;
 		MoveAndSlide();
-    }
+	}
 	private void ProcessInput()
 	{
 		input = Input.GetVector("left", "right", "up", "down");
