@@ -1,8 +1,9 @@
 extends Node2D
 
-
+var cursorTest = preload("res://Piper/assets/cursorTest.png")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.set_custom_mouse_cursor(cursorTest,Input.CURSOR_ARROW, Vector2(12,12))
 	pass # Replace with function body.
 
 
