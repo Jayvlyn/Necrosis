@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1aggu4jmtxhk"]
+[gd_scene load_steps=12 format=3 uid="uid://c1aggu4jmtxhk"]
 
 [ext_resource type="Texture2D" uid="uid://ddnoyqcvd721m" path="res://Athens/PinkTileset.png" id="1_kiydn"]
 [ext_resource type="Script" path="res://Prototype/PrototypeLevel.gd" id="1_xslmt"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://vp40vynobc4y" path="res://Jacob/RedEnemy.tscn" id="4_wngfj"]
 [ext_resource type="AudioStream" uid="uid://calqf60prosr0" path="res://Piper/layer1.wav" id="6_2b1qj"]
 [ext_resource type="AudioStream" uid="uid://dvhstt63nl0pe" path="res://Piper/layer2.wav" id="7_5qqji"]
+[ext_resource type="Script" path="res://Prototype/MusicCollision.gd" id="8_x0rdy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lo6o6"]
 texture = ExtResource("1_kiydn")
@@ -226,7 +227,7 @@ terrain_set_0/terrain_0/color = Color(0.976471, 0, 0.458824, 1)
 sources/1 = SubResource("TileSetAtlasSource_lo6o6")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkko0"]
-size = Vector2(535, 540)
+size = Vector2(489, 540)
 
 [node name="PrototypeLevel" type="Node2D"]
 script = ExtResource("1_xslmt")
@@ -271,14 +272,14 @@ stream = ExtResource("6_2b1qj")
 stream = ExtResource("7_5qqji")
 
 [node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("8_x0rdy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(840.5, 318)
+position = Vector2(863.5, 318)
 shape = SubResource("RectangleShape2D_mkko0")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="area_shape_entered" from="Area2D" to="Area2D" method="_on_area_shape_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
