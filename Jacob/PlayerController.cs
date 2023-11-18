@@ -36,15 +36,6 @@ public partial class PlayerController : CharacterBody2D
 	}
 
 
-	private void ProcessInput()
-	{
-		input = Input.GetVector("left", "right", "up", "down");
-
-		// Normalize input vector to prevent faster diagonal movement
-		input = input.Normalized();
-	}
-
-
 
 	private void _on_area_2d_area_entered(Area2D area)
 	{
