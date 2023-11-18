@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1aggu4jmtxhk"]
+[gd_scene load_steps=7 format=3 uid="uid://c1aggu4jmtxhk"]
 
 [ext_resource type="Texture2D" uid="uid://ddnoyqcvd721m" path="res://Athens/PinkTileset.png" id="1_kiydn"]
 [ext_resource type="PackedScene" uid="uid://dxev88v1jnmt1" path="res://Jacob/PlayerController.tscn" id="2_nbucc"]
 [ext_resource type="PackedScene" uid="uid://dsq0unww631hw" path="res://Jacob/Enemy.tscn" id="3_wfm1j"]
+[ext_resource type="PackedScene" uid="uid://vp40vynobc4y" path="res://Jacob/RedEnemy.tscn" id="4_wngfj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lo6o6"]
 texture = ExtResource("1_kiydn")
@@ -168,3 +169,15 @@ position = Vector2(98, 543)
 
 [node name="Enemy4" parent="." instance=ExtResource("3_wfm1j")]
 position = Vector2(940, 91)
+
+[node name="Enemy5" parent="." instance=ExtResource("4_wngfj")]
+position = Vector2(182, 117)
+speed = 50.0
+
+[node name="Enemy6" parent="." instance=ExtResource("4_wngfj")]
+position = Vector2(287, 542)
+speed = 150.0
+
+[node name="Enemy7" parent="." instance=ExtResource("4_wngfj")]
+position = Vector2(743, 113)
+speed = 100.0

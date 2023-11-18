@@ -3,7 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 
-public partial class Enemy : CharacterBody2D
+public partial class RedEnemy : CharacterBody2D
 {
     PlayerController player;
 
