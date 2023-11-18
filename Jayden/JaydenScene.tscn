@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://bv2aes28v5wk8"]
+[gd_scene load_steps=2 format=3 uid="uid://bv2aes28v5wk8"]
+
+[ext_resource type="PackedScene" uid="uid://dxev88v1jnmt1" path="res://Jacob/PlayerController.tscn" id="2_edjih"]
 
 [node name="JaydenScene" type="Node2D"]
+
+[node name="PlayerController" parent="." instance=ExtResource("2_edjih")]
+position = Vector2(544, 286)
