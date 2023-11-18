@@ -17,8 +17,7 @@ public partial class Enemy : CharacterBody2D
 
     public override void _Ready()
     {
-        player = (PlayerController)GetTree().Root.GetNode("JacobScene").GetNode("PlayerController");
-
+        player = (PlayerController)GetTree().Root.GetNode("PrototypeLevel").GetNode("PlayerController");
         Debug.Print(player.Name);
 
         attackSpeed = 1 / attacksPerSecond;

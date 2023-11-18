@@ -27,11 +27,10 @@ public partial class PlayerController : CharacterBody2D
 		Velocity = input * speed;
 		MoveAndSlide();
 	}
-	private void ProcessInput()
-	{
-		input = Input.GetVector("left", "right", "up", "down");
-
-		// Normalize input vector to prevent faster diagonal movement
-		input = input.Normalized();
-	}
+    private void ProcessInput()
+    {
+        input = Input.GetVector("left", "right", "up", "down");
+        // Normalize input vector to prevent faster diagonal movement
+        input = input.Normalized();
+    }
 }
