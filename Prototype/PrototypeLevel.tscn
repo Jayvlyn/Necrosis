@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1aggu4jmtxhk"]
+[gd_scene load_steps=11 format=3 uid="uid://c1aggu4jmtxhk"]
 
 [ext_resource type="Texture2D" uid="uid://ddnoyqcvd721m" path="res://Athens/PinkTileset.png" id="1_kiydn"]
 [ext_resource type="Script" path="res://Prototype/PrototypeLevel.gd" id="1_xslmt"]
@@ -150,6 +150,9 @@ terrain_set_0/terrain_0/name = "Autotile"
 terrain_set_0/terrain_0/color = Color(0.976471, 0, 0.458824, 1)
 sources/1 = SubResource("TileSetAtlasSource_lo6o6")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3pkd"]
+size = Vector2(226, 149)
+
 [node name="PrototypeLevel" type="Node2D"]
 script = ExtResource("1_xslmt")
 
@@ -191,3 +194,8 @@ stream = ExtResource("6_2b1qj")
 
 [node name="Layer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_5qqji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+top_level = true
+position = Vector2(746, 510)
+shape = SubResource("RectangleShape2D_t3pkd")
