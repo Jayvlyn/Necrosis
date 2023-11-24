@@ -78,7 +78,16 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 
     public void GainMass(int amount)
     {
-        currentMass += amount;
+        if(currentMass + amount <= maxMass)
+        {
+            currentMass += amount;
+        }
+        else
+        {
+            currentMass = maxMass;
+        }
     }
+
+    public int GetMass() { return currentMass; }
 
 }

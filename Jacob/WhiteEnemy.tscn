@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dsq0unww631hw"]
 
-[ext_resource type="Script" path="res://Jacob/Enemy.cs" id="1_ltewp"]
+[ext_resource type="Script" path="res://Jacob/WhiteEnemy.cs" id="1_lkgvf"]
 [ext_resource type="Texture2D" uid="uid://dml4idv61teb0" path="res://Jacob/JacobAssets/WhiteBloodCell.png" id="1_ox2j2"]
 [ext_resource type="Script" path="res://Jacob/Health.cs" id="2_4epnp"]
 
@@ -12,7 +12,7 @@ radius = 56.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 motion_mode = 1
-script = ExtResource("1_ltewp")
+script = ExtResource("1_lkgvf")
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("2_4epnp")

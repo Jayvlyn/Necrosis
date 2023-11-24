@@ -23,7 +23,11 @@ public partial class Bullet : RigidBody2D
 		if(body.IsInGroup("Player"))
 		{
 			body.GetNode<Mass>("Mass").GainMass(mass);
+			Debug.WriteLine("Mass: " + body.GetNode<Mass>("Mass").GetMass());
+			//Debug.WriteLine(body.GetNode<CharacterBody2D>("PlayerController"));
+			//body.GetNode<CharacterBody2D>("PlayerController").kills++;
 			QueueFree();
+			
 		}
 
 	}
