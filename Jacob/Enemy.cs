@@ -56,8 +56,8 @@ public partial class Enemy : CharacterBody2D
 
 	public void Attack()
 	{
-		Health playerHealth = player.GetNode<Health>("Health");
-		playerHealth.Damage(damage);
+		Mass playerMass= player.GetNode<Mass>("Mass");
+		playerMass.LoseMass((int)damage);
 	}
 
 	public void OnAttackRangeEnter(Node2D body)

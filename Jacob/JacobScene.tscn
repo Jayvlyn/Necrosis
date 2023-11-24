@@ -1,13 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://cifffsdclvb0t"]
 
-[ext_resource type="PackedScene" uid="uid://dxev88v1jnmt1" path="res://Jacob/PlayerController.tscn" id="1_v8ts3"]
 [ext_resource type="PackedScene" uid="uid://dsq0unww631hw" path="res://Jacob/Enemy.tscn" id="2_aec7r"]
+[ext_resource type="PackedScene" uid="uid://b5usnqgkgpiv8" path="res://Jacob/PlayerController2.tscn" id="2_ulllx"]
 
 [node name="JacobScene" type="Node2D"]
 position = Vector2(0, -1)
-
-[node name="PlayerController" parent="." instance=ExtResource("1_v8ts3")]
-position = Vector2(327, 253)
 
 [node name="Enemy" parent="." instance=ExtResource("2_aec7r")]
 position = Vector2(866, 323)
@@ -15,3 +12,6 @@ position = Vector2(866, 323)
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="PlayerController" parent="." instance=ExtResource("2_ulllx")]
+position = Vector2(126, 94)

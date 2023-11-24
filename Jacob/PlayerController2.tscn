@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5usnqgkgpiv8"]
+
+[ext_resource type="Script" path="res://Jacob/PlayerController.cs" id="1_laqyd"]
+[ext_resource type="Script" path="res://Jacob/Mass.cs" id="2_6sgvg"]
+[ext_resource type="Texture2D" uid="uid://bbqins4y3357t" path="res://Jacob/JacobAssets/BlackCell.png" id="3_3c3jb"]
+[ext_resource type="PackedScene" uid="uid://dasiolstwj6cm" path="res://Jacob/Bullet.tscn" id="5_2eolp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gv2bd"]
+radius = 31.0549
+
+[node name="PlayerController" type="CharacterBody2D" groups=["Player"]]
+motion_mode = 1
+script = ExtResource("1_laqyd")
+
+[node name="Mass" type="Node2D" parent="."]
+position = Vector2(49, 0)
+script = ExtResource("2_6sgvg")
+bulletScene = ExtResource("5_2eolp")
+bulletSpeed = 400.0
+bulletsPerSecond = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.837912, 0.79636)
+shape = SubResource("CircleShape2D_gv2bd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.21, 0.223594)
+texture = ExtResource("3_3c3jb")
