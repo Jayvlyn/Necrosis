@@ -13,11 +13,20 @@ public partial class Bullet : RigidBody2D
 		//timer.Timeout += () => QueueFree();
 	}
 
-	public void _on_area_2d_body_entered(Node2D body)
+	public async void _on_area_2d_body_entered(Node2D body)
 	{
 		if (body.IsInGroup("Enemy"))
 		{
 			body.GetNode<Health>("Health").Damage(mass);
+			if (body.GetNode<Health>("Health").health == 0)
+			{
+				body.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("death");
+				body.GetNode<Timer>("Timer").Start();
+
+				await ToSignal(body.GetNode<Timer>("Timer"), "timeout");
+				body.QueueFree();
+			}
+			
 		}
 
 		if (body.IsInGroup("Player"))

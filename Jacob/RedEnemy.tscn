@@ -1,8 +1,85 @@
-[gd_scene load_steps=6 format=3 uid="uid://vp40vynobc4y"]
+[gd_scene load_steps=17 format=3 uid="uid://vp40vynobc4y"]
 
 [ext_resource type="Script" path="res://Jacob/RedEnemy.cs" id="1_wwnd5"]
 [ext_resource type="Script" path="res://Jacob/Health.cs" id="2_i35du"]
 [ext_resource type="Texture2D" uid="uid://dsi7rfebb1s4p" path="res://Athens/RedBloodCell.png" id="3_tkne5"]
+[ext_resource type="Texture2D" uid="uid://r0h1gkl567ua" path="res://Athens/RedCellDeath.png" id="4_ae50m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er6bo"]
+atlas = ExtResource("4_ae50m")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hx01y"]
+atlas = ExtResource("4_ae50m")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7ohl"]
+atlas = ExtResource("4_ae50m")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flaqs"]
+atlas = ExtResource("4_ae50m")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s5y5"]
+atlas = ExtResource("4_ae50m")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnnk5"]
+atlas = ExtResource("4_ae50m")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66yb2"]
+atlas = ExtResource("4_ae50m")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpqfl"]
+atlas = ExtResource("4_ae50m")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrnui"]
+atlas = ExtResource("3_tkne5")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aryxv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_er6bo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hx01y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7ohl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flaqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0s5y5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnnk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66yb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpqfl")
+}],
+"loop": false,
+"name": &"death",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrnui")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ft63"]
 radius = 22.2036
@@ -18,9 +95,13 @@ script = ExtResource("1_wwnd5")
 script = ExtResource("2_i35du")
 maxHealth = 50.0
 
-[node name="GFX" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("3_tkne5")
+sprite_frames = SubResource("SpriteFrames_aryxv")
+animation = &"death"
+autoplay = "idle"
+frame = 7
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0ft63")
@@ -31,5 +112,9 @@ position = Vector2(-1, -1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_c2aej")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="AttackRange" to="." method="OnAttackRangeEnter"]
 [connection signal="body_exited" from="AttackRange" to="." method="OnAttackRangeExit"]

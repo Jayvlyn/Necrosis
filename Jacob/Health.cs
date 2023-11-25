@@ -14,10 +14,5 @@ public partial class Health : Node2D
 	public void Damage(float damage)
 	{
 		health -= damage;
-
-		if (health <= 0)
-		{
-			GetParent().QueueFree();
-		}
 	}
 }
