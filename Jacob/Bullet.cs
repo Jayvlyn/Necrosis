@@ -21,9 +21,9 @@ public partial class Bullet : RigidBody2D
 			if (body.GetNode<Health>("Health").health == 0)
 			{
 				body.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("death");
-				body.GetNode<Timer>("Timer").Start();
+				body.GetNode<Timer>("DeathTimer").Start();
 
-				await ToSignal(body.GetNode<Timer>("Timer"), "timeout");
+				await ToSignal(body.GetNode<Timer>("DeathTimer"), "timeout");
 				body.QueueFree();
 			}
 			
