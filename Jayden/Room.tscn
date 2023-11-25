@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cucpss6rgnp7b"]
+
+[ext_resource type="Script" path="res://Jayden/Room.gd" id="1_tvyg1"]
+
+[node name="Room" type="Node2D"]
+script = ExtResource("1_tvyg1")
