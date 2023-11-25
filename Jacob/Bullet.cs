@@ -13,24 +13,21 @@ public partial class Bullet : RigidBody2D
 		//timer.Timeout += () => QueueFree();
 	}
 
-	public void OnBodyEntered(Node2D body)
+	public void _on_area_2d_body_entered(Node2D body)
 	{
-        if (body.IsInGroup("Enemy"))
+		if (body.IsInGroup("Enemy"))
 		{
 			body.GetNode<Health>("Health").Damage(mass);
-        }
+		}
 
-		if(body.IsInGroup("Player"))
+		if (body.IsInGroup("Player"))
 		{
 			body.GetNode<Mass>("Mass").GainMass(mass);
 			Debug.WriteLine("Mass: " + body.GetNode<Mass>("Mass").GetMass());
 			//Debug.WriteLine(body.GetNode<CharacterBody2D>("PlayerController"));
 			//body.GetNode<CharacterBody2D>("PlayerController").kills++;
 			QueueFree();
-			
+
 		}
-
 	}
-
-	
 }

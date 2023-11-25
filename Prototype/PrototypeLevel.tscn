@@ -255,9 +255,5 @@ shape = SubResource("RectangleShape2D_mkko0")
 [node name="PlayerController" parent="." instance=ExtResource("7_hoqb7")]
 position = Vector2(465, 327)
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
-[connection signal="area_shape_entered" from="Area2D" to="Area2D" method="_on_area_shape_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
