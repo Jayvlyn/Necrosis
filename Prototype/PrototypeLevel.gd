@@ -1,12 +1,23 @@
 extends Node2D
 
 var cursorTest = preload("res://Piper/assets/cursorTest.png")
-# Called when the node enters the scene tree for the first time.
+
+var dungeon = {}
+var roomScene = load("res://Jayden/Rooms/room_1.tscn") #change this later
+var dungeonGeneration = load("res://Jayden/dungeon_generation.gd").new()
+
+@onready var map_node = $MapNode
+
 func _ready():
 	Input.set_custom_mouse_cursor(cursorTest,Input.CURSOR_ARROW, Vector2(12,12))
 	$Layer1.play()
 	$Layer2.play()
 	playLayerOne()
+	
+	randomize()
+	dungeon = dungeonGeneration.generate(randi_range(-1000, 1000))
+	load_map()
+	
 	pass # Replace with function body.
 
 
@@ -24,6 +35,14 @@ func playLayerTwo():
 	$Layer1.volume_db = -80;
 	pass
 
+func load_map():
+	for i in range(0, map_node.get_child_count()):
+		map_node.get_child(i).queue_free()
+		
+	for i in dungeon.keys():
+		var instance = roomScene.instantiate()
+		map_node.add_child(instance)
+		instance.position = i * 18 * 64 #this needs to be rewritten
 
 func _on_area_2d_body_entered(body):
 	if (body.is_in_group("Player")):
