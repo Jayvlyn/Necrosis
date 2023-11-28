@@ -5,21 +5,31 @@ using System.Net;
 
 public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the health, size, and ammo for the player
 {
-	[Export] public int maxMass = 100;
+    playerData data;
+
+    [Export] public CharacterBody2D player;
+    private int maxMass;
     private int currentMass;
 
     // Shooting mass
     [Export] PackedScene bulletScene;
-    [Export] float bulletSpeed = 600.0f;
-    [Export] float bulletsPerSecond = 5.0f;
-    [Export] float bulletDamage = 30.0f;
-    [Export] int massPerBullet = 5;
+    private float bulletSpeed;
+    private float bulletsPerSecond;
+    private float bulletDamage;
+    private int massPerBullet;
 
     float fireRate;
     float fireTimer;
 
     public override void _Ready()
 	{
+        data = (playerData)GetParent().GetChild(0);
+        maxMass = data.maxMass;
+        bulletDamage = data.bulletDamage;
+        bulletSpeed = data.bulletSpeed;
+        bulletsPerSecond = data.bulletsPerSecond;
+        massPerBullet = data.massPerBullet;
+
         currentMass = maxMass;
         fireRate = 1 / bulletsPerSecond;
     }
@@ -27,6 +37,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 	public override void _Process(double delta)
 	{
 		ProcessShooting(delta);
+        Debug.WriteLine(currentMass);
     }
 
     public void ProcessShooting(double delta)
@@ -73,7 +84,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
         currentMass -= amount;
 
         // do size reduction
-
+        UpdateSize();
     }
 
     public void GainMass(int amount)
@@ -86,8 +97,16 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
         {
             currentMass = maxMass;
         }
+        UpdateSize();
     }
 
     public int GetMass() { return currentMass; }
+
+    public void UpdateSize()
+    {
+        float scaleFactor = currentMass / (float)maxMass;
+        Vector2 newScale = new Vector2(scaleFactor, scaleFactor);
+        player.Scale = newScale;
+    }
 
 }
