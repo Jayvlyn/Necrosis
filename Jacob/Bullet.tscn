@@ -32,8 +32,8 @@ shape = SubResource("CircleShape2D_4m52k")
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_dhwaw")
 
-[node name="DestroyTimer" type="Timer" parent="."]
-wait_time = 10.0
+[node name="CollisionTimer" type="Timer" parent="."]
+wait_time = 0.1
 one_shot = true
 autostart = true
 

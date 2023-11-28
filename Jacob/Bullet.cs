@@ -8,9 +8,14 @@ public partial class Bullet : RigidBody2D
 
 	public override void _Ready()
 	{
-		//Timer timer = GetNode<Timer>("DestroyTimer");
-		// Once timer on bullet runs out, it destroys itself
-		//timer.Timeout += () => QueueFree();
+        GetChild(1).GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
+        Timer timer = GetNode<Timer>("CollisionTimer");
+		timer.Timeout += () => EnableCollision();
+	}
+
+	public void EnableCollision()
+	{
+		GetChild(1).GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
 	}
 
 	public async void _on_area_2d_body_entered(Node2D body)
