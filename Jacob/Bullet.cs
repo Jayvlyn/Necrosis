@@ -4,13 +4,44 @@ using System.Diagnostics;
 
 public partial class Bullet : RigidBody2D
 {
-	public int mass = 5;
+	playerData data;
+	private float travel;
+	public uint mass = 5;
 
+	public void Init(uint mass, playerData data)
+	{ 
+		this.mass = mass;
+		this.data = data;
+	}
 	public override void _Ready()
 	{
-		//Timer timer = GetNode<Timer>("DestroyTimer");
-		// Once timer on bullet runs out, it destroys itself
-		//timer.Timeout += () => QueueFree();
+		travel = data.bulletTravel;
+        GetChild(1).GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
+        Timer timer = GetNode<Timer>("CollisionTimer");
+		timer.Timeout += () => EnableCollision();
+	}
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+		LinearVelocity *= travel;
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta);
+
+		Vector2 deltaVelocity = new Vector2(LinearVelocity.X * (float)delta, LinearVelocity.Y * (float)delta);
+		KinematicCollision2D collisionInfo = MoveAndCollide(deltaVelocity);
+
+		// Bounce is in try-catch because it was producing error despite being functional, try-catch supresses the error
+		try { if (collisionInfo != null) LinearVelocity = LinearVelocity.Bounce(collisionInfo.GetNormal()); }
+		catch (Exception e) {Debug.WriteLine("Error in bullet bouncing: " + e.Message);}
+    }
+
+    public void EnableCollision()
+	{
+		GetChild(1).GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
 	}
 
 	public async void _on_area_2d_body_entered(Node2D body)

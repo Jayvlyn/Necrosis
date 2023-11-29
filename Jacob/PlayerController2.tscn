@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://b5usnqgkgpiv8"]
+[gd_scene load_steps=18 format=3 uid="uid://cjhttdbpa12kv"]
 
 [ext_resource type="Script" path="res://Jacob/PlayerController.cs" id="1_laqyd"]
 [ext_resource type="Script" path="res://Jacob/Mass.cs" id="2_6sgvg"]
+[ext_resource type="Script" path="res://Jacob/playerData.cs" id="2_68bko"]
 [ext_resource type="PackedScene" uid="uid://dasiolstwj6cm" path="res://Jacob/Bullet.tscn" id="5_2eolp"]
 [ext_resource type="Texture2D" uid="uid://ditdoyjtue5y3" path="res://Athens/BlackCell.png" id="5_ud10y"]
 [ext_resource type="Texture2D" uid="uid://din7eoel7yp3m" path="res://Athens/PlayerCircleDeathAnimation.png" id="5_w3ftm"]
@@ -89,12 +90,14 @@ animations = [{
 motion_mode = 1
 script = ExtResource("1_laqyd")
 
-[node name="Mass" type="Node2D" parent="."]
+[node name="playerData" type="Node2D" parent="."]
+script = ExtResource("2_68bko")
+
+[node name="Mass" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(49, 0)
 script = ExtResource("2_6sgvg")
+player = NodePath("..")
 bulletScene = ExtResource("5_2eolp")
-bulletSpeed = 400.0
-bulletsPerSecond = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.837912, 0.79636)

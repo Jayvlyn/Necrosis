@@ -5,21 +5,31 @@ using System.Net;
 
 public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the health, size, and ammo for the player
 {
-	[Export] public int maxMass = 100;
-    private int currentMass;
+    playerData data;
+
+    [Export] public CharacterBody2D player;
+    private uint maxMass;
+    private uint currentMass;
 
     // Shooting mass
     [Export] PackedScene bulletScene;
-    [Export] float bulletSpeed = 600.0f;
-    [Export] float bulletsPerSecond = 5.0f;
-    [Export] float bulletDamage = 30.0f;
-    [Export] int massPerBullet = 5;
+    private float bulletSpeed;
+    private float bulletsPerSecond;
+    private float bulletDamage;
+    private uint massPerBullet;
 
     float fireRate;
     float fireTimer;
 
     public override void _Ready()
 	{
+        data = (playerData)GetParent().GetChild(0);
+        maxMass = data.maxMass;
+        bulletDamage = data.bulletDamage;
+        bulletSpeed = data.bulletSpeed;
+        bulletsPerSecond = data.bulletsPerSecond;
+        massPerBullet = data.massPerBullet;
+
         currentMass = maxMass;
         fireRate = 1 / bulletsPerSecond;
     }
@@ -27,6 +37,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 	public override void _Process(double delta)
 	{
 		ProcessShooting(delta);
+        Debug.WriteLine("currentMass: " + currentMass);
     }
 
     public void ProcessShooting(double delta)
@@ -40,13 +51,12 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
             LoseMass(massPerBullet);
 
             // Create and fire bullet
-            RigidBody2D bullet = bulletScene.Instantiate<RigidBody2D>();
-
+            Bullet bullet = bulletScene.Instantiate<Bullet>();
+            bullet.Init(massPerBullet, data);
+            
             bullet.Rotation = GlobalRotation;
             bullet.GlobalPosition = GlobalPosition;
             bullet.LinearVelocity = bullet.Transform.X * bulletSpeed;
-            //Bullet b = (Bullet)bullet.GetNode("Bullet");
-            //b.mass = massPerBullet;
 
             GetTree().Root.AddChild(bullet);
         }
@@ -61,22 +71,22 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
         return (currentMass - massPerBullet) > 0;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(uint damage)
     {
         LoseMass(damage);
 
         // spit out mass that you can pick back up
     }
 
-    public void LoseMass(int amount)
+    public void LoseMass(uint amount)
     {
         currentMass -= amount;
 
         // do size reduction
-
+        UpdateSize();
     }
 
-    public void GainMass(int amount)
+    public void GainMass(uint amount)
     {
         if(currentMass + amount <= maxMass)
         {
@@ -86,8 +96,16 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
         {
             currentMass = maxMass;
         }
+        UpdateSize();
     }
 
-    public int GetMass() { return currentMass; }
+    public uint GetMass() { return currentMass; }
+
+    public void UpdateSize()
+    {
+        float scaleFactor = currentMass / (float)maxMass;
+        Vector2 newScale = new Vector2(scaleFactor, scaleFactor);
+        player.Scale = newScale;
+    }
 
 }

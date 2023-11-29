@@ -1,11 +1,12 @@
 using Godot;
 using System;
-
+using System.Diagnostics;
 
 public partial class PlayerController : CharacterBody2D
 {
-	[Export] public float speed = 500.0f;
-	public int kills = 0;
+	playerData data;
+	private float speed;
+
 
 	private Vector2 input = Vector2.Zero;
 
@@ -13,7 +14,9 @@ public partial class PlayerController : CharacterBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		kills = 0;
+		data = (playerData)GetChild(0); // playerData should be at 0
+		speed = data.moveSpeed;
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,4 +38,6 @@ public partial class PlayerController : CharacterBody2D
 		// Normalize input vector to prevent faster diagonal movement
 		input = input.Normalized();
 	}
+
+
 }
