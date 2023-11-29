@@ -17,4 +17,7 @@ public partial class playerData : Node
     [Export] public float bulletsPerSecond = 5.0f;
     [Export] public float bulletDamage = 30.0f;
     [Export] public int massPerBullet = 5;
+
+    public int kills = 0;
+    public int experience = 0;
 }

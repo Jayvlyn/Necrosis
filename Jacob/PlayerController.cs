@@ -6,7 +6,7 @@ public partial class PlayerController : CharacterBody2D
 {
 	playerData data;
 	private float speed;
-	public int kills = 0;
+
 
 	private Vector2 input = Vector2.Zero;
 
@@ -14,7 +14,6 @@ public partial class PlayerController : CharacterBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		kills = 0;
 		data = (playerData)GetChild(0); // playerData should be at 0
 		speed = data.moveSpeed;
 
