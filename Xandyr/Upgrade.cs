@@ -3,8 +3,8 @@ using System;
 
 public abstract partial class Upgrade : Node
 {
-	int playerClass;
-	int tier;
+	protected int playerClass;
+	protected int tier;
 
-	public abstract int Effect();
+	public abstract dynamic Effect();
 }
