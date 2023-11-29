@@ -15,21 +15,21 @@ public partial class playerData : Node
 
 
     // Player attributes
-    [Export] public float moveSpeed = 600.0f;
-    [Export] public uint maxMass = 100;
-    [Export] public float bulletSpeed = 600.0f;
-    [Export] public float bulletsPerSecond = 5.0f;
-    [Export] public float bulletDamage = 30.0f;
-    [Export] public uint massPerBullet = 5;
-    
+    [Export(PropertyHint.Range, "0,2000")] public float moveSpeed = 600.0f;
+    [Export(PropertyHint.Range, "0,100")] public uint maxMass = 100;
+    [Export(PropertyHint.Range, "0,10000")] public float bulletSpeed = 600.0f;
+    [Export(PropertyHint.Range, "0.001,60")] public float bulletsPerSecond = 5.0f;
+    [Export(PropertyHint.Range, "0,1000")] public float bulletDamage = 30.0f;
+    [Export(PropertyHint.Range, "1,1000")] public uint massPerBullet = 5;
+    [Export(PropertyHint.Range, "0.9,1")] public float bulletTravel = 0.95f;
 
     // Stats
     public int kills = 0;
     public int deaths = 0;
 
     // Leveling
-    [Export] public uint levelScaling = 2; // how large the expNeeded increases per level
-    [Export] public uint level1Cost = 100;
+    [Export(PropertyHint.Range, "1,50")] public uint levelScaling = 2; // how large the expNeeded increases per level
+    [Export(PropertyHint.Range, "1,1000")] public uint level1Cost = 100;
     public uint level = 1;
     public uint experience = 0;
 

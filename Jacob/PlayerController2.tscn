@@ -92,7 +92,6 @@ script = ExtResource("1_laqyd")
 
 [node name="playerData" type="Node2D" parent="."]
 script = ExtResource("2_68bko")
-massPerBullet = 1
 
 [node name="Mass" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(49, 0)

@@ -52,7 +52,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 
             // Create and fire bullet
             Bullet bullet = bulletScene.Instantiate<Bullet>();
-            bullet.Init(massPerBullet);
+            bullet.Init(massPerBullet, data);
             
             bullet.Rotation = GlobalRotation;
             bullet.GlobalPosition = GlobalPosition;
