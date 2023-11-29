@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://dasiolstwj6cm"]
 
-[ext_resource type="Texture2D" uid="uid://bbqins4y3357t" path="res://Jacob/JacobAssets/BlackCell.png" id="1_dhwaw"]
 [ext_resource type="Script" path="res://Jacob/Bullet.cs" id="1_eji0l"]
+[ext_resource type="Texture2D" uid="uid://boi6vee4tk8cm" path="res://Athens/BlackBulletCircle.png" id="2_lwmtu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pv4pw"]
-radius = 13.204
+radius = 11.0034
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4m52k"]
-radius = 14.3044
+radius = 12.1037
 
 [node name="Bullet" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -28,13 +28,13 @@ shape = SubResource("CircleShape2D_pv4pw")
 scale = Vector2(0.908814, 0.865608)
 shape = SubResource("CircleShape2D_4m52k")
 
-[node name="GFX" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_dhwaw")
-
 [node name="CollisionTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
 autostart = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.653125, 0.653125)
+texture = ExtResource("2_lwmtu")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -6,6 +6,8 @@ public partial class Bullet : RigidBody2D
 {
 	public uint mass = 5;
 
+	public void Init(uint mass)
+	{ this.mass = mass; }
 	public override void _Ready()
 	{
         GetChild(1).GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;

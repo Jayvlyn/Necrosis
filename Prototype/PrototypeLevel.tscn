@@ -22,7 +22,7 @@ stream = ExtResource("7_5qqji")
 [node name="MusicArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MusicArea"]
-position = Vector2(840.5, 318)
+position = Vector2(1313, 306)
 shape = SubResource("RectangleShape2D_mkko0")
 
 [node name="MapNode" type="Node2D" parent="."]

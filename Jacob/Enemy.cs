@@ -27,7 +27,6 @@ public abstract partial class Enemy : CharacterBody2D
         if (withinAttackRange && attackTimer <= 0)
         {
             Attack();
-            attackTimer = attackSpeed;
         }
         else
         {
@@ -54,7 +53,8 @@ public abstract partial class Enemy : CharacterBody2D
     public void Attack()
     {
         Mass playerMass = player.GetNode<Mass>("Mass");
-        playerMass.LoseMass((int)damage);
+        playerMass.LoseMass((uint)damage);
+        attackTimer = attackSpeed;
     }
 
     public void OnAttackRangeEnter(Node2D body)

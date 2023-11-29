@@ -37,7 +37,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 	public override void _Process(double delta)
 	{
 		ProcessShooting(delta);
-        Debug.WriteLine(currentMass);
+        Debug.WriteLine("currentMass: " + currentMass);
     }
 
     public void ProcessShooting(double delta)
@@ -51,13 +51,12 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
             LoseMass(massPerBullet);
 
             // Create and fire bullet
-            RigidBody2D bullet = bulletScene.Instantiate<RigidBody2D>();
-
+            Bullet bullet = bulletScene.Instantiate<Bullet>();
+            bullet.Init(massPerBullet);
+            
             bullet.Rotation = GlobalRotation;
             bullet.GlobalPosition = GlobalPosition;
             bullet.LinearVelocity = bullet.Transform.X * bulletSpeed;
-            //Bullet b = (Bullet)bullet.GetNode("Bullet");
-            //b.mass = massPerBullet;
 
             GetTree().Root.AddChild(bullet);
         }
