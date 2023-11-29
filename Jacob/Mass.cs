@@ -8,15 +8,15 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
     playerData data;
 
     [Export] public CharacterBody2D player;
-    private int maxMass;
-    private int currentMass;
+    private uint maxMass;
+    private uint currentMass;
 
     // Shooting mass
     [Export] PackedScene bulletScene;
     private float bulletSpeed;
     private float bulletsPerSecond;
     private float bulletDamage;
-    private int massPerBullet;
+    private uint massPerBullet;
 
     float fireRate;
     float fireTimer;
@@ -72,14 +72,14 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
         return (currentMass - massPerBullet) > 0;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(uint damage)
     {
         LoseMass(damage);
 
         // spit out mass that you can pick back up
     }
 
-    public void LoseMass(int amount)
+    public void LoseMass(uint amount)
     {
         currentMass -= amount;
 
@@ -87,7 +87,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
         UpdateSize();
     }
 
-    public void GainMass(int amount)
+    public void GainMass(uint amount)
     {
         if(currentMass + amount <= maxMass)
         {
@@ -100,7 +100,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
         UpdateSize();
     }
 
-    public int GetMass() { return currentMass; }
+    public uint GetMass() { return currentMass; }
 
     public void UpdateSize()
     {

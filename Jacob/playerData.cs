@@ -25,12 +25,12 @@ public partial class playerData : Node
 
     // Stats
     public int kills = 0;
-
+    public int deaths = 0;
 
     // Leveling
-    [Export] public int levelScaling = 2; // how large the expNeeded increases per level
-    [Export] public int level1Cost = 100;
-    public int level = 1;
+    [Export] public uint levelScaling = 2; // how large the expNeeded increases per level
+    [Export] public uint level1Cost = 100;
+    public uint level = 1;
     public uint experience = 0;
 
     public void GainExp(uint amount)

@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 public partial class Bullet : RigidBody2D
 {
-	public int mass = 5;
+	public uint mass = 5;
 
 	public override void _Ready()
 	{
