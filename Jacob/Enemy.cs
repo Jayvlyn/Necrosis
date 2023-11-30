@@ -27,7 +27,7 @@ public abstract partial class Enemy : CharacterBody2D
 
     public override void _Process(double delta)
     {
-        Debug.WriteLine(health.health.ToString());
+        //Debug.WriteLine(health.health.ToString());
         if (withinAttackRange && attackTimer <= 0)
         {
             Attack();
@@ -57,7 +57,7 @@ public abstract partial class Enemy : CharacterBody2D
     public void Attack()
     {
         Mass playerMass = player.GetNode<Mass>("Mass");
-        playerMass.LoseMass((uint)damage);
+        playerMass.TakeDamage((uint)damage);
         attackTimer = attackSpeed;
     }
 
