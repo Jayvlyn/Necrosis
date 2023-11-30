@@ -99,6 +99,9 @@ script = ExtResource("2_6sgvg")
 player = NodePath("..")
 bulletScene = ExtResource("5_2eolp")
 
+[node name="Behind" type="Node2D" parent="Mass"]
+position = Vector2(-103, 0)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.837912, 0.79636)
 shape = SubResource("CircleShape2D_gv2bd")

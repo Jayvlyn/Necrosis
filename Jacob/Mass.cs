@@ -77,6 +77,16 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
         LoseMass(damage);
 
         // spit out mass that you can pick back up
+        Bullet lostMass = bulletScene.Instantiate<Bullet>();
+        Node2D behind = (Node2D)GetChild(0);
+
+        lostMass.Init(damage, data); // damage determines mass loss, and also amount of mass on the 'bullet'
+        
+        lostMass.Rotation = GlobalRotation;
+        lostMass.GlobalPosition = behind.GlobalPosition;
+        lostMass.LinearVelocity = -lostMass.Transform.X * 400;
+
+        GetTree().Root.AddChild(lostMass);
     }
 
     public bool LoseMass(uint amount)
