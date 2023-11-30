@@ -7,6 +7,8 @@ public partial class Bullet : RigidBody2D
 	playerData data;
 	private float travel;
 	public uint mass = 5;
+	private float bulletDamage;
+	private bool damages = true;
 
 	public void Init(uint mass, playerData data)
 	{ 
@@ -16,6 +18,7 @@ public partial class Bullet : RigidBody2D
 	public override void _Ready()
 	{
 		travel = data.bulletTravel;
+		bulletDamage = data.bulletDamage;
         GetChild(1).GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
         Timer timer = GetNode<Timer>("CollisionTimer");
 		timer.Timeout += () => EnableCollision();
@@ -25,6 +28,8 @@ public partial class Bullet : RigidBody2D
     {
         base._Process(delta);
 		LinearVelocity *= travel;
+
+		if (LinearVelocity.Length() < 0.1 && damages) damages = false;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -46,9 +51,9 @@ public partial class Bullet : RigidBody2D
 
 	public async void _on_area_2d_body_entered(Node2D body)
 	{
-		if (body.IsInGroup("Enemy"))
+		if (body.IsInGroup("Enemy") && damages)
 		{
-			body.GetNode<Health>("Health").Damage(mass);
+			body.GetNode<Health>("Health").Damage(bulletDamage * (1+(0.1f * mass)));
 			if (body.GetNode<Health>("Health").health == 0)
 			{
 				body.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("death");
@@ -57,7 +62,6 @@ public partial class Bullet : RigidBody2D
 				await ToSignal(body.GetNode<Timer>("DeathTimer"), "timeout");
 				body.QueueFree();
 			}
-			
 		}
 
 		if (body.IsInGroup("Player"))

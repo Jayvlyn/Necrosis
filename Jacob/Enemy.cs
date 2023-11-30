@@ -1,9 +1,11 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public abstract partial class Enemy : CharacterBody2D
 {
     PlayerController player;
+    Health health;
 
     [Export] float speed = 250.0f;
     [Export] float damage = 10.0f;
@@ -17,6 +19,7 @@ public abstract partial class Enemy : CharacterBody2D
     public override void _Ready()
     {
         player = (PlayerController)GetTree().Root.GetNode("PrototypeLevel").GetNode("PlayerController");
+        health = (Health)GetChild(0);
 
         attackSpeed = 1 / attacksPerSecond;
         attackTimer = attackSpeed;
@@ -24,6 +27,7 @@ public abstract partial class Enemy : CharacterBody2D
 
     public override void _Process(double delta)
     {
+        Debug.WriteLine(health.health.ToString());
         if (withinAttackRange && attackTimer <= 0)
         {
             Attack();

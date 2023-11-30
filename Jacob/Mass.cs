@@ -32,12 +32,13 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 
         currentMass = maxMass;
         fireRate = 1 / bulletsPerSecond;
+        
     }
 
-	public override void _Process(double delta)
+    public override void _Process(double delta)
 	{
 		ProcessShooting(delta);
-        Debug.WriteLine("currentMass: " + currentMass);
+        //Debug.WriteLine("currentMass: " + currentMass);
     }
 
     public void ProcessShooting(double delta)
@@ -78,12 +79,21 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
         // spit out mass that you can pick back up
     }
 
-    public void LoseMass(uint amount)
+    public bool LoseMass(uint amount)
     {
-        currentMass -= amount;
+        if(currentMass - amount <= 0)
+        {
+            OnDeath();
+            return false;
+        }
+        else
+        {
+            currentMass -= amount;
+        }
 
         // do size reduction
         UpdateSize();
+        return true;
     }
 
     public void GainMass(uint amount)
@@ -104,8 +114,16 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
     public void UpdateSize()
     {
         float scaleFactor = currentMass / (float)maxMass;
+        scaleFactor = Mathf.Clamp(scaleFactor, 0.25f, 1.0f);
         Vector2 newScale = new Vector2(scaleFactor, scaleFactor);
         player.Scale = newScale;
+    }
+
+    public void OnDeath()
+    {
+        GetParent().GetNode<AnimatedSprite2D>("Sprite").Play("death");
+        UpdateSize();
+        data.dead = true;
     }
 
 }
