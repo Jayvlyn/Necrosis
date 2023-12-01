@@ -7,11 +7,12 @@ public abstract partial class Enemy : CharacterBody2D
     PlayerController player;
     Health health;
 
-    [Export] float speed = 250.0f;
-    [Export] float damage = 10.0f;
-    [Export] float attacksPerSecond = 2.0f;
-    [Export] int expValue = 10;
+    [Export] public float speed = 250.0f;
+    [Export] public float damage = 10.0f;
+    [Export] public float attacksPerSecond = 2.0f;
+    [Export] public int expValue = 10;
 
+    public bool dead = false;
     float attackSpeed;
     float attackTimer;
     bool withinAttackRange = false;
@@ -28,7 +29,7 @@ public abstract partial class Enemy : CharacterBody2D
     public override void _Process(double delta)
     {
         //Debug.WriteLine(health.health.ToString());
-        if (withinAttackRange && attackTimer <= 0)
+        if (withinAttackRange && attackTimer <= 0 && !dead)
         {
             Attack();
         }
@@ -40,7 +41,7 @@ public abstract partial class Enemy : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (player != null)
+        if (player != null && !dead)
         {
             LookAt(player.GlobalPosition);
             Vector2 dir = (player.GlobalPosition - GlobalPosition).Normalized();

@@ -87,7 +87,7 @@ expValue = 25
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("2_4epnp")
-maxHealth = 50.0
+maxHealth = 20.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)

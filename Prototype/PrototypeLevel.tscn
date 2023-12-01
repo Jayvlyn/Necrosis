@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cjhttdbpa12kv" path="res://Jacob/PlayerController2.tscn" id="7_hoqb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkko0"]
-size = Vector2(535, 540)
+size = Vector2(1882.5, 1527)
 
 [node name="PrototypeLevel" type="Node2D"]
 script = ExtResource("1_xslmt")
@@ -22,7 +22,7 @@ stream = ExtResource("7_5qqji")
 [node name="MusicArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MusicArea"]
-position = Vector2(1313, 306)
+position = Vector2(1986.75, 799.5)
 shape = SubResource("RectangleShape2D_mkko0")
 
 [node name="MapNode" type="Node2D" parent="."]

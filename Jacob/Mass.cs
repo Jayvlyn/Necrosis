@@ -21,6 +21,10 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
     float fireRate;
     float fireTimer;
 
+    private bool changingSize = false;
+    private float t;
+    private float targetScale;
+
     public override void _Ready()
 	{
         data = (playerData)GetParent().GetChild(0);
@@ -39,6 +43,17 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 	{
 		ProcessShooting(delta);
         //Debug.WriteLine("currentMass: " + currentMass);
+
+        if(changingSize)
+        {
+            t += (float)delta;
+            if (t >= 1) changingSize = false;
+
+            float currentScale = player.Scale.X;
+            currentScale = Mathf.Lerp(currentScale, targetScale, t);
+            player.Scale = new Vector2(currentScale, currentScale);
+
+        }
     }
 
     public void ProcessShooting(double delta)
@@ -84,7 +99,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
         
         lostMass.Rotation = GlobalRotation;
         lostMass.GlobalPosition = behind.GlobalPosition;
-        lostMass.LinearVelocity = -lostMass.Transform.X * 400;
+        lostMass.LinearVelocity = -lostMass.Transform.X * 1000;
         lostMass.damages = false;
 
         GetTree().Root.AddChild(lostMass);
@@ -94,15 +109,13 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
     {
         if(currentMass - amount <= 0)
         {
-            OnDeath();
+            if(!data.dead)OnDeath();
             return false;
         }
         else
         {
             currentMass -= amount;
         }
-
-        // do size reduction
         UpdateSize();
         return true;
     }
@@ -124,10 +137,10 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 
     public void UpdateSize()
     {
-        float scaleFactor = currentMass / (float)maxMass;
-        scaleFactor = Mathf.Clamp(scaleFactor, 0.25f, 1.0f);
-        Vector2 newScale = new Vector2(scaleFactor, scaleFactor);
-        player.Scale = newScale;
+        t = 0;
+        changingSize = true;
+        targetScale = Mathf.Clamp(currentMass / (float)maxMass, 0.25f, 1.0f);
+
     }
 
     public void OnDeath()

@@ -12,6 +12,7 @@ public partial class Bullet : RigidBody2D
 	public bool damages = true;
 	public bool pickup = false;
 	public float pickupRange;
+	private float playerDistance;
 
 	public void Init(uint mass, playerData data)
 	{ 
@@ -34,7 +35,7 @@ public partial class Bullet : RigidBody2D
     {
         base._Process(delta);
 
-		float playerDistance = (player.GlobalPosition - GlobalPosition).Length();
+		playerDistance = (player.GlobalPosition - GlobalPosition).Length();
 		if (playerDistance < pickupRange && !damages) pickup = true;
 		else pickup = false;
 
@@ -68,16 +69,19 @@ public partial class Bullet : RigidBody2D
 	private void MoveTowardsPlayer(double delta)
 	{
         Vector2 direction = (player.GlobalPosition - GlobalPosition).Normalized();
-		LinearVelocity += direction * 1000 * (float)delta;
+		LinearVelocity += direction * ((2000 - playerDistance) * (float)delta);
     }
 
     public async void _on_bullet_area_body_entered(Node2D body)
 	{
 		if (body.IsInGroup("Enemy") && damages)
 		{
-			body.GetNode<Health>("Health").Damage(bulletDamage * (1+(0.1f * mass)));
-			if (body.GetNode<Health>("Health").health == 0)
+			Health enemyHealth = body.GetNode<Health>("Health");
+			Enemy enemy = (Enemy)body;
+            enemyHealth.Damage(bulletDamage * (1+(0.1f * mass)));
+			if (enemyHealth.health <= 0 && !enemy.dead)
 			{
+				enemy.dead = true;
 				body.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("death");
 				body.GetNode<Timer>("DeathTimer").Start();
 
@@ -89,7 +93,7 @@ public partial class Bullet : RigidBody2D
 		if (body.IsInGroup("Player") && pickup)
 		{
 			body.GetNode<Mass>("Mass").GainMass(mass);
-			Debug.WriteLine("Mass: " + body.GetNode<Mass>("Mass").GetMass());
+			//Debug.WriteLine("Mass: " + body.GetNode<Mass>("Mass").GetMass());
 			QueueFree();
 
 		}

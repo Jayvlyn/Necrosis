@@ -92,6 +92,7 @@ script = ExtResource("1_laqyd")
 
 [node name="playerData" type="Node2D" parent="."]
 script = ExtResource("2_68bko")
+bulletTravel = 0.985
 
 [node name="Mass" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(49, 0)

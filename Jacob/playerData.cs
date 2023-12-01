@@ -18,7 +18,7 @@ public partial class playerData : Node
     [Export(PropertyHint.Range, "0,10000")] public uint maxMass = 100;
     [Export(PropertyHint.Range, "0,10000")] public float bulletSpeed = 600.0f;
     [Export(PropertyHint.Range, "0.001,60")] public float bulletsPerSecond = 5.0f;
-    [Export(PropertyHint.Range, "0,1000")] public float bulletDamage = 10.0f;
+    [Export(PropertyHint.Range, "0,1000")] public float bulletDamage = 5.0f;
     [Export(PropertyHint.Range, "1,1000")] public uint massPerBullet = 5;
     [Export(PropertyHint.Range, "0.9,1")] public float bulletTravel = 0.95f;
     [Export(PropertyHint.Range, "100,1000")] public float massPickupRange = 150f;
