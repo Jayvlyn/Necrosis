@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dasiolstwj6cm"]
 
-[ext_resource type="Script" path="res://Jacob/Bullet.cs" id="1_eji0l"]
+[ext_resource type="Script" path="res://Jacob/PlayerBullet.cs" id="1_tpv1c"]
 [ext_resource type="Texture2D" uid="uid://boi6vee4tk8cm" path="res://Athens/BlackBulletCircle.png" id="2_lwmtu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pv4pw"]
@@ -17,7 +17,7 @@ max_contacts_reported = 5
 contact_monitor = true
 can_sleep = false
 lock_rotation = true
-script = ExtResource("1_eji0l")
+script = ExtResource("1_tpv1c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.908814, 0.865608)
