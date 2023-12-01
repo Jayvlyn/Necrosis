@@ -46,7 +46,7 @@ public partial class Bullet : RigidBody2D
 			MoveTowardsPlayer(delta);
         }
 
-		if (LinearVelocity.Length() < 0.1 && damages) damages = false;
+		if (LinearVelocity.Length() < 20 && damages) damages = false;
     }
 
     public override void _PhysicsProcess(double delta)
