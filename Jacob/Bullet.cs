@@ -4,21 +4,27 @@ using System.Diagnostics;
 
 public partial class Bullet : RigidBody2D
 {
+	CharacterBody2D player;
 	playerData data;
 	private float travel;
 	public uint mass = 5;
 	private float bulletDamage;
-	private bool damages = true;
+	public bool damages = true;
+	public bool pickup = false;
+	public float pickupRange;
 
 	public void Init(uint mass, playerData data)
 	{ 
 		this.mass = mass;
 		this.data = data;
+		player = (CharacterBody2D)data.GetParent();
 	}
 	public override void _Ready()
 	{
 		travel = data.bulletTravel;
 		bulletDamage = data.bulletDamage;
+		pickupRange = data.massPickupRange;
+
         GetChild(1).GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
         Timer timer = GetNode<Timer>("CollisionTimer");
 		timer.Timeout += () => EnableCollision();
@@ -27,7 +33,17 @@ public partial class Bullet : RigidBody2D
     public override void _Process(double delta)
     {
         base._Process(delta);
+
+		float playerDistance = (player.GlobalPosition - GlobalPosition).Length();
+		if (playerDistance < pickupRange && !damages) pickup = true;
+		else pickup = false;
+
 		LinearVelocity *= travel;
+
+		if (pickup) 
+		{
+			MoveTowardsPlayer(delta);
+        }
 
 		if (LinearVelocity.Length() < 0.1 && damages) damages = false;
     }
@@ -49,7 +65,13 @@ public partial class Bullet : RigidBody2D
 		GetChild(1).GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
 	}
 
-	public async void _on_area_2d_body_entered(Node2D body)
+	private void MoveTowardsPlayer(double delta)
+	{
+        Vector2 direction = (player.GlobalPosition - GlobalPosition).Normalized();
+		LinearVelocity += direction * 1000 * (float)delta;
+    }
+
+    public async void _on_bullet_area_body_entered(Node2D body)
 	{
 		if (body.IsInGroup("Enemy") && damages)
 		{
@@ -64,12 +86,10 @@ public partial class Bullet : RigidBody2D
 			}
 		}
 
-		if (body.IsInGroup("Player"))
+		if (body.IsInGroup("Player") && pickup)
 		{
 			body.GetNode<Mass>("Mass").GainMass(mass);
 			Debug.WriteLine("Mass: " + body.GetNode<Mass>("Mass").GetMass());
-			//Debug.WriteLine(body.GetNode<CharacterBody2D>("PlayerController"));
-			//body.GetNode<CharacterBody2D>("PlayerController").kills++;
 			QueueFree();
 
 		}

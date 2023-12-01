@@ -85,6 +85,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
         lostMass.Rotation = GlobalRotation;
         lostMass.GlobalPosition = behind.GlobalPosition;
         lostMass.LinearVelocity = -lostMass.Transform.X * 400;
+        lostMass.damages = false;
 
         GetTree().Root.AddChild(lostMass);
     }
