@@ -1,7 +1,7 @@
 extends Node2D
 
 var dungeon = {}
-var roomScene = load("res://Jayden/Rooms/room_1.tscn") #change this later
+var roomScene = load("res://Jayden/Rooms/room_1.tscn") #default
 var dungeonGeneration = load("res://Jayden/dungeon_generation.gd").new()
 
 @onready var map_node = $MapNode
