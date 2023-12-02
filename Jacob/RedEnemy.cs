@@ -18,6 +18,17 @@ public partial class RedEnemy : Enemy
 
     public override void _PhysicsProcess(double delta)
     {
+        if (player != null && !dead)
+        {
+            LookAt(player.GlobalPosition);
+            Vector2 dir = (player.GlobalPosition - GlobalPosition).Normalized();
+            Velocity = -dir * speed;
+        }
+        else
+        {
+            Velocity = Vector2.Zero;
+        }
+
         base._PhysicsProcess(delta);
     }
 

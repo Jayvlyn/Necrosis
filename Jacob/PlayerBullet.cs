@@ -47,9 +47,7 @@ public partial class PlayerBullet : Bullet
         if (body.IsInGroup("Player") && pickup)
         {
             body.GetNode<Mass>("Mass").GainMass(mass);
-            //Debug.WriteLine("Mass: " + body.GetNode<Mass>("Mass").GetMass());
             QueueFree();
-
         }
     }
 }

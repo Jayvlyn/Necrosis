@@ -22,7 +22,18 @@ public partial class WhiteEnemy : Enemy
 
 	public override void _PhysicsProcess(double delta)
 	{
-		base._PhysicsProcess(delta);
+        if (player != null && !dead)
+        {
+            LookAt(player.GlobalPosition);
+            Vector2 dir = (player.GlobalPosition - GlobalPosition).Normalized();
+            Velocity = dir * speed;
+        }
+        else
+        {
+            Velocity = Vector2.Zero;
+        }
+
+        base._PhysicsProcess(delta);
 	}
 
     public override void Attack()
@@ -36,6 +47,8 @@ public partial class WhiteEnemy : Enemy
         bullet.LinearVelocity = bullet.Transform.X * bulletSpeed;
 
         GetTree().Root.AddChild(bullet);
+
+
         base.Attack();
     }
 }
