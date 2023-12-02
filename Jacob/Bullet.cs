@@ -56,6 +56,11 @@ public partial class Bullet : RigidBody2D
 		GetChild(1).GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
 	}
 
+	protected void Despawn()
+	{
+		QueueFree();
+	}
+
 	protected void MoveTowardsPlayer(double delta)
 	{
         Vector2 direction = (player.GlobalPosition - GlobalPosition).Normalized();

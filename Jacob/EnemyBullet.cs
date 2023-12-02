@@ -9,7 +9,10 @@ public partial class EnemyBullet : Bullet
 	{
         base._Ready();
         travel = 0.98f;
-	}
+
+        Timer despawnTimer = GetNode<Timer>("DespawnTimer");
+        despawnTimer.Timeout += () => QueueFree();
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

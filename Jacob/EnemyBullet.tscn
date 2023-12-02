@@ -38,4 +38,8 @@ autostart = true
 scale = Vector2(0.653125, 0.653125)
 texture = ExtResource("2_j7wsd")
 
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 2.24
+autostart = true
+
 [connection signal="body_entered" from="BulletArea" to="." method="_on_bullet_area_body_entered"]
