@@ -10,7 +10,7 @@ public abstract partial class Enemy : CharacterBody2D
     [Export] public float speed = 250.0f;
     [Export] public float damage = 10.0f;
     [Export] public float attacksPerSecond = 2.0f;
-    [Export] public int expValue = 10;
+    [Export] public uint expValue = 10;
 
     public bool dead = false;
     protected float attackSpeed;
