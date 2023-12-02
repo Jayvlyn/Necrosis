@@ -20,7 +20,7 @@ public partial class RedEnemy : Enemy
     {
         if (player != null && !dead)
         {
-            LookAt(player.GlobalPosition);
+            LookAt(-player.GlobalPosition);
             Vector2 dir = (player.GlobalPosition - GlobalPosition).Normalized();
             Velocity = -dir * speed;
         }

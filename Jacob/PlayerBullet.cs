@@ -39,8 +39,8 @@ public partial class PlayerBullet : Bullet
             {
                 enemy.dead = true;
                 data.GainExp(enemy.expValue);
-                Debug.WriteLine("exp: " + data.experience);
-                Debug.WriteLine(data.level);
+                //Debug.WriteLine("exp: " + data.experience);
+                //Debug.WriteLine(data.level);
                 body.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("death");
                 body.GetNode<Timer>("DeathTimer").Start();
 
@@ -49,7 +49,7 @@ public partial class PlayerBullet : Bullet
             }
         }
 
-        if (body.IsInGroup("Player") && pickup)
+        if (body.IsInGroup("Player"))
         {
             body.GetNode<Mass>("Mass").GainMass(mass);
             QueueFree();

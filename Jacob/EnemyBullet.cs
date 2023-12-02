@@ -11,7 +11,7 @@ public partial class EnemyBullet : Bullet
         travel = 0.98f;
 
         Timer despawnTimer = GetNode<Timer>("DespawnTimer");
-        despawnTimer.Timeout += () => QueueFree();
+        despawnTimer.Timeout += () => Despawn();
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
