@@ -20,4 +20,11 @@ public partial class RedEnemy : Enemy
     {
         base._PhysicsProcess(delta);
     }
+
+    public override void Attack()
+    {
+        Mass playerMass = player.GetNode<Mass>("Mass");
+        playerMass.TakeDamage((uint)damage);
+        base.Attack();
+    }
 }

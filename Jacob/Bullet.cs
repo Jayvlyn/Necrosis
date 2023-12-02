@@ -22,11 +22,9 @@ public partial class Bullet : RigidBody2D
 			player = (CharacterBody2D)data.GetParent();
 		}
 	}
-	public override void _Ready()
-	{
-		travel = data.bulletTravel;
-		bulletDamage = data.bulletDamage;
 
+    public override void _Ready()
+	{
         GetChild(1).GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
         Timer timer = GetNode<Timer>("CollisionTimer");
 		timer.Timeout += () => EnableCollision();

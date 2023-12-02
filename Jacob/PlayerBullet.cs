@@ -10,7 +10,8 @@ public partial class PlayerBullet : Bullet
     public override void _Ready()
 	{
 		base._Ready();
-
+        travel = data.bulletTravel;
+        bulletDamage = data.bulletDamage;
         pickupRange = data.massPickupRange;
     }
 

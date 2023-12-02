@@ -4,8 +4,8 @@ using System.Diagnostics;
 
 public abstract partial class Enemy : CharacterBody2D
 {
-    PlayerController player;
-    Health health;
+    protected PlayerController player;
+    protected Health health;
 
     [Export] public float speed = 250.0f;
     [Export] public float damage = 10.0f;
@@ -13,9 +13,9 @@ public abstract partial class Enemy : CharacterBody2D
     [Export] public int expValue = 10;
 
     public bool dead = false;
-    float attackSpeed;
-    float attackTimer;
-    bool withinAttackRange = false;
+    protected float attackSpeed;
+    protected float attackTimer;
+    protected bool withinAttackRange = false;
 
     public override void _Ready()
     {
@@ -28,7 +28,6 @@ public abstract partial class Enemy : CharacterBody2D
 
     public override void _Process(double delta)
     {
-        //Debug.WriteLine(health.health.ToString());
         if (withinAttackRange && attackTimer <= 0 && !dead)
         {
             Attack();
@@ -55,10 +54,8 @@ public abstract partial class Enemy : CharacterBody2D
         MoveAndSlide();
     }
 
-    public void Attack()
+    public virtual void Attack()
     {
-        Mass playerMass = player.GetNode<Mass>("Mass");
-        playerMass.TakeDamage((uint)damage);
         attackTimer = attackSpeed;
     }
 
