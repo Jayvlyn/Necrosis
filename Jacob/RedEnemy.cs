@@ -14,7 +14,10 @@ public partial class RedEnemy : Enemy
 	public override void _Process(double delta)
 	{
 		base._Process(delta);
-	}
+
+		//if(GetNode<Timer>("DeathTimer").TimeLeft != 0) Debug.WriteLine(GetNode<Timer>("DeathTimer").TimeLeft);
+
+    }
 
 	public override void _PhysicsProcess(double delta)
 	{

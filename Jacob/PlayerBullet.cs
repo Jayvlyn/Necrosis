@@ -42,7 +42,7 @@ public partial class PlayerBullet : Bullet
                 //Debug.WriteLine("exp: " + data.experience);
                 //Debug.WriteLine(data.level);
                 body.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("death");
-                body.GetNode<Timer>("DeathTimer").Start();
+                if(!body.GetNode<Timer>("DeathTimer").IsStopped())body.GetNode<Timer>("DeathTimer").Start();
 
                 await ToSignal(body.GetNode<Timer>("DeathTimer"), "timeout");
                 body.QueueFree();

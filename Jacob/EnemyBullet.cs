@@ -8,7 +8,7 @@ public partial class EnemyBullet : Bullet
 	public override void _Ready()
 	{
         base._Ready();
-        travel = 0.98f;
+        travel = 0.995f;
 
         Timer despawnTimer = GetNode<Timer>("DespawnTimer");
         despawnTimer.Timeout += () => Despawn();
