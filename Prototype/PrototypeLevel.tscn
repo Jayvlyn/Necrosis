@@ -31,11 +31,22 @@ shape = SubResource("RectangleShape2D_mkko0")
 position = Vector2(465, 327)
 
 [node name="Enemy7" parent="." instance=ExtResource("4_wngfj")]
-position = Vector2(743, 113)
+position = Vector2(472, 42)
+speed = 100.0
+
+[node name="Enemy8" parent="." instance=ExtResource("4_wngfj")]
+position = Vector2(204, 555)
+speed = 100.0
+
+[node name="Enemy9" parent="." instance=ExtResource("4_wngfj")]
+position = Vector2(943, 342)
 speed = 100.0
 
 [node name="Enemy" parent="." instance=ExtResource("6_gpt1m")]
 position = Vector2(39, 163)
+
+[node name="Enemy2" parent="." instance=ExtResource("6_gpt1m")]
+position = Vector2(476, -424)
 
 [connection signal="body_entered" from="MusicArea" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="MusicArea" to="." method="_on_area_2d_body_exited"]
