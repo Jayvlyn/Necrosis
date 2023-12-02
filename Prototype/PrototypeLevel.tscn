@@ -1,9 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1aggu4jmtxhk"]
+[gd_scene load_steps=6 format=3 uid="uid://c1aggu4jmtxhk"]
 
 [ext_resource type="Script" path="res://Prototype/PrototypeLevel.gd" id="1_xslmt"]
-[ext_resource type="PackedScene" uid="uid://vp40vynobc4y" path="res://Jacob/RedEnemy.tscn" id="4_wngfj"]
 [ext_resource type="AudioStream" uid="uid://calqf60prosr0" path="res://Piper/layer1.wav" id="6_2b1qj"]
-[ext_resource type="PackedScene" uid="uid://dsq0unww631hw" path="res://Jacob/WhiteEnemy.tscn" id="6_gpt1m"]
 [ext_resource type="AudioStream" uid="uid://dvhstt63nl0pe" path="res://Piper/layer2.wav" id="7_5qqji"]
 [ext_resource type="PackedScene" uid="uid://cjhttdbpa12kv" path="res://Jacob/PlayerController2.tscn" id="7_hoqb7"]
 
@@ -29,36 +27,6 @@ shape = SubResource("RectangleShape2D_mkko0")
 
 [node name="PlayerController" parent="." instance=ExtResource("7_hoqb7")]
 position = Vector2(465, 327)
-
-[node name="Enemy7" parent="." instance=ExtResource("4_wngfj")]
-position = Vector2(472, 42)
-speed = 100.0
-
-[node name="Enemy8" parent="." instance=ExtResource("4_wngfj")]
-position = Vector2(204, 555)
-speed = 100.0
-
-[node name="Enemy9" parent="." instance=ExtResource("4_wngfj")]
-position = Vector2(943, 342)
-speed = 100.0
-
-[node name="Enemy" parent="." instance=ExtResource("6_gpt1m")]
-position = Vector2(39, 163)
-
-[node name="Enemy2" parent="." instance=ExtResource("6_gpt1m")]
-position = Vector2(476, -424)
-
-[node name="Enemy3" parent="." instance=ExtResource("6_gpt1m")]
-position = Vector2(-1230, 337)
-
-[node name="Enemy4" parent="." instance=ExtResource("6_gpt1m")]
-position = Vector2(-1268, -888)
-
-[node name="Enemy5" parent="." instance=ExtResource("6_gpt1m")]
-position = Vector2(2398, 473)
-
-[node name="Enemy6" parent="." instance=ExtResource("6_gpt1m")]
-position = Vector2(2401, 990)
 
 [connection signal="body_entered" from="MusicArea" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="MusicArea" to="." method="_on_area_2d_body_exited"]
