@@ -44,14 +44,26 @@ public partial class playerData : Node
             case Global.Class.Sprinter:
                 playerSprite.Texture = (Texture2D)sprinterSprite;
                 Input.SetCustomMouseCursor(sprinterCursor, Input.CursorShape.Arrow, new Vector2(32, 32));
+                moveSpeed = 700;
+                maxMass = 70;
+                bulletSpeed = 700;
+                bulletsPerSecond = 7;
                 break;
             case Global.Class.Tanker:
                 playerSprite.Texture = (Texture2D)tankerSprite;
                 Input.SetCustomMouseCursor(tankerCursor, Input.CursorShape.Arrow, new Vector2(32, 32));
+                moveSpeed = 400;
+                maxMass = 100;
+                bulletSpeed = 500;
+                bulletsPerSecond = 5;
                 break;
             case Global.Class.Soldier:
                 playerSprite.Texture = (Texture2D)soldierSprite;
                 Input.SetCustomMouseCursor(soldierCursor, Input.CursorShape.Arrow, new Vector2(32, 32));
+                moveSpeed = 600;
+                maxMass = 100;
+                bulletSpeed = 600;
+                bulletsPerSecond = 6;
                 break;
         }
     }

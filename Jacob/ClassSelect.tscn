@@ -26,6 +26,22 @@ offset_bottom = 460.0
 icon = ExtResource("3_deunt")
 flat = true
 
+[node name="tankerLabel2" type="Label" parent="CircleButton"]
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+offset_left = -310.0
+offset_top = 214.0
+offset_right = -61.0
+offset_bottom = 428.0
+theme_override_font_sizes/font_size = 25
+text = "TANKER
+Move Speed: 400
+Starting Mass: 200
+Bullet Speed: 500
+BPS: 5
+"
+horizontal_alignment = 1
+clip_text = true
+
 [node name="TriangleButton" type="Button" parent="."]
 offset_left = 783.0
 offset_top = 64.0
@@ -34,6 +50,23 @@ offset_bottom = 372.0
 icon = ExtResource("4_4i54q")
 flat = true
 
+[node name="sprinterLabel" type="Label" parent="TriangleButton"]
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+layout_mode = 0
+offset_left = 38.0
+offset_top = 299.0
+offset_right = 287.0
+offset_bottom = 513.0
+theme_override_font_sizes/font_size = 25
+text = "SPRINTER
+Move Speed: 700
+Starting Mass: 70
+Bullet Speed: 700
+BPS: 7
+"
+horizontal_alignment = 1
+clip_text = true
+
 [node name="SquareButton" type="Button" parent="."]
 offset_left = 104.0
 offset_top = 64.0
@@ -41,6 +74,22 @@ offset_right = 412.0
 offset_bottom = 372.0
 icon = ExtResource("5_h4j4o")
 flat = true
+
+[node name="tankerLabel" type="Label" parent="SquareButton"]
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+offset_left = 355.0
+offset_top = -61.0
+offset_right = 604.0
+offset_bottom = 153.0
+theme_override_font_sizes/font_size = 23
+text = "SOLDIER
+Move Speed: 600
+Starting Mass: 100
+Bullet Speed: 600
+BPS: 6
+"
+horizontal_alignment = 1
+clip_text = true
 
 [node name="StartButton" type="Button" parent="."]
 offset_left = 442.0

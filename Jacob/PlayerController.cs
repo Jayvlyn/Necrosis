@@ -11,7 +11,6 @@ public partial class PlayerController : CharacterBody2D
 	private Vector2 input = Vector2.Zero;
 
 
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		data = (playerData)GetChild(0); // playerData should be at 0
@@ -19,14 +18,12 @@ public partial class PlayerController : CharacterBody2D
 
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		// Rotates player to look at the mouse position
 		LookAt(GetGlobalMousePosition());
 		ProcessInput();
 		Velocity = input * speed;
