@@ -1,6 +1,6 @@
 extends Node2D
 
-var cursorTest = preload("res://Piper/assets/cursorTest.png")
+#var cursorTest = preload("res://Piper/assets/cursorTest.png")
 
 var dungeon = {}
 var roomScene = load("res://Jayden/Rooms/room_1.tscn") #change this later
@@ -9,7 +9,7 @@ var dungeonGeneration = load("res://Jayden/dungeon_generation.gd").new()
 @onready var map_node = $MapNode
 
 func _ready():
-	Input.set_custom_mouse_cursor(cursorTest,Input.CURSOR_ARROW, Vector2(12,12))
+	#Input.set_custom_mouse_cursor(cursorTest,Input.CURSOR_ARROW, Vector2(12,12))
 	$Layer1.play()
 	$Layer2.play()
 	playLayerOne()

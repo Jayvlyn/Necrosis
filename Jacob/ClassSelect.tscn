@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbrraxey0bpbc"]
+
+[ext_resource type="Texture2D" uid="uid://5hklvbx638jj" path="res://Athens/StartBackground.png" id="1_a5825"]
+[ext_resource type="Script" path="res://Jacob/ClassSelect.cs" id="1_e81lj"]
+[ext_resource type="Texture2D" uid="uid://bwviakw13vs6t" path="res://Jacob/JacobAssets/NecrosisCircleClass.png" id="3_deunt"]
+[ext_resource type="Texture2D" uid="uid://d4ebmyiy0g2ee" path="res://Jacob/JacobAssets/NecrosisTriangleClass.png" id="4_4i54q"]
+[ext_resource type="Texture2D" uid="uid://dbbchksjvtukp" path="res://Jacob/JacobAssets/NecrosisSquareClass.png" id="5_h4j4o"]
+[ext_resource type="Texture2D" uid="uid://cphwqestciqge" path="res://Athens/NecrosisStartButton.png" id="6_23vpa"]
+
+[node name="ClassSelect" type="Node2D"]
+script = ExtResource("1_e81lj")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(582.5, 346)
+scale = Vector2(1.18848, 1)
+texture = ExtResource("1_a5825")
+
+[node name="CircleButton" type="Button" parent="."]
+offset_left = 431.0
+offset_top = 152.0
+offset_right = 739.0
+offset_bottom = 460.0
+icon = ExtResource("3_deunt")
+flat = true
+
+[node name="TriangleButton" type="Button" parent="."]
+offset_left = 783.0
+offset_top = 64.0
+offset_right = 1091.0
+offset_bottom = 372.0
+icon = ExtResource("4_4i54q")
+flat = true
+
+[node name="SquareButton" type="Button" parent="."]
+offset_left = 104.0
+offset_top = 64.0
+offset_right = 412.0
+offset_bottom = 372.0
+icon = ExtResource("5_h4j4o")
+flat = true
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 442.0
+offset_top = 496.0
+offset_right = 1030.0
+offset_bottom = 754.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("6_23vpa")
+flat = true
+
+[connection signal="pressed" from="CircleButton" to="." method="_on_circle_button_pressed"]
+[connection signal="pressed" from="TriangleButton" to="." method="_on_triangle_button_pressed"]
+[connection signal="pressed" from="SquareButton" to="." method="_on_square_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

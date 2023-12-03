@@ -148,6 +148,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
         GetParent().GetNode<AnimatedSprite2D>("Sprite").Play("death");
         UpdateSize();
         data.dead = true;
+        GetTree().ChangeSceneToFile("res://Jacob/MainMenu.tscn");
     }
 
 }
