@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1aggu4jmtxhk"]
+[gd_scene load_steps=7 format=3 uid="uid://c1aggu4jmtxhk"]
 
 [ext_resource type="Script" path="res://Prototype/PrototypeLevel.gd" id="1_xslmt"]
+[ext_resource type="PackedScene" uid="uid://dc2d5ql1msnxw" path="res://Jacob/Global.tscn" id="2_go61f"]
 [ext_resource type="AudioStream" uid="uid://calqf60prosr0" path="res://Piper/layer1.wav" id="6_2b1qj"]
 [ext_resource type="AudioStream" uid="uid://dvhstt63nl0pe" path="res://Piper/layer2.wav" id="7_5qqji"]
 [ext_resource type="PackedScene" uid="uid://cjhttdbpa12kv" path="res://Jacob/PlayerController2.tscn" id="7_hoqb7"]
@@ -10,6 +11,8 @@ size = Vector2(1882.5, 1527)
 
 [node name="PrototypeLevel" type="Node2D"]
 script = ExtResource("1_xslmt")
+
+[node name="Global" parent="." instance=ExtResource("2_go61f")]
 
 [node name="Layer1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_2b1qj")
