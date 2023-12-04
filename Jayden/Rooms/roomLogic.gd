@@ -54,10 +54,11 @@ func enemySpawn():
 		instance = whiteEnemy.instantiate()
 	else:
 		instance = redEnemy.instantiate()
-		
-	get_parent().add_child(instance)
+	
 	instance.position = Vector2((roomOrigin.x + rng.randi_range(3, 12)) * 64, (roomOrigin.y + rng.randi_range(3, 12)) * 64)
 	print(instance.position / 64)
+	
+	get_parent().call_deferred("add_child", instance)
 	
 	enemies += 1
 
