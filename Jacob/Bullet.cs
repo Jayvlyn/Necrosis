@@ -25,9 +25,7 @@ public partial class Bullet : RigidBody2D
 
     public override void _Ready()
 	{
-        GetChild(1).GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
-        Timer timer = GetNode<Timer>("CollisionTimer");
-		timer.Timeout += () => EnableCollision();
+
 	}
 
     public override void _Process(double delta)
@@ -50,11 +48,6 @@ public partial class Bullet : RigidBody2D
 		try { if (collisionInfo != null) LinearVelocity = LinearVelocity.Bounce(collisionInfo.GetNormal()); }
 		catch (Exception e) {Debug.WriteLine("Error in bullet bouncing: " + e.Message);}
     }
-
-    public void EnableCollision()
-	{
-		GetChild(1).GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
-	}
 
 	protected void Despawn()
 	{

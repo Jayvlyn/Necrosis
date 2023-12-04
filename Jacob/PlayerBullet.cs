@@ -6,15 +6,21 @@ using System.Reflection;
 
 public partial class PlayerBullet : Bullet
 {
+    public bool pickupOverride = false;
     public bool pickup = false;
     public float pickupRange;
 
     public override void _Ready()
 	{
+        SetCollisionLayerValue(1, false);
+
 		base._Ready();
         travel = data.bulletTravel;
         bulletDamage = data.bulletDamage;
         pickupRange = data.massPickupRange;
+
+        Timer timer = GetNode<Timer>("CollisionTimer");
+        timer.Timeout += () => EnableCollision();
     }
 
 	public override void _Process(double delta)
@@ -39,8 +45,6 @@ public partial class PlayerBullet : Bullet
             {
                 enemy.dead = true;
                 data.GainExp(enemy.expValue);
-                //Debug.WriteLine("exp: " + data.experience);
-                //Debug.WriteLine(data.level);
                 body.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("death");
                 if(!body.GetNode<Timer>("DeathTimer").IsStopped())body.GetNode<Timer>("DeathTimer").Start();
 
@@ -49,10 +53,16 @@ public partial class PlayerBullet : Bullet
             }
         }
 
-        if (body.IsInGroup("Player"))
+        if (body.IsInGroup("Player") && pickupOverride)
         {
             body.GetNode<Mass>("Mass").GainMass(mass);
             QueueFree();
         }
+    }
+
+    public void EnableCollision()
+    {
+        pickupOverride = true;
+        SetCollisionLayerValue(1, true);
     }
 }
