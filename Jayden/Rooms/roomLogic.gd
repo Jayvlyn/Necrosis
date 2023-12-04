@@ -24,7 +24,7 @@ func _on_room_area_body_entered(body):
 	if (body.is_in_group("Player") && !roomGenerated):
 		roomSetup()
 		print("start of spawn")
-		for n in rng.randi_range(5, 10):
+		for n in rng.randi_range(1, 3): #DEBUG: this is being set to like 3
 			enemySpawn()
 		roomGenerated = true
 
@@ -36,13 +36,12 @@ func _on_room_area_body_exited(body):
 		roomComplete()
 
 func roomSetup():
-	var roomOrigin = map.local_to_map(to_local(roomPos.position))
+	await get_tree().create_timer(0.5).timeout
 	for n in 4:
-			map.set_cell(0, Vector2i(roomOrigin.x, roomOrigin.y + 7 + n), 0, Vector2i(0, 1)) #left wall
-			map.set_cell(0, Vector2i(roomOrigin.x + 17, roomOrigin.y + 7 + n), 0, Vector2i(2, 1)) #right wall
-			map.set_cell(0, Vector2i(roomOrigin.x + 7 + n, roomOrigin.y), 0, Vector2i(1, 0)) #top wall
-			map.set_cell(0, Vector2i(roomOrigin.x + 7 + n, roomOrigin.y + 17), 0, Vector2i(1, 2)) #bottom wall
-	pass
+			map.set_cell(0, Vector2i(0, 7 + n), 0, Vector2i(0, 1)) #left wall
+			map.set_cell(0, Vector2i(17, 7 + n), 0, Vector2i(2, 1)) #right wall
+			map.set_cell(0, Vector2i(7 + n, 0), 0, Vector2i(1, 0)) #top wall
+			map.set_cell(0, Vector2i(7 + n, 17), 0, Vector2i(1, 2)) #bottom wall
 
 func enemySpawn():
 	var roomOrigin = map.local_to_map(to_local(roomPos.position))
@@ -55,7 +54,8 @@ func enemySpawn():
 	else:
 		instance = redEnemy.instantiate()
 	
-	instance.position = Vector2((roomOrigin.x + rng.randi_range(3, 12)) * 64, (roomOrigin.y + rng.randi_range(3, 12)) * 64)
+	#instance.position = Vector2((roomOrigin.x + rng.randi_range(3, 12)) * 64, (roomOrigin.y + rng.randi_range(3, 12)) * 64)
+	instance.position = Vector2((0 + rng.randi_range(3, 12)) * 64, (0 + rng.randi_range(3, 12)) * 64)
 	print(instance.position / 64)
 	
 	get_parent().call_deferred("add_child", instance)
@@ -65,22 +65,22 @@ func enemySpawn():
 func roomComplete():
 	var roomOrigin = map.local_to_map(to_local(roomPos.position))
 	
-	map.set_cell(0, Vector2i(roomOrigin.x, roomOrigin.y + 7), 0, Vector2i(3, 1)) #left tiles
-	map.set_cell(0, Vector2i(roomOrigin.x, roomOrigin.y + 8), 0, Vector2i(1, 1))
-	map.set_cell(0, Vector2i(roomOrigin.x, roomOrigin.y + 9), 0, Vector2i(1, 1))
-	map.set_cell(0, Vector2i(roomOrigin.x, roomOrigin.y + 10), 0, Vector2i(3, 2))
+	map.set_cell(0, Vector2i(0, 0 + 7), 0, Vector2i(3, 1)) #left tiles
+	map.set_cell(0, Vector2i(0, 0 + 8), 0, Vector2i(1, 1))
+	map.set_cell(0, Vector2i(0, 0 + 9), 0, Vector2i(1, 1))
+	map.set_cell(0, Vector2i(0, 0 + 10), 0, Vector2i(3, 2))
 	
-	map.set_cell(0, Vector2i(roomOrigin.x + 17, roomOrigin.y + 7), 0, Vector2i(3, 1)) #right tiles
-	map.set_cell(0, Vector2i(roomOrigin.x + 17, roomOrigin.y + 8), 0, Vector2i(1, 1))
-	map.set_cell(0, Vector2i(roomOrigin.x + 17, roomOrigin.y + 9), 0, Vector2i(1, 1))
-	map.set_cell(0, Vector2i(roomOrigin.x + 17, roomOrigin.y + 10), 0, Vector2i(3, 2))
+	map.set_cell(0, Vector2i(0 + 17, 0 + 7), 0, Vector2i(3, 1)) #right tiles
+	map.set_cell(0, Vector2i(0 + 17, 0 + 8), 0, Vector2i(1, 1))
+	map.set_cell(0, Vector2i(0 + 17, 0 + 9), 0, Vector2i(1, 1))
+	map.set_cell(0, Vector2i(0 + 17, 0 + 10), 0, Vector2i(3, 2))
 	
-	map.set_cell(0, Vector2i(roomOrigin.x + 7, roomOrigin.y), 0, Vector2i(2, 3)) #top tiles
-	map.set_cell(0, Vector2i(roomOrigin.x + 8, roomOrigin.y), 0, Vector2i(1, 1))
-	map.set_cell(0, Vector2i(roomOrigin.x + 9, roomOrigin.y), 0, Vector2i(1, 1))
-	map.set_cell(0, Vector2i(roomOrigin.x + 10, roomOrigin.y), 0, Vector2i(0, 3))
+	map.set_cell(0, Vector2i(0 + 7, 0), 0, Vector2i(2, 3)) #top tiles
+	map.set_cell(0, Vector2i(0 + 8, 0), 0, Vector2i(1, 1))
+	map.set_cell(0, Vector2i(0 + 9, 0), 0, Vector2i(1, 1))
+	map.set_cell(0, Vector2i(0 + 10,0), 0, Vector2i(0, 3))
 	
-	map.set_cell(0, Vector2i(roomOrigin.x + 7, roomOrigin.y + 17), 0, Vector2i(2, 3)) #bottom tiles
-	map.set_cell(0, Vector2i(roomOrigin.x + 8, roomOrigin.y + 17), 0, Vector2i(1, 1))
-	map.set_cell(0, Vector2i(roomOrigin.x + 9, roomOrigin.y + 17), 0, Vector2i(1, 1))
-	map.set_cell(0, Vector2i(roomOrigin.x + 10, roomOrigin.y + 17), 0, Vector2i(0, 3))
+	map.set_cell(0, Vector2i(0 + 7, 0 + 17), 0, Vector2i(2, 3)) #bottom tiles
+	map.set_cell(0, Vector2i(0 + 8, 0 + 17), 0, Vector2i(1, 1))
+	map.set_cell(0, Vector2i(0 + 9, 0 + 17), 0, Vector2i(1, 1))
+	map.set_cell(0, Vector2i(0 + 10, 0 + 17), 0, Vector2i(0, 3))
