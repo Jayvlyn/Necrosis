@@ -24,7 +24,8 @@ func _on_room_area_body_entered(body):
 	if (body.is_in_group("Player") && !roomGenerated):
 		roomSetup()
 		print("start of spawn")
-		for n in rng.randi_range(1, 3): #DEBUG: this is being set to like 3
+		await get_tree().create_timer(0.2).timeout
+		for n in rng.randi_range(5, 9):
 			enemySpawn()
 		roomGenerated = true
 
@@ -55,7 +56,7 @@ func enemySpawn():
 		instance = redEnemy.instantiate()
 	
 	#instance.position = Vector2((roomOrigin.x + rng.randi_range(3, 12)) * 64, (roomOrigin.y + rng.randi_range(3, 12)) * 64)
-	instance.position = Vector2((0 + rng.randi_range(3, 12)) * 64, (0 + rng.randi_range(3, 12)) * 64)
+	instance.position = Vector2((-roomOrigin.x + rng.randi_range(3, 12)) * 64, (-roomOrigin.y + rng.randi_range(3, 12)) * 64)
 	print(instance.position / 64)
 	
 	get_parent().call_deferred("add_child", instance)
