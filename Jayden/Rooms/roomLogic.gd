@@ -25,7 +25,7 @@ func _on_room_area_body_entered(body):
 		roomSetup()
 		print("start of spawn")
 		await get_tree().create_timer(0.2).timeout
-		for n in rng.randi_range(5, 9):
+		for n in rng.randi_range(3, 5):
 			enemySpawn()
 		roomGenerated = true
 
@@ -60,6 +60,7 @@ func enemySpawn():
 	print(instance.position / 64)
 	
 	get_parent().call_deferred("add_child", instance)
+	
 	
 	enemies += 1
 

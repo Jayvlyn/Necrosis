@@ -21,7 +21,8 @@ public partial class PlayerBullet : Bullet
 
 		Timer timer = GetNode<Timer>("CollisionTimer");
 		timer.Timeout += () => EnableCollision();
-	}
+
+    }
 
 	public override void _Process(double delta)
 	{
@@ -63,6 +64,5 @@ public partial class PlayerBullet : Bullet
 	public void EnableCollision()
 	{
 		pickupOverride = true;
-		SetCollisionLayerValue(1, true);
 	}
 }

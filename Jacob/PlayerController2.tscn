@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cjhttdbpa12kv"]
+[gd_scene load_steps=15 format=3 uid="uid://cjhttdbpa12kv"]
 
 [ext_resource type="Script" path="res://Jacob/PlayerController.cs" id="1_laqyd"]
 [ext_resource type="Script" path="res://Jacob/Mass.cs" id="2_6sgvg"]
@@ -7,89 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://dasiolstwj6cm" path="res://Jacob/Bullet.tscn" id="5_2eolp"]
 [ext_resource type="Texture2D" uid="uid://doeh63bwmg2r4" path="res://Athens/BlackTriangle.png" id="5_rolb6"]
 [ext_resource type="Texture2D" uid="uid://ditdoyjtue5y3" path="res://Athens/BlackCell.png" id="5_ud10y"]
-[ext_resource type="Texture2D" uid="uid://din7eoel7yp3m" path="res://Athens/PlayerCircleDeathAnimation.png" id="5_w3ftm"]
 [ext_resource type="Texture2D" uid="uid://dj4eracqnmw1v" path="res://Athens/CrosshairCircle.png" id="6_hp2vc"]
 [ext_resource type="Texture2D" uid="uid://b534c603tosw3" path="res://Athens/CrosshairSquare.png" id="7_1qmjk"]
+[ext_resource type="SpriteFrames" uid="uid://ca8c8yb3bdhmd" path="res://Jacob/SquarePlayerDeath.tres" id="7_02baq"]
 [ext_resource type="Texture2D" uid="uid://noorfi22t1ld" path="res://Athens/CrosshairTriangle.png" id="8_jcjme"]
+[ext_resource type="SpriteFrames" uid="uid://cdmgec1e5drka" path="res://Jacob/TrianglePlayerDeath.tres" id="8_nwm8f"]
+[ext_resource type="SpriteFrames" uid="uid://cvgyherx5l0vy" path="res://Jacob/CirclePlayerDeath.tres" id="11_cwdk3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gv2bd"]
 radius = 31.0549
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_khfj2"]
-atlas = ExtResource("5_w3ftm")
-region = Rect2(0, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cufkq"]
-atlas = ExtResource("5_w3ftm")
-region = Rect2(256, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k88b6"]
-atlas = ExtResource("5_w3ftm")
-region = Rect2(512, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_47g6c"]
-atlas = ExtResource("5_w3ftm")
-region = Rect2(768, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8d4aj"]
-atlas = ExtResource("5_w3ftm")
-region = Rect2(0, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_04h74"]
-atlas = ExtResource("5_w3ftm")
-region = Rect2(256, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ada3p"]
-atlas = ExtResource("5_w3ftm")
-region = Rect2(512, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bobxs"]
-atlas = ExtResource("5_w3ftm")
-region = Rect2(768, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lbafe"]
-atlas = ExtResource("5_ud10y")
-region = Rect2(0, 0, 256, 256)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_5cb6n"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_khfj2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cufkq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k88b6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_47g6c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8d4aj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_04h74")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ada3p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bobxs")
-}],
-"loop": true,
-"name": &"death",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lbafe")
-}],
-"loop": false,
-"name": &"idle",
-"speed": 1.0
-}]
 
 [node name="PlayerController" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
@@ -101,6 +27,9 @@ playerClass = 2
 soldierSprite = ExtResource("5_ud10y")
 tankerSprite = ExtResource("4_bx78h")
 sprinterSprite = ExtResource("5_rolb6")
+soldierAnim = ExtResource("11_cwdk3")
+tankerAnim = ExtResource("7_02baq")
+sprinterAnim = ExtResource("8_nwm8f")
 soldierCursor = ExtResource("6_hp2vc")
 tankerCursor = ExtResource("7_1qmjk")
 sprinterCursor = ExtResource("8_jcjme")
@@ -122,12 +51,13 @@ shape = SubResource("CircleShape2D_gv2bd")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-visible = false
+rotation = 1.5708
 scale = Vector2(0.21, 0.21)
-sprite_frames = SubResource("SpriteFrames_5cb6n")
+sprite_frames = ExtResource("11_cwdk3")
 animation = &"death"
 autoplay = "idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_ud10y")

@@ -1,0 +1,79 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://cdmgec1e5drka"]
+
+[ext_resource type="Texture2D" uid="uid://bml108x6ip6r" path="res://Athens/PlayerTriangleDeathAnimation.png" id="1_podkd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w14pr"]
+atlas = ExtResource("1_podkd")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6uq2"]
+atlas = ExtResource("1_podkd")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5gpw"]
+atlas = ExtResource("1_podkd")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rov7o"]
+atlas = ExtResource("1_podkd")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg46o"]
+atlas = ExtResource("1_podkd")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dl0r"]
+atlas = ExtResource("1_podkd")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brx5e"]
+atlas = ExtResource("1_podkd")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukugv"]
+atlas = ExtResource("1_podkd")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy1k6"]
+atlas = ExtResource("1_podkd")
+region = Rect2(0, 0, 256, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w14pr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6uq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5gpw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rov7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qg46o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dl0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brx5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukugv")
+}],
+"loop": true,
+"name": &"death",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy1k6")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 1.0
+}]

@@ -10,6 +10,7 @@ radius = 11.0034
 radius = 15.4047
 
 [node name="Bullet" type="RigidBody2D"]
+collision_layer = 2
 mass = 0.01
 gravity_scale = 0.0
 continuous_cd = 2

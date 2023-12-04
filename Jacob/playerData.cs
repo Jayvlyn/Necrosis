@@ -8,6 +8,11 @@ public partial class playerData : Node
     [Export] public Texture2D soldierSprite;
     [Export] public Texture2D tankerSprite;
     [Export] public Texture2D sprinterSprite;
+
+    [Export] public SpriteFrames soldierAnim;
+    [Export] public SpriteFrames tankerAnim;
+    [Export] public SpriteFrames sprinterAnim;
+
     [Export] public Resource soldierCursor;
     [Export] public Resource tankerCursor;
     [Export] public Resource sprinterCursor;
@@ -39,10 +44,12 @@ public partial class playerData : Node
         playerClass = Global.GetInstance().selectedClass;
 
         Sprite2D playerSprite = GetParent().GetNode<Sprite2D>("Sprite2D");
+        AnimatedSprite2D playerAnim = GetParent().GetNode<AnimatedSprite2D>("Sprite");
         switch(playerClass)
         {
             case Global.Class.Sprinter:
                 playerSprite.Texture = (Texture2D)sprinterSprite;
+                playerAnim.SpriteFrames = sprinterAnim;
                 Input.SetCustomMouseCursor(sprinterCursor, Input.CursorShape.Arrow, new Vector2(32, 32));
                 moveSpeed = 700;
                 maxMass = 70;
@@ -51,6 +58,7 @@ public partial class playerData : Node
                 break;
             case Global.Class.Tanker:
                 playerSprite.Texture = (Texture2D)tankerSprite;
+                playerAnim.SpriteFrames = tankerAnim;
                 Input.SetCustomMouseCursor(tankerCursor, Input.CursorShape.Arrow, new Vector2(32, 32));
                 moveSpeed = 400;
                 maxMass = 100;
@@ -59,6 +67,7 @@ public partial class playerData : Node
                 break;
             case Global.Class.Soldier:
                 playerSprite.Texture = (Texture2D)soldierSprite;
+                playerAnim.SpriteFrames = soldierAnim;
                 Input.SetCustomMouseCursor(soldierCursor, Input.CursorShape.Arrow, new Vector2(32, 32));
                 moveSpeed = 600;
                 maxMass = 100;
