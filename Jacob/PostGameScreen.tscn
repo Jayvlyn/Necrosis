@@ -9,8 +9,8 @@
 script = ExtResource("1_5rhqe")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(662.5, 363)
-scale = Vector2(1.35449, 1)
+position = Vector2(639.001, 363)
+scale = Vector2(1.30859, 1)
 texture = ExtResource("1_gg7yu")
 
 [node name="BackButton" type="Button" parent="."]

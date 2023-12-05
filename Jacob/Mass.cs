@@ -95,7 +95,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
             
             bullet.Rotation = GlobalRotation;
             bullet.GlobalPosition = GlobalPosition;
-            bullet.LinearVelocity = bullet.Transform.X * bulletSpeed;
+            bullet.LinearVelocity = -bullet.Transform.X * bulletSpeed;
 
             GetTree().Root.AddChild(bullet);
         }
