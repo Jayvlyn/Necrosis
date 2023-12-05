@@ -7,7 +7,6 @@ public partial class PlayerController : CharacterBody2D
 	playerData data;
 	private float speed;
 
-
 	private Vector2 input = Vector2.Zero;
 
 
@@ -40,7 +39,7 @@ public partial class PlayerController : CharacterBody2D
 
 	public void UpdateData()
 	{
-		if (data == null)
+		if (data != null)
 		{
             speed = data.moveSpeed;
         }
