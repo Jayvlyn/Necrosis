@@ -14,7 +14,7 @@ public partial class PlayerController : CharacterBody2D
 	public override void _Ready()
 	{
 		data = (playerData)GetChild(0); // playerData should be at 0
-		speed = data.moveSpeed;
+		UpdateData();
 	}
 
 	public override void _Process(double delta)
@@ -36,6 +36,14 @@ public partial class PlayerController : CharacterBody2D
 		input = Input.GetVector("left", "right", "up", "down");
 		// Normalize input vector to prevent faster diagonal movement
 		input = input.Normalized();
+	}
+
+	public void UpdateData()
+	{
+		if (data == null)
+		{
+            speed = data.moveSpeed;
+        }
 	}
 
 

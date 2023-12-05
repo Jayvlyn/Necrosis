@@ -17,6 +17,9 @@ public partial class playerData : Node
     [Export] public Resource tankerCursor;
     [Export] public Resource sprinterCursor;
 
+    private PlayerController playerController;
+    private Mass playerMass;
+
     // Player attributes
     [Export(PropertyHint.Range, "0,2000")] public float moveSpeed = 600.0f;
     [Export(PropertyHint.Range, "0,10000")] public uint maxMass = 100;
@@ -41,6 +44,9 @@ public partial class playerData : Node
 
     public override void _Ready()
     {
+        playerController = (PlayerController)GetParent();
+        playerMass = (Mass)GetParent().GetNode<Mass>("Mass");
+
         playerClass = Global.GetInstance().selectedClass;
 
         Sprite2D playerSprite = GetParent().GetNode<Sprite2D>("Sprite2D");
@@ -94,5 +100,11 @@ public partial class playerData : Node
     {
         experience = 0; // Reset experience on level up
         level++;
+    }
+
+    public void UpdateData()
+    {
+        playerController.UpdateData();
+        playerMass.UpdateData();
     }
 }

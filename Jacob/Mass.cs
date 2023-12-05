@@ -40,11 +40,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 	{
         camera = GetParent().GetNode<Camera2D>("Camera2D");
         data = (playerData)GetParent().GetChild(0);
-        maxMass = data.maxMass;
-        bulletDamage = data.bulletDamage;
-        bulletSpeed = data.bulletSpeed;
-        bulletsPerSecond = data.bulletsPerSecond;
-        massPerBullet = data.massPerBullet;
+        UpdateData();
 
         currentMass = maxMass;
         fireRate = 1 / bulletsPerSecond;
@@ -185,4 +181,12 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
         GetTree().ChangeSceneToFile("res://Jacob/PostGameScreen.tscn");
     }
 
+    public void UpdateData()
+    {
+        maxMass = data.maxMass;
+        bulletDamage = data.bulletDamage;
+        bulletSpeed = data.bulletSpeed;
+        bulletsPerSecond = data.bulletsPerSecond;
+        massPerBullet = data.massPerBullet;
+    }
 }
