@@ -61,3 +61,6 @@ autoplay = "idle"
 visible = false
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_ud10y")
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 3.0

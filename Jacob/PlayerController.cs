@@ -15,7 +15,6 @@ public partial class PlayerController : CharacterBody2D
 	{
 		data = (playerData)GetChild(0); // playerData should be at 0
 		speed = data.moveSpeed;
-
 	}
 
 	public override void _Process(double delta)
@@ -24,10 +23,13 @@ public partial class PlayerController : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		LookAt(GetGlobalMousePosition());
-		ProcessInput();
-		Velocity = input * speed;
-		MoveAndSlide();
+		if(!data.dead)
+		{
+			LookAt(GetGlobalMousePosition());
+			ProcessInput();
+			Velocity = input * speed;
+			MoveAndSlide();
+		}
 	}
 	private void ProcessInput()
 	{

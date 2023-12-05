@@ -25,6 +25,8 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
     private float t;
     private float targetScale;
 
+    Timer deathTimer;
+
     public override void _Ready()
 	{
         data = (playerData)GetParent().GetChild(0);
@@ -36,12 +38,19 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 
         currentMass = maxMass;
         fireRate = 1 / bulletsPerSecond;
-        
+
+        deathTimer = GetParent().GetNode<Timer>("DeathTimer");
+        deathTimer.Timeout += () => DeathScreen();
     }
 
     public override void _Process(double delta)
 	{
-		ProcessShooting(delta);
+        Debug.WriteLine("Mass: " + currentMass);
+        if(!data.dead)
+        {
+		    ProcessShooting(delta);
+
+        }
         //Debug.WriteLine("currentMass: " + currentMass);
 
         if(changingSize)
@@ -107,7 +116,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 
     public bool LoseMass(uint amount)
     {
-        if(currentMass - amount <= 0)
+        if(currentMass - amount <= 0 || currentMass - amount > maxMass)
         {
             if(!data.dead)OnDeath();
             return false;
@@ -145,10 +154,16 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 
     public void OnDeath()
     {
+        // HAVE CAMERA START ZOOM CLOSE TO PLAYER TO SEE DEATH ANIM BETTER 
         GetParent().GetNode<AnimatedSprite2D>("Sprite").Play("death");
         UpdateSize();
         data.dead = true;
-        //GetTree().ChangeSceneToFile("res://Jacob/MainMenu.tscn");
+        deathTimer.Start();
+    }
+
+    private void DeathScreen()
+    {
+        GetTree().ChangeSceneToFile("res://Jacob/PostGameScreen.tscn");
     }
 
 }

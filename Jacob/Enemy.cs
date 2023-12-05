@@ -5,6 +5,7 @@ using System.Diagnostics;
 public abstract partial class Enemy : CharacterBody2D
 {
     protected PlayerController player;
+    protected playerData pd;
     protected Health health;
 
     [Export] public float speed = 250.0f;
@@ -20,6 +21,7 @@ public abstract partial class Enemy : CharacterBody2D
     public override void _Ready()
     {
         player = (PlayerController)GetTree().Root.GetNode("PrototypeLevel").GetNode("PlayerController");
+        pd = (playerData)player.GetChild(0);
         health = (Health)GetChild(0);
 
         attackSpeed = 1 / attacksPerSecond;
@@ -28,13 +30,16 @@ public abstract partial class Enemy : CharacterBody2D
 
     public override void _Process(double delta)
     {
-        if (withinAttackRange && attackTimer <= 0 && !dead)
+        if (!pd.dead)
         {
-            Attack();
-        }
-        else
-        {
-            attackTimer -= (float)delta;
+            if (withinAttackRange && attackTimer <= 0 && !dead)
+            {
+                Attack();
+            }
+            else
+            {
+                attackTimer -= (float)delta;
+            }
         }
     }
 
