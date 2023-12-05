@@ -44,13 +44,8 @@ public partial class PlayerBullet : Bullet
 			enemyHealth.Damage(bulletDamage * (1 + (0.1f * mass)));
 			if (enemyHealth.health <= 0 && !enemy.dead)
 			{
-				enemy.dead = true;
-				data.GainExp(enemy.expValue);
-				body.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("death");
-				//if(!body.GetNode<Timer>("DeathTimer").IsStopped())body.GetNode<Timer>("DeathTimer").Start();
-
-				await ToSignal(body.GetTree().CreateTimer(0.6), "timeout"); //creates a timer and waits for its signal
-                body.QueueFree();
+                data.GainExp(enemy.expValue);
+                enemy.OnDeath();
 			}
 		}
 

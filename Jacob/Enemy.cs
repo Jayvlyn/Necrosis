@@ -69,4 +69,15 @@ public abstract partial class Enemy : CharacterBody2D
             attackTimer = attackSpeed;
         }
     }
+
+    public async void OnDeath()
+    {
+        dead = true;
+        
+        GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("death");
+        //if(!body.GetNode<Timer>("DeathTimer").IsStopped())body.GetNode<Timer>("DeathTimer").Start();
+
+        await ToSignal(GetTree().CreateTimer(0.6), "timeout"); //creates a timer and waits for its signal
+        QueueFree();
+    }
 }
