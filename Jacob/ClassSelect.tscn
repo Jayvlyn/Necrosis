@@ -14,40 +14,40 @@ script = ExtResource("1_e81lj")
 [node name="Global" parent="." instance=ExtResource("2_fo5ul")]
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(582.5, 346)
-scale = Vector2(1.18848, 1)
+position = Vector2(645.499, 346)
+scale = Vector2(1.31153, 1)
 texture = ExtResource("1_a5825")
 
 [node name="CircleButton" type="Button" parent="."]
-offset_left = 431.0
-offset_top = 152.0
-offset_right = 739.0
-offset_bottom = 460.0
+offset_left = 484.0
+offset_top = 184.0
+offset_right = 792.0
+offset_bottom = 492.0
 icon = ExtResource("3_deunt")
 flat = true
 
-[node name="tankerLabel2" type="Label" parent="CircleButton"]
+[node name="soldierLabel" type="Label" parent="CircleButton"]
 modulate = Color(0.454902, 0.454902, 0.454902, 1)
 layout_mode = 0
-offset_left = -310.0
-offset_top = 214.0
-offset_right = -61.0
-offset_bottom = 428.0
-theme_override_font_sizes/font_size = 25
-text = "TANKER
-Move Speed: 400
-Starting Mass: 200
-Bullet Speed: 500
-BPS: 5
+offset_left = 28.0
+offset_top = -160.0
+offset_right = 277.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 23
+text = "SOLDIER
+Move Speed: 600
+Starting Mass: 100
+Bullet Speed: 600
+BPS: 6
 "
 horizontal_alignment = 1
 clip_text = true
 
 [node name="TriangleButton" type="Button" parent="."]
-offset_left = 783.0
-offset_top = 64.0
-offset_right = 1091.0
-offset_bottom = 372.0
+offset_left = 895.0
+offset_top = 104.0
+offset_right = 1203.0
+offset_bottom = 412.0
 icon = ExtResource("4_4i54q")
 flat = true
 
@@ -70,34 +70,34 @@ clip_text = true
 
 [node name="SquareButton" type="Button" parent="."]
 offset_left = 104.0
-offset_top = 64.0
+offset_top = 104.0
 offset_right = 412.0
-offset_bottom = 372.0
+offset_bottom = 412.0
 icon = ExtResource("5_h4j4o")
 flat = true
 
 [node name="tankerLabel" type="Label" parent="SquareButton"]
 modulate = Color(0.454902, 0.454902, 0.454902, 1)
 layout_mode = 0
-offset_left = 355.0
-offset_top = -61.0
-offset_right = 604.0
-offset_bottom = 153.0
-theme_override_font_sizes/font_size = 23
-text = "SOLDIER
-Move Speed: 600
-Starting Mass: 100
-Bullet Speed: 600
-BPS: 6
+offset_left = 17.0
+offset_top = 302.0
+offset_right = 266.0
+offset_bottom = 516.0
+theme_override_font_sizes/font_size = 25
+text = "TANKER
+Move Speed: 400
+Starting Mass: 200
+Bullet Speed: 500
+BPS: 5
 "
 horizontal_alignment = 1
 clip_text = true
 
 [node name="StartButton" type="Button" parent="."]
-offset_left = 442.0
-offset_top = 496.0
-offset_right = 1030.0
-offset_bottom = 754.0
+offset_left = 498.0
+offset_top = 536.0
+offset_right = 1086.0
+offset_bottom = 794.0
 scale = Vector2(0.5, 0.5)
 icon = ExtResource("6_23vpa")
 flat = true
