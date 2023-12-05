@@ -3,8 +3,9 @@ extends Node2D
 #var cursorTest = preload("res://Piper/assets/cursorTest.png")
 
 var dungeon = {}
-var room1 = load("res://Jayden/Rooms/room_1.tscn") #change this later
-var room2 = load("res://Jayden/Rooms/room_2.tscn") #default
+var room1 = preload("res://Jayden/Rooms/room_1.tscn")
+var room2 = preload("res://Jayden/Rooms/room_2.tscn")
+var room3 = preload("res://Jayden/Rooms/room_3.tscn")
 var dungeonGeneration = load("res://Jayden/dungeon_generation.gd").new()
 
 var rng = RandomNumberGenerator.new()
@@ -46,13 +47,16 @@ func load_map():
 	
 	for i in dungeon.keys():
 		randomize()
-		match(rng.randi_range(0,1)):
+		match(rng.randi_range(0,2)):
 			0:
 				instance = room1.instantiate()
-				print("i am room 1. ill kill you!")
+				print("i am room 1. kinniku buster!")
 			1:
 				instance = room2.instantiate()
-				print("i am room 2. die.")
+				print("i am room 2. rider kick!")
+			2:
+				instance = room3.instantiate()
+				print("i am room 3. shoryuken!")
 		map_node.add_child(instance)
 		instance.position = i * 18 * 64 #if enough time, rewrite this
 
