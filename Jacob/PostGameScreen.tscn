@@ -1,30 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjljr6gettwqw"]
+[gd_scene load_steps=5 format=3 uid="uid://cjljr6gettwqw"]
 
 [ext_resource type="Script" path="res://Jacob/PostGameScreen.cs" id="1_5rhqe"]
 [ext_resource type="Texture2D" uid="uid://5hklvbx638jj" path="res://Athens/StartBackground.png" id="1_gg7yu"]
+[ext_resource type="Texture2D" uid="uid://6vsxlkghl5rj" path="res://Jacob/JacobAssets/BackButton.png" id="3_vlnxa"]
+[ext_resource type="Texture2D" uid="uid://br1qffd47487w" path="res://Jacob/JacobAssets/YouDied.png" id="4_t6mw2"]
 
 [node name="PostGameScreen" type="Node2D"]
 script = ExtResource("1_5rhqe")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(582, 339)
-scale = Vector2(1.2168, 1)
+position = Vector2(662.5, 363)
+scale = Vector2(1.35449, 1)
 texture = ExtResource("1_gg7yu")
 
-[node name="YouDiedLabel" type="Label" parent="."]
-offset_left = 200.0
-offset_top = 24.0
-offset_right = 926.0
-offset_bottom = 130.0
-theme_override_font_sizes/font_size = 100
-text = "YOU DIED"
-horizontal_alignment = 1
-
 [node name="BackButton" type="Button" parent="."]
-offset_left = 56.0
-offset_top = 532.0
-offset_right = 335.0
-offset_bottom = 617.0
-text = "Back to menu"
+offset_left = 15.0
+offset_top = 634.0
+offset_right = 553.0
+offset_bottom = 862.0
+scale = Vector2(0.3, 0.3)
+icon = ExtResource("3_vlnxa")
+flat = true
+
+[node name="YouDiedSprite" type="Sprite2D" parent="."]
+position = Vector2(639, 349)
+texture = ExtResource("4_t6mw2")
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -5,9 +5,17 @@ using System.Net;
 
 public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the health, size, and ammo for the player
 {
-    playerData data;
-
+    // References
     [Export] public CharacterBody2D player;
+    private playerData data;
+    
+    private Camera2D camera;
+    [Export] public float camZoomTarget = 3.0f;
+    private bool camZoom = false;
+    private float camZoomSpeed = 1.0f;
+    private float ct;
+
+    // Mass tracking
     private uint maxMass;
     private uint currentMass;
 
@@ -21,6 +29,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
     float fireRate;
     float fireTimer;
 
+    // size change 
     private bool changingSize = false;
     private float t;
     private float targetScale;
@@ -29,12 +38,9 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 
     public override void _Ready()
 	{
+        camera = GetParent().GetNode<Camera2D>("Camera2D");
         data = (playerData)GetParent().GetChild(0);
-        maxMass = data.maxMass;
-        bulletDamage = data.bulletDamage;
-        bulletSpeed = data.bulletSpeed;
-        bulletsPerSecond = data.bulletsPerSecond;
-        massPerBullet = data.massPerBullet;
+        UpdateData();
 
         currentMass = maxMass;
         fireRate = 1 / bulletsPerSecond;
@@ -49,7 +55,6 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
         if(!data.dead)
         {
 		    ProcessShooting(delta);
-
         }
         //Debug.WriteLine("currentMass: " + currentMass);
 
@@ -61,7 +66,16 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
             float currentScale = player.Scale.X;
             currentScale = Mathf.Lerp(currentScale, targetScale, t);
             player.Scale = new Vector2(currentScale, currentScale);
+        }
 
+        if(camZoom)
+        {
+            ct += (float)delta * camZoomSpeed;
+            if (ct >= 1) camZoom = false;
+
+            float currentZoom = camera.Zoom.X;
+            currentZoom = Mathf.Lerp(currentZoom, camZoomTarget, ct);
+            camera.Zoom = new Vector2(currentZoom, currentZoom);
         }
     }
 
@@ -154,7 +168,8 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 
     public void OnDeath()
     {
-        // HAVE CAMERA START ZOOM CLOSE TO PLAYER TO SEE DEATH ANIM BETTER 
+        ct = 0;
+        camZoom = true;
         GetParent().GetNode<AnimatedSprite2D>("Sprite").Play("death");
         UpdateSize();
         data.dead = true;
@@ -166,4 +181,12 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
         GetTree().ChangeSceneToFile("res://Jacob/PostGameScreen.tscn");
     }
 
+    public void UpdateData()
+    {
+        maxMass = data.maxMass;
+        bulletDamage = data.bulletDamage;
+        bulletSpeed = data.bulletSpeed;
+        bulletsPerSecond = data.bulletsPerSecond;
+        massPerBullet = data.massPerBullet;
+    }
 }

@@ -39,6 +39,7 @@ bulletTravel = 0.985
 position = Vector2(31, 0)
 script = ExtResource("2_6sgvg")
 player = NodePath("..")
+camZoomTarget = 7.0
 bulletScene = ExtResource("5_2eolp")
 
 [node name="Behind" type="Node2D" parent="Mass"]
@@ -63,4 +64,4 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_ud10y")
 
 [node name="DeathTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
