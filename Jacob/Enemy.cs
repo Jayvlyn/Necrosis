@@ -1,22 +1,28 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public abstract partial class Enemy : CharacterBody2D
 {
-    PlayerController player;
+    protected PlayerController player;
+    protected playerData pd;
+    protected Health health;
 
-    [Export] float speed = 250.0f;
-    [Export] float damage = 10.0f;
-    [Export] float attacksPerSecond = 2.0f;
-    [Export] int expValue = 10;
+    [Export] public float speed = 250.0f;
+    [Export] public float damage = 10.0f;
+    [Export] public float attacksPerSecond = 2.0f;
+    [Export] public uint expValue = 10;
 
-    float attackSpeed;
-    float attackTimer;
-    bool withinAttackRange = false;
+    public bool dead = false;
+    protected float attackSpeed;
+    protected float attackTimer;
+    protected bool withinAttackRange = false;
 
     public override void _Ready()
     {
         player = (PlayerController)GetTree().Root.GetNode("PrototypeLevel").GetNode("PlayerController");
+        pd = (playerData)player.GetChild(0);
+        health = (Health)GetChild(0);
 
         attackSpeed = 1 / attacksPerSecond;
         attackTimer = attackSpeed;
@@ -24,36 +30,26 @@ public abstract partial class Enemy : CharacterBody2D
 
     public override void _Process(double delta)
     {
-        if (withinAttackRange && attackTimer <= 0)
+        if (!pd.dead)
         {
-            Attack();
-        }
-        else
-        {
-            attackTimer -= (float)delta;
+            if (withinAttackRange && attackTimer <= 0 && !dead)
+            {
+                Attack();
+            }
+            else
+            {
+                attackTimer -= (float)delta;
+            }
         }
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        if (player != null)
-        {
-            LookAt(player.GlobalPosition);
-            Vector2 dir = (player.GlobalPosition - GlobalPosition).Normalized();
-            Velocity = dir * speed;
-        }
-        else
-        {
-            Velocity = Vector2.Zero;
-        }
-
         MoveAndSlide();
     }
 
-    public void Attack()
+    public virtual void Attack()
     {
-        Mass playerMass = player.GetNode<Mass>("Mass");
-        playerMass.LoseMass((uint)damage);
         attackTimer = attackSpeed;
     }
 
@@ -72,5 +68,16 @@ public abstract partial class Enemy : CharacterBody2D
             withinAttackRange = false;
             attackTimer = attackSpeed;
         }
+    }
+
+    public async void OnDeath()
+    {
+        dead = true;
+        
+        GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("death");
+        //if(!body.GetNode<Timer>("DeathTimer").IsStopped())body.GetNode<Timer>("DeathTimer").Start();
+
+        await ToSignal(GetTree().CreateTimer(0.6), "timeout"); //creates a timer and waits for its signal
+        QueueFree();
     }
 }

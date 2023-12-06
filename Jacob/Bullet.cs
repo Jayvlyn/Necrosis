@@ -4,27 +4,37 @@ using System.Diagnostics;
 
 public partial class Bullet : RigidBody2D
 {
-	playerData data;
-	private float travel;
-	public uint mass = 5;
+	protected CharacterBody2D player;
+	protected playerData data;
+	protected float travel;
+	protected float bulletDamage;
+	protected float playerDistance;
 
-	public void Init(uint mass, playerData data)
+	public uint mass = 5;
+	public bool damages = true;
+
+	public void Init(uint mass, playerData data = null)
 	{ 
 		this.mass = mass;
-		this.data = data;
+		if (data != null)
+		{
+			this.data = data;
+			player = (CharacterBody2D)data.GetParent();
+		}
 	}
-	public override void _Ready()
+
+    public override void _Ready()
 	{
-		travel = data.bulletTravel;
-        GetChild(1).GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
-        Timer timer = GetNode<Timer>("CollisionTimer");
-		timer.Timeout += () => EnableCollision();
+
 	}
 
     public override void _Process(double delta)
     {
         base._Process(delta);
+
 		LinearVelocity *= travel;
+
+		if (LinearVelocity.Length() < 20 && damages) damages = false;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -39,35 +49,14 @@ public partial class Bullet : RigidBody2D
 		catch (Exception e) {Debug.WriteLine("Error in bullet bouncing: " + e.Message);}
     }
 
-    public void EnableCollision()
+	protected void Despawn()
 	{
-		GetChild(1).GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+		QueueFree();
 	}
 
-	public async void _on_area_2d_body_entered(Node2D body)
+	protected void MoveTowardsPlayer(double delta)
 	{
-		if (body.IsInGroup("Enemy"))
-		{
-			body.GetNode<Health>("Health").Damage(mass);
-			if (body.GetNode<Health>("Health").health == 0)
-			{
-				body.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("death");
-				body.GetNode<Timer>("DeathTimer").Start();
-
-				await ToSignal(body.GetNode<Timer>("DeathTimer"), "timeout");
-				body.QueueFree();
-			}
-			
-		}
-
-		if (body.IsInGroup("Player"))
-		{
-			body.GetNode<Mass>("Mass").GainMass(mass);
-			Debug.WriteLine("Mass: " + body.GetNode<Mass>("Mass").GetMass());
-			//Debug.WriteLine(body.GetNode<CharacterBody2D>("PlayerController"));
-			//body.GetNode<CharacterBody2D>("PlayerController").kills++;
-			QueueFree();
-
-		}
-	}
+        Vector2 direction = (player.GlobalPosition - GlobalPosition).Normalized();
+		LinearVelocity += direction * ((2000 - playerDistance) * (float)delta);
+    }
 }

@@ -5,9 +5,17 @@ using System.Net;
 
 public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the health, size, and ammo for the player
 {
-    playerData data;
-
+    // References
     [Export] public CharacterBody2D player;
+    private playerData data;
+    
+    private Camera2D camera;
+    [Export] public float camZoomTarget = 3.0f;
+    private bool camZoom = false;
+    private float camZoomSpeed = 1.0f;
+    private float ct;
+
+    // Mass tracking
     private uint maxMass;
     private uint currentMass;
 
@@ -21,23 +29,54 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
     float fireRate;
     float fireTimer;
 
+    // size change 
+    private bool changingSize = false;
+    private float t;
+    private float targetScale;
+
+    Timer deathTimer;
+
     public override void _Ready()
 	{
+        camera = GetParent().GetNode<Camera2D>("Camera2D");
         data = (playerData)GetParent().GetChild(0);
-        maxMass = data.maxMass;
-        bulletDamage = data.bulletDamage;
-        bulletSpeed = data.bulletSpeed;
-        bulletsPerSecond = data.bulletsPerSecond;
-        massPerBullet = data.massPerBullet;
+        UpdateData();
 
         currentMass = maxMass;
         fireRate = 1 / bulletsPerSecond;
+
+        deathTimer = GetParent().GetNode<Timer>("DeathTimer");
+        deathTimer.Timeout += () => DeathScreen();
     }
 
-	public override void _Process(double delta)
+    public override void _Process(double delta)
 	{
-		ProcessShooting(delta);
-        Debug.WriteLine("currentMass: " + currentMass);
+        Debug.WriteLine("Mass: " + currentMass);
+        if(!data.dead)
+        {
+		    ProcessShooting(delta);
+        }
+        //Debug.WriteLine("currentMass: " + currentMass);
+
+        if(changingSize)
+        {
+            t += (float)delta;
+            if (t >= 1) changingSize = false;
+
+            float currentScale = player.Scale.X;
+            currentScale = Mathf.Lerp(currentScale, targetScale, t);
+            player.Scale = new Vector2(currentScale, currentScale);
+        }
+
+        if(camZoom)
+        {
+            ct += (float)delta * camZoomSpeed;
+            if (ct >= 1) camZoom = false;
+
+            float currentZoom = camera.Zoom.X;
+            currentZoom = Mathf.Lerp(currentZoom, camZoomTarget, ct);
+            camera.Zoom = new Vector2(currentZoom, currentZoom);
+        }
     }
 
     public void ProcessShooting(double delta)
@@ -56,7 +95,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
             
             bullet.Rotation = GlobalRotation;
             bullet.GlobalPosition = GlobalPosition;
-            bullet.LinearVelocity = bullet.Transform.X * bulletSpeed;
+            bullet.LinearVelocity = -bullet.Transform.X * bulletSpeed;
 
             GetTree().Root.AddChild(bullet);
         }
@@ -76,14 +115,32 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
         LoseMass(damage);
 
         // spit out mass that you can pick back up
+        Bullet lostMass = bulletScene.Instantiate<Bullet>();
+        Node2D behind = (Node2D)GetChild(0);
+
+        lostMass.Init(damage, data); // damage determines mass loss, and also amount of mass on the 'bullet'
+        
+        lostMass.Rotation = GlobalRotation;
+        lostMass.GlobalPosition = behind.GlobalPosition;
+        lostMass.LinearVelocity = -lostMass.Transform.X * 1000;
+        lostMass.damages = false;
+
+        GetTree().Root.AddChild(lostMass);
     }
 
-    public void LoseMass(uint amount)
+    public bool LoseMass(uint amount)
     {
-        currentMass -= amount;
-
-        // do size reduction
+        if(currentMass - amount <= 0 || currentMass - amount > maxMass)
+        {
+            if(!data.dead)OnDeath();
+            return false;
+        }
+        else
+        {
+            currentMass -= amount;
+        }
         UpdateSize();
+        return true;
     }
 
     public void GainMass(uint amount)
@@ -103,9 +160,35 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 
     public void UpdateSize()
     {
-        float scaleFactor = currentMass / (float)maxMass;
-        Vector2 newScale = new Vector2(scaleFactor, scaleFactor);
-        player.Scale = newScale;
+        t = 0;
+        changingSize = true;
+        targetScale = Mathf.Clamp(currentMass / (float)maxMass, 0.25f, 1.0f);
+
     }
 
+    public void OnDeath()
+    {
+        ct = 0;
+        camZoom = true;
+        GetParent().GetNode<AnimatedSprite2D>("Sprite").Play("death");
+        UpdateSize();
+        data.dead = true;
+        deathTimer.Start();
+    }
+
+    private void DeathScreen()
+    {
+        GetTree().ChangeSceneToFile("res://Jacob/PostGameScreen.tscn");
+    }
+
+    public void UpdateData()
+    {
+        int gainedMass = (int)data.maxMass - (int)maxMass;
+        if (gainedMass > 0) currentMass += (uint)gainedMass; UpdateSize();
+        maxMass = data.maxMass;
+        bulletDamage = data.bulletDamage;
+        bulletSpeed = data.bulletSpeed;
+        bulletsPerSecond = data.bulletsPerSecond;
+        massPerBullet = data.massPerBullet;
+    }
 }

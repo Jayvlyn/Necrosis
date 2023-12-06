@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://vp40vynobc4y"]
+[gd_scene load_steps=18 format=3 uid="uid://vp40vynobc4y"]
 
 [ext_resource type="Script" path="res://Jacob/RedEnemy.cs" id="1_wwnd5"]
 [ext_resource type="Script" path="res://Jacob/Health.cs" id="2_i35du"]
@@ -87,13 +87,16 @@ radius = 22.2036
 [sub_resource type="CircleShape2D" id="CircleShape2D_c2aej"]
 radius = 56.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_urkm4"]
+radius = 172.073
+
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 motion_mode = 1
 script = ExtResource("1_wwnd5")
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("2_i35du")
-maxHealth = 50.0
+maxHealth = 10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
@@ -110,8 +113,15 @@ position = Vector2(-1, -1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_c2aej")
 
+[node name="FleeRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FleeRange"]
+shape = SubResource("CircleShape2D_urkm4")
+
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.6
 
 [connection signal="body_entered" from="AttackRange" to="." method="OnAttackRangeEnter"]
 [connection signal="body_exited" from="AttackRange" to="." method="OnAttackRangeExit"]
+[connection signal="body_entered" from="FleeRange" to="." method="_on_flee_range_body_entered"]
+[connection signal="body_exited" from="FleeRange" to="." method="_on_flee_range_body_exited"]

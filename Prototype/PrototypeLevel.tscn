@@ -1,17 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1aggu4jmtxhk"]
+[gd_scene load_steps=7 format=3 uid="uid://c1aggu4jmtxhk"]
 
 [ext_resource type="Script" path="res://Prototype/PrototypeLevel.gd" id="1_xslmt"]
-[ext_resource type="PackedScene" uid="uid://vp40vynobc4y" path="res://Jacob/RedEnemy.tscn" id="4_wngfj"]
+[ext_resource type="PackedScene" uid="uid://dc2d5ql1msnxw" path="res://Jacob/Global.tscn" id="2_go61f"]
 [ext_resource type="AudioStream" uid="uid://calqf60prosr0" path="res://Piper/layer1.wav" id="6_2b1qj"]
-[ext_resource type="PackedScene" uid="uid://dsq0unww631hw" path="res://Jacob/WhiteEnemy.tscn" id="6_gpt1m"]
 [ext_resource type="AudioStream" uid="uid://dvhstt63nl0pe" path="res://Piper/layer2.wav" id="7_5qqji"]
 [ext_resource type="PackedScene" uid="uid://cjhttdbpa12kv" path="res://Jacob/PlayerController2.tscn" id="7_hoqb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkko0"]
-size = Vector2(535, 540)
+size = Vector2(24015.3, 13806.5)
 
 [node name="PrototypeLevel" type="Node2D"]
 script = ExtResource("1_xslmt")
+
+[node name="Global" parent="." instance=ExtResource("2_go61f")]
 
 [node name="Layer1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_2b1qj")
@@ -22,20 +23,13 @@ stream = ExtResource("7_5qqji")
 [node name="MusicArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MusicArea"]
-position = Vector2(1313, 306)
+position = Vector2(395.375, -617.75)
 shape = SubResource("RectangleShape2D_mkko0")
 
 [node name="MapNode" type="Node2D" parent="."]
 
 [node name="PlayerController" parent="." instance=ExtResource("7_hoqb7")]
 position = Vector2(465, 327)
-
-[node name="Enemy7" parent="." instance=ExtResource("4_wngfj")]
-position = Vector2(743, 113)
-speed = 100.0
-
-[node name="Enemy" parent="." instance=ExtResource("6_gpt1m")]
-position = Vector2(39, 163)
 
 [connection signal="body_entered" from="MusicArea" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="MusicArea" to="." method="_on_area_2d_body_exited"]

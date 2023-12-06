@@ -16,9 +16,8 @@ script = ExtResource("1_a3rpe")
 [node name="MapNode" type="Node2D" parent="."]
 
 [node name="PlayerController" type="CharacterBody2D" parent="." groups=["Player"]]
-position = Vector2(544, 286)
+position = Vector2(443, 317)
 script = ExtResource("3_w0nso")
-speed = 2000.0
 
 [node name="Health" type="Node2D" parent="PlayerController"]
 script = ExtResource("4_kyn4c")

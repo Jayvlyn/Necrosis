@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dsq0unww631hw"]
+[gd_scene load_steps=17 format=3 uid="uid://dsq0unww631hw"]
 
 [ext_resource type="Script" path="res://Jacob/WhiteEnemy.cs" id="1_lkgvf"]
 [ext_resource type="Script" path="res://Jacob/Health.cs" id="2_4epnp"]
+[ext_resource type="PackedScene" uid="uid://olhqcqnhmeac" path="res://Jacob/EnemyBullet.tscn" id="2_dsxiy"]
 [ext_resource type="Texture2D" uid="uid://cm1sfdvkrierk" path="res://Athens/WhiteCellDeath.png" id="3_kguhy"]
 [ext_resource type="Texture2D" uid="uid://dokjc3tq7nex3" path="res://Athens/WhiteBloodCell.png" id="4_nqf5q"]
 
@@ -61,7 +62,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5ehhm")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 12.0
 }, {
@@ -78,21 +79,25 @@ animations = [{
 radius = 22.2036
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c2aej"]
-radius = 56.0
+radius = 365.153
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 motion_mode = 1
 script = ExtResource("1_lkgvf")
+bulletScene = ExtResource("2_dsxiy")
 expValue = 25
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("2_4epnp")
-maxHealth = 50.0
+maxHealth = 20.0
+
+[node name="BulletSpawn" type="Node2D" parent="."]
+position = Vector2(26, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_mrvj1")
-animation = &"idle"
+animation = &"death"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -11,12 +11,14 @@ config_version=5
 [application]
 
 config/name="Necrosis"
-run/main_scene="res://Prototype/PrototypeLevel.tscn"
+run/main_scene="res://Jacob/MainMenu.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 mouse_cursor/custom_image="res://Piper/assets/emptySprite.png"
 
 [dotnet]

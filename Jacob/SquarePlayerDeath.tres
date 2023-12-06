@@ -1,0 +1,82 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://ca8c8yb3bdhmd"]
+
+[ext_resource type="Texture2D" uid="uid://ctxpmexp3c3cm" path="res://Athens/PlayerSquareDeathAnimation.png" id="1_to7fh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a765o"]
+atlas = ExtResource("1_to7fh")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0nx3"]
+atlas = ExtResource("1_to7fh")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rs4oj"]
+atlas = ExtResource("1_to7fh")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ribk1"]
+atlas = ExtResource("1_to7fh")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1cht"]
+atlas = ExtResource("1_to7fh")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogobr"]
+atlas = ExtResource("1_to7fh")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2uh8"]
+atlas = ExtResource("1_to7fh")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqiax"]
+atlas = ExtResource("1_to7fh")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq8pu"]
+atlas = ExtResource("1_to7fh")
+region = Rect2(0, 0, 256, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a765o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0nx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rs4oj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ribk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1cht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogobr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2uh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqiax")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"death",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lq8pu")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 1.0
+}]

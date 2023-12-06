@@ -1,30 +1,32 @@
 [gd_scene load_steps=5 format=3 uid="uid://dasiolstwj6cm"]
 
-[ext_resource type="Script" path="res://Jacob/Bullet.cs" id="1_eji0l"]
+[ext_resource type="Script" path="res://Jacob/PlayerBullet.cs" id="1_tpv1c"]
 [ext_resource type="Texture2D" uid="uid://boi6vee4tk8cm" path="res://Athens/BlackBulletCircle.png" id="2_lwmtu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pv4pw"]
 radius = 11.0034
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4m52k"]
-radius = 12.1037
+radius = 15.4047
 
 [node name="Bullet" type="RigidBody2D"]
+collision_layer = 2
+mass = 0.01
 gravity_scale = 0.0
 continuous_cd = 2
 max_contacts_reported = 5
 contact_monitor = true
 can_sleep = false
 lock_rotation = true
-script = ExtResource("1_eji0l")
+script = ExtResource("1_tpv1c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.908814, 0.865608)
 shape = SubResource("CircleShape2D_pv4pw")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="BulletArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletArea"]
 scale = Vector2(0.908814, 0.865608)
 shape = SubResource("CircleShape2D_4m52k")
 
@@ -37,4 +39,4 @@ autostart = true
 scale = Vector2(0.653125, 0.653125)
 texture = ExtResource("2_lwmtu")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="BulletArea" to="." method="_on_bullet_area_body_entered"]
