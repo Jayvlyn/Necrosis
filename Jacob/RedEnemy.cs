@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 
 public partial class RedEnemy : Enemy
 {
+	[Export(PropertyHint.Range, "0.001,1")] public float changeDirProbability = 0.01f;
     private Random random = new Random();
 	private Vector2 moveDir;
 
@@ -19,35 +20,13 @@ public partial class RedEnemy : Enemy
 	public override void _Process(double delta)
 	{
 		base._Process(delta);
-
-		//if(GetNode<Timer>("DeathTimer").TimeLeft != 0) Debug.WriteLine(GetNode<Timer>("DeathTimer").TimeLeft);
-
     }
 
 	public override void _PhysicsProcess(double delta)
 	{
 		if (player != null && !dead)
 		{
-			LookAt(-player.GlobalPosition);
-			if(!runAway)
-			{
-
-				if (random.NextDouble() < 0.01 || GlobalPosition == lastPos) 
-				{
-					float randomAngle = (float)random.NextDouble() * Mathf.Pi * 2;
-
-					moveDir = new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle));
-					moveDir = moveDir.Normalized();
-				}
-			}
-			else
-			{
-				moveDir = -(player.GlobalPosition - GlobalPosition).Normalized();
-
-			}
-
-			Velocity = moveDir * speed;
-			lastPos = GlobalPosition;
+			DoMovement();
 		}
 		else
 		{
@@ -56,6 +35,28 @@ public partial class RedEnemy : Enemy
 
 		base._PhysicsProcess(delta);
 	}
+
+	public void DoMovement()
+	{
+        LookAt(-player.GlobalPosition);
+        if (!runAway)
+        {
+            if (random.NextDouble() < 0.01 || GlobalPosition == lastPos)
+            {
+                float randomAngle = (float)random.NextDouble() * Mathf.Pi * 2;
+
+                moveDir = new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle));
+                moveDir = moveDir.Normalized();
+            }
+        }
+        else
+        {
+            moveDir = -(player.GlobalPosition - GlobalPosition).Normalized();
+        }
+
+        Velocity = moveDir * speed;
+        lastPos = GlobalPosition;
+    }
 
 	public override void Attack()
 	{

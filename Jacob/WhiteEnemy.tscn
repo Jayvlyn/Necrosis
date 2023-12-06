@@ -92,7 +92,7 @@ script = ExtResource("2_4epnp")
 maxHealth = 20.0
 
 [node name="BulletSpawn" type="Node2D" parent="."]
-position = Vector2(40, 0)
+position = Vector2(26, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)

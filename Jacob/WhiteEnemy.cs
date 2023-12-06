@@ -8,12 +8,15 @@ public partial class WhiteEnemy : Enemy
     [Export] PackedScene bulletScene;
     [Export] public float bulletSpeed = 300.0f;
     private Node2D bulletSpawn;
+    private Vector2 shootingMoveDir;
 
+    private Random random = new Random();
     public override void _Ready()
 	{
 		base._Ready();
         bulletSpawn = (Node2D)GetChild(1);
-	}
+        shootingMoveDir = Transform.Y;
+    }
 
 	public override void _Process(double delta)
 	{
@@ -32,7 +35,12 @@ public partial class WhiteEnemy : Enemy
             }
             else
             {
-                Velocity = Vector2.Zero;
+                if (random.NextDouble() < 0.01) // chance to change strafe direction
+                {
+                    shootingMoveDir = -shootingMoveDir;
+                }
+
+                Velocity = shootingMoveDir * speed;
             }
         }
         else
