@@ -183,6 +183,8 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 
     public void UpdateData()
     {
+        int gainedMass = (int)data.maxMass - (int)maxMass;
+        if (gainedMass > 0) currentMass += (uint)gainedMass; UpdateSize();
         maxMass = data.maxMass;
         bulletDamage = data.bulletDamage;
         bulletSpeed = data.bulletSpeed;

@@ -106,5 +106,6 @@ public partial class playerData : Node
     {
         playerController.UpdateData();
         playerMass.UpdateData();
+        // Mass pickup range & bullet dmg grabbed from playerData when they are spawned, nothing to update
     }
 }

@@ -6,6 +6,7 @@ public partial class Global : Node
     // Singleton instance
     private static Global _instance;
 
+
     // Variables to store information
     public enum Class
     {
@@ -31,7 +32,6 @@ public partial class Global : Node
         }
     }
 
-    // Getter method to access the instance
     public static Global GetInstance()
     {
         return _instance;
