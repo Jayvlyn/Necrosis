@@ -26,7 +26,7 @@ public partial class PlayerController : CharacterBody2D
 		{
 			LookAt(GetGlobalMousePosition());
 			ProcessInput();
-			Velocity = input * speed;
+			Velocity = input * speed * (2-Scale.X);
 			MoveAndSlide();
 		}
 	}
