@@ -27,6 +27,7 @@ offset_top = 252.0
 offset_right = 1036.0
 offset_bottom = 510.0
 scale = Vector2(0.75, 0.75)
+focus_mode = 0
 icon = ExtResource("4_vypih")
 flat = true
 
@@ -36,6 +37,7 @@ offset_top = 454.0
 offset_right = 1130.0
 offset_bottom = 762.0
 scale = Vector2(0.6, 0.6)
+focus_mode = 0
 text = "
 "
 icon = ExtResource("6_klchn")

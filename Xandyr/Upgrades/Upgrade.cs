@@ -65,7 +65,8 @@ public partial class Upgrade : Button
         {
             if(ApplyUpgrade()) applied = true;
             Disabled = true;
-            
+            Panel upgradePanel = player.GetNode<CanvasLayer>("UI").GetNode<Panel>("UpgradePanel");
+            upgradePanel.Hide();
         }
     }
 }

@@ -51,12 +51,11 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 
     public override void _Process(double delta)
 	{
-        Debug.WriteLine("Mass: " + currentMass);
+        //Debug.WriteLine("Mass: " + currentMass);
         if(!data.dead)
         {
 		    ProcessShooting(delta);
         }
-        //Debug.WriteLine("currentMass: " + currentMass);
 
         if(changingSize)
         {

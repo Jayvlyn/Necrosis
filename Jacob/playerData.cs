@@ -20,6 +20,9 @@ public partial class playerData : Node
     private PlayerController playerController;
     private Mass playerMass;
 
+    private CanvasLayer ui;
+    private Panel upgradePanel;
+
     // Player attributes
     [Export(PropertyHint.Range, "0,2000")] public float moveSpeed = 600.0f;
     [Export(PropertyHint.Range, "0,10000")] public uint maxMass = 100;
@@ -46,6 +49,12 @@ public partial class playerData : Node
     {
         playerController = (PlayerController)GetParent();
         playerMass = (Mass)GetParent().GetNode<Mass>("Mass");
+
+        ui = GetParent().GetNode<CanvasLayer>("UI");
+        upgradePanel = ui.GetNode<Panel>("UpgradePanel");
+        upgradePanel.Hide();
+
+        Debug.WriteLine("ui: " + ui.ToString() + " up: " + upgradePanel.ToString());
 
         playerClass = Global.GetInstance().selectedClass;
 
@@ -100,6 +109,7 @@ public partial class playerData : Node
     {
         experience = 0; // Reset experience on level up
         level++;
+        upgradePanel.Visible = true;
     }
 
     public void UpdateData()
