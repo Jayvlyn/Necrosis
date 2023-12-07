@@ -41,8 +41,8 @@ public partial class PlayerController : CharacterBody2D
 	{
 		if (data != null)
 		{
-            speed = data.moveSpeed;
-        }
+			speed = data.moveSpeed;
+		}
 	}
 
 

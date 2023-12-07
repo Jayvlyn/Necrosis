@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5axm5ydjjntd"]
+
+[ext_resource type="Texture2D" uid="uid://c4oq2r8y2d0iq" path="res://Athens/UpgradeBiggerBody.png" id="1_qhswh"]
+[ext_resource type="Script" path="res://Jacob/Upgrades/Upgrade.cs" id="1_v2rsv"]
+
+[node name="UpgradeTest" type="Button"]
+icon = ExtResource("1_qhswh")
+flat = true
+script = ExtResource("1_v2rsv")
+name = "BiggerBody"
+maxMassChange = 10
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

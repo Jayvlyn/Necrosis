@@ -18,7 +18,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	processInput()
+	pass
 
 func _on_room_area_body_entered(body):
 	if (body.is_in_group("Player") && !roomGenerated):
@@ -28,13 +28,6 @@ func _on_room_area_body_entered(body):
 		for n in rng.randi_range(3, 5):
 			enemySpawn()
 		roomGenerated = true
-
-func processInput():
-	if Input.is_action_just_pressed("debug"):
-		enemies -= 1
-		print("enemies: " + str(enemies))
-	if (enemies <= 0 && roomGenerated):
-		roomComplete()
 
 func _on_room_area_body_exited(body):
 	if (body.is_in_group("Enemy") && body.dead == true && roomGenerated):
