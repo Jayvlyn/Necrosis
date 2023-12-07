@@ -15,10 +15,10 @@ public partial class MainMenu : Node2D
 	{
 	}
 
-    public void _on_start_button_pressed()
+	public void _on_start_button_pressed()
 	{
 		GetTree().ChangeSceneToFile("res://Jacob/ClassSelect.tscn");
-    }
+	}
 
 	public void _on_quit_button_pressed()
 	{
