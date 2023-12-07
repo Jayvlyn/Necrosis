@@ -1,17 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cifffsdclvb0t"]
+[gd_scene load_steps=2 format=3 uid="uid://cifffsdclvb0t"]
 
-[ext_resource type="PackedScene" uid="uid://dsq0unww631hw" path="res://Jacob/WhiteEnemy.tscn" id="2_aec7r"]
 [ext_resource type="PackedScene" uid="uid://cjhttdbpa12kv" path="res://Jacob/PlayerController2.tscn" id="2_ulllx"]
 
 [node name="JacobScene" type="Node2D"]
 position = Vector2(0, -1)
 
-[node name="Enemy" parent="." instance=ExtResource("2_aec7r")]
-position = Vector2(866, 323)
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-
 [node name="PlayerController" parent="." instance=ExtResource("2_ulllx")]
-position = Vector2(126, 94)
+position = Vector2(10, 24)
