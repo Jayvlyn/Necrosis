@@ -10,7 +10,7 @@ public partial class Upgrade : Button
     //[Export] public Sprite2D icon;
 
     // Upgrade Teir
-	[Export(PropertyHint.Range, "1,6")] public int tier;
+	[Export(PropertyHint.Range, "1,5")] public int tier;
 
     // Stat changes (negative for decreasing stats)
     [Export] public float moveSpeedChange = 0.0f;

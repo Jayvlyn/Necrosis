@@ -4,5 +4,6 @@
 
 [node name="UpgradeTest" type="Button"]
 script = ExtResource("1_1f4pv")
+tier = 1
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
