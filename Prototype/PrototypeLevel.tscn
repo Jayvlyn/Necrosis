@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Prototype/PrototypeLevel.gd" id="1_xslmt"]
 [ext_resource type="PackedScene" uid="uid://dc2d5ql1msnxw" path="res://Jacob/Global.tscn" id="2_go61f"]
-[ext_resource type="AudioStream" uid="uid://i2ogj3bijk64" path="res://Piper/assets/Title Screen - Necrosis.wav" id="3_30o7j"]
+[ext_resource type="AudioStream" uid="uid://er5g0d8icy2l" path="res://Prototype/Title Screen - Necrosis.wav" id="3_8widq"]
 [ext_resource type="AudioStream" uid="uid://c6hti1pnismqd" path="res://Piper/assets/MainLoop - Necrosis.wav" id="4_47owv"]
 [ext_resource type="PackedScene" uid="uid://cjhttdbpa12kv" path="res://Jacob/PlayerController2.tscn" id="7_hoqb7"]
 
@@ -15,11 +15,13 @@ script = ExtResource("1_xslmt")
 [node name="Global" parent="." instance=ExtResource("2_go61f")]
 
 [node name="Layer1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_30o7j")
+stream = ExtResource("3_8widq")
 autoplay = true
+bus = &"Title"
 
 [node name="Layer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_47owv")
+bus = &"Main"
 
 [node name="MusicArea" type="Area2D" parent="."]
 
