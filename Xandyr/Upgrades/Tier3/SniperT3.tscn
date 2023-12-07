@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw6w84u3fvcd4"]
+
+[ext_resource type="Texture2D" uid="uid://bhnoj2a33u22k" path="res://Athens/UpgradeSniper.png" id="1_phxly"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_h7wpo"]
+
+[node name="UpgradeTest" type="Button"]
+icon = ExtResource("1_phxly")
+flat = true
+script = ExtResource("2_h7wpo")
+name = "SniperT3"
+tier = 3
+bulletDamageChange = 5.0
+bulletTravelChange = 0.1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ijiu0h0k0dc6"]
+
+[ext_resource type="Texture2D" uid="uid://c3mfehpi0go2h" path="res://Athens/UpgradeStrongerBullets.png" id="1_ctw3m"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_ygufu"]
+
+[node name="UpgradeTest" type="Button"]
+icon = ExtResource("1_ctw3m")
+flat = true
+script = ExtResource("2_ygufu")
+name = "SpeedingBulletT1"
+tier = 1
+bulletSpeedChange = 40.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

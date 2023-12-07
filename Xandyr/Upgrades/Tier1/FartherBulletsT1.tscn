@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1u21fddor2of"]
+
+[ext_resource type="Texture2D" uid="uid://d15i3mh4h353p" path="res://Athens/UpgradeFartherBullets.png" id="1_4v4hh"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_q3mpj"]
+
+[node name="UpgradeTest" type="Button"]
+icon = ExtResource("1_4v4hh")
+flat = true
+script = ExtResource("2_q3mpj")
+name = "FartherBulletsT1"
+bulletTravelChange = 0.1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

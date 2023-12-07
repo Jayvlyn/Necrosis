@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://gxdryhi702cg"]
+
+[ext_resource type="Texture2D" uid="uid://b3f6140iqk5hv" path="res://Athens/UpgradeQuicker.png" id="1_cs88x"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_m1hvk"]
+
+[node name="UpgradeTest" type="Button"]
+icon = ExtResource("1_cs88x")
+flat = true
+script = ExtResource("2_m1hvk")
+name = "QuickerT4"
+tier = 5
+moveSpeedChange = 30.0
+bulletSpeedChange = 40.0
+bpsChange = 1.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1ooava7j6t8q"]
+
+[ext_resource type="Texture2D" uid="uid://daid0kwe4l0sl" path="res://Athens/UpgradeSteroids.png" id="1_kmwh0"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_qm13a"]
+
+[node name="UpgradeTest" type="Button"]
+icon = ExtResource("1_kmwh0")
+flat = true
+script = ExtResource("2_qm13a")
+name = "SteroidsT3"
+tier = 2
+bulletDamageChange = 5.0
+massPerBulletChange = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

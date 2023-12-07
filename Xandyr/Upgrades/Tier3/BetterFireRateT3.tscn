@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0btum3ljx8or"]
+
+[ext_resource type="Texture2D" uid="uid://c4oq2r8y2d0iq" path="res://Athens/UpgradeBiggerBody.png" id="1_3tsqy"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_oxhp5"]
+
+[node name="UpgradeTest" type="Button"]
+icon = ExtResource("1_3tsqy")
+flat = true
+script = ExtResource("2_oxhp5")
+name = "BetterFireRateT3"
+tier = 3
+bpsChange = 2.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

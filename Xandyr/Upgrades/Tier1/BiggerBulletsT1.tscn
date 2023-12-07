@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtmnoyr0ptppq"]
+
+[ext_resource type="Texture2D" uid="uid://dvqeox4sscgba" path="res://Athens/UpgradeBiggerBullet.png" id="1_lgun3"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_e41gq"]
+
+[node name="UpgradeTest" type="Button"]
+icon = ExtResource("1_lgun3")
+flat = true
+script = ExtResource("2_e41gq")
+name = "BiggerBulletsT1"
+tier = 1
+massPerBulletChange = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://doniudb8a2w5v"]
+[gd_scene load_steps=2 format=3 uid="uid://dsd6jek8sa0vm"]
 
-[ext_resource type="Script" path="res://Jacob/Upgrades/Upgrade.cs" id="1_1f4pv"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="1_1f4pv"]
 
 [node name="UpgradeTest" type="Button"]
 script = ExtResource("1_1f4pv")

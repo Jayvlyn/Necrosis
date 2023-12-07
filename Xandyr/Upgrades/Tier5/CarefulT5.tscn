@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://jlwmjidqubav"]
+
+[ext_resource type="Texture2D" uid="uid://rq0c7452w6ms" path="res://Athens/UpgradeCareful.png" id="1_o8ibr"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_p5va5"]
+
+[node name="UpgradeTest" type="Button"]
+icon = ExtResource("1_o8ibr")
+flat = true
+script = ExtResource("2_p5va5")
+name = "CarefulT5"
+tier = 5
+bpsChange = -1.0
+bulletDamageChange = 15.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

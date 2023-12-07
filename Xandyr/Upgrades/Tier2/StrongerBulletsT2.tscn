@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://1rqe20jnopw2"]
+
+[ext_resource type="Texture2D" uid="uid://c3mfehpi0go2h" path="res://Athens/UpgradeStrongerBullets.png" id="1_oqsvc"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_p6v7a"]
+
+[node name="UpgradeTest" type="Button"]
+icon = ExtResource("1_oqsvc")
+flat = true
+script = ExtResource("2_p6v7a")
+name = "StrongerBulletsT2"
+tier = 2
+bulletDamageChange = 5.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
