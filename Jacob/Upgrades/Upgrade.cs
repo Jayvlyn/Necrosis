@@ -1,13 +1,13 @@
 using Godot;
 using System;
 
-public partial class Upgrade : Node
+public partial class Upgrade : Button
 {
     // Name of upgrade
     [Export] public string name;
 
     // Image for upgrade
-    [Export] public Sprite2D icon;
+    //[Export] public Sprite2D icon;
 
     // Upgrade Teir
 	[Export(PropertyHint.Range, "1,6")] public int tier;
@@ -25,6 +25,8 @@ public partial class Upgrade : Node
     // Player references 
     protected PlayerController player;
     protected playerData pd;
+
+    private bool applied = false;
 
     public bool ApplyUpgrade()
     {
@@ -56,4 +58,14 @@ public partial class Upgrade : Node
 	public override void _Process(double delta)
     {
 	}
+
+    private void _on_pressed()
+    {
+        if(!applied)
+        {
+            if(ApplyUpgrade()) applied = true;
+            Disabled = true;
+            
+        }
+    }
 }
