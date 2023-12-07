@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://doniudb8a2w5v"]
+
+[ext_resource type="Script" path="res://Jacob/Upgrades/Upgrade.cs" id="1_vrpi1"]
+
+[node name="UpgradeTest" type="Button"]
+script = ExtResource("1_vrpi1")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

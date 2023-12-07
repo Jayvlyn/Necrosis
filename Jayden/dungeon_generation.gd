@@ -4,13 +4,16 @@ var room = preload("res://Jayden/Room.tscn")
 
 var min_rooms = 6
 var max_rooms = 10
+var size = 6
+var dungeonSize
 
 var generation_chance = 20
 
 func generate(room_seed):
 	seed(room_seed)
 	var dungeon = {}
-	var size = randi_range(min_rooms, max_rooms)
+	size = randi_range(min_rooms, max_rooms)
+	dungeonSize = size
 	var instance = room.instantiate()
 	dungeon[Vector2(0,0)] = instance
 	size -= 1
@@ -64,3 +67,6 @@ func is_interesting(dungeon):
 		if(dungeon.get(i).number_of_connections >= 3):
 			rooms_with_three += 1
 	return rooms_with_three >= 2
+
+func get_dungeonSize():
+	return dungeonSize
