@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Prototype/PrototypeLevel.gd" id="1_xslmt"]
 [ext_resource type="PackedScene" uid="uid://dc2d5ql1msnxw" path="res://Jacob/Global.tscn" id="2_go61f"]
-[ext_resource type="AudioStream" uid="uid://calqf60prosr0" path="res://Piper/layer1.wav" id="6_2b1qj"]
-[ext_resource type="AudioStream" uid="uid://dvhstt63nl0pe" path="res://Piper/layer2.wav" id="7_5qqji"]
+[ext_resource type="AudioStream" uid="uid://i2ogj3bijk64" path="res://Piper/assets/Title Screen - Necrosis.wav" id="3_30o7j"]
+[ext_resource type="AudioStream" uid="uid://c6hti1pnismqd" path="res://Piper/assets/MainLoop - Necrosis.wav" id="4_47owv"]
 [ext_resource type="PackedScene" uid="uid://cjhttdbpa12kv" path="res://Jacob/PlayerController2.tscn" id="7_hoqb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkko0"]
@@ -15,10 +15,11 @@ script = ExtResource("1_xslmt")
 [node name="Global" parent="." instance=ExtResource("2_go61f")]
 
 [node name="Layer1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_2b1qj")
+stream = ExtResource("3_30o7j")
+autoplay = true
 
 [node name="Layer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_5qqji")
+stream = ExtResource("4_47owv")
 
 [node name="MusicArea" type="Area2D" parent="."]
 

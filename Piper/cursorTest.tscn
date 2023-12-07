@@ -32,11 +32,9 @@ energy = 2.15
 [node name="Track1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_v10wy")
 autoplay = true
-bus = &"Layer1"
 script = ExtResource("5_q6sl3")
 
 [node name="Track2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_fjcsb")
 autoplay = true
-bus = &"Layer1"
 script = ExtResource("5_q6sl3")
