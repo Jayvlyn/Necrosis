@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjhttdbpa12kv"]
+[gd_scene load_steps=17 format=3 uid="uid://cjhttdbpa12kv"]
 
 [ext_resource type="Script" path="res://Jacob/PlayerController.cs" id="1_laqyd"]
 [ext_resource type="Script" path="res://Jacob/Mass.cs" id="2_6sgvg"]
@@ -13,10 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://noorfi22t1ld" path="res://Athens/CrosshairTriangle.png" id="8_jcjme"]
 [ext_resource type="SpriteFrames" uid="uid://cdmgec1e5drka" path="res://Jacob/TrianglePlayerDeath.tres" id="8_nwm8f"]
 [ext_resource type="SpriteFrames" uid="uid://cvgyherx5l0vy" path="res://Jacob/CirclePlayerDeath.tres" id="11_cwdk3"]
-[ext_resource type="PackedScene" uid="uid://c5axm5ydjjntd" path="res://Jacob/Upgrades/UpgradeTest1.tscn" id="14_p8c7q"]
+[ext_resource type="FontFile" uid="uid://bgpjta5wvm2sq" path="res://Athens/Necrosiscapitalsnumbers-Regular.ttf" id="14_c04r1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gv2bd"]
 radius = 31.0549
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2u4t2"]
+bg_color = Color(0.839216, 0, 0.164706, 1)
 
 [node name="PlayerController" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
@@ -69,8 +72,20 @@ wait_time = 2.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UpgradeTest" parent="CanvasLayer" instance=ExtResource("14_p8c7q")]
-offset_left = 13.0
-offset_top = 420.0
-offset_right = 277.0
-offset_bottom = 684.0
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+visible = false
+offset_left = 3.0
+offset_top = 78.0
+offset_right = 1281.0
+offset_bottom = 801.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2u4t2")
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 39.0
+offset_right = 894.0
+offset_bottom = 168.0
+theme_override_fonts/font = ExtResource("14_c04r1")
+theme_override_font_sizes/font_size = 100
+text = "Upgrades"
