@@ -2,8 +2,8 @@ extends Node
 
 var room = preload("res://Jayden/Room.tscn")
 
-var min_rooms = 6
-var max_rooms = 10
+var min_rooms = 8
+var max_rooms = 12
 var size = 6
 var dungeonSize
 
@@ -13,6 +13,7 @@ func generate(room_seed):
 	seed(room_seed)
 	var dungeon = {}
 	size = randi_range(min_rooms, max_rooms)
+	#size = 1000
 	dungeonSize = size
 	var instance = room.instantiate()
 	dungeon[Vector2(0,0)] = instance
