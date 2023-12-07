@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Jayden/Rooms/roomLogic.gd" id="1_xb347"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okkb8"]
-size = Vector2(1141, 1147)
+size = Vector2(1072.5, 1069.5)
 
 [node name="Room1" type="Node2D"]
 script = ExtResource("1_xb347")
@@ -19,10 +19,9 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 2, 65536, 0, 3, 65536
 position = Vector2(36, 25)
 
 [node name="RoomArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomArea"]
-position = Vector2(576.5, 577.5)
+position = Vector2(576.75, 576.25)
 shape = SubResource("RectangleShape2D_okkb8")
 
 [connection signal="body_entered" from="RoomArea" to="." method="_on_room_area_body_entered"]
