@@ -42,8 +42,13 @@ public partial class playerData : Node
     // Leveling
     [Export(PropertyHint.Range, "1,50")] public uint levelScaling = 2; // how large the expNeeded increases per level
     [Export(PropertyHint.Range, "1,1000")] public uint level1Cost = 100;
+    private ProgressBar bloodBar;
+    public double expNeeded;
     public uint level = 1;
     public uint experience = 0;
+    private bool increaseExpBar = false;
+    private int expGained = 0;
+    private float gainTimer = 0;
 
     public override void _Ready()
     {
@@ -53,8 +58,9 @@ public partial class playerData : Node
         ui = GetParent().GetNode<CanvasLayer>("UI");
         upgradePanel = ui.GetNode<Panel>("UpgradePanel");
         upgradePanel.Hide();
+        bloodBar = ui.GetNode<ProgressBar>("BloodBar");
 
-        Debug.WriteLine("ui: " + ui.ToString() + " up: " + upgradePanel.ToString());
+        expNeeded = level1Cost * Math.Pow(level, levelScaling);
 
         playerClass = Global.GetInstance().selectedClass;
 
@@ -90,11 +96,29 @@ public partial class playerData : Node
                 bulletsPerSecond = 6;
                 break;
         }
+
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        if (increaseExpBar)
+        {
+            Debug.WriteLine("gain timer: " + gainTimer);
+            bloodBar.Value = Mathf.Lerp((experience - expGained) / expNeeded, experience / expNeeded, gainTimer);
+
+            gainTimer += (float)delta;
+            if (gainTimer > 1)
+            {
+                increaseExpBar = false;
+                gainTimer = 0;
+            }
+        }
     }
 
     public void GainExp(uint amount)
     {
-        double expNeeded = level1Cost * Math.Pow(level, levelScaling); // multiplies a base level cost by an exponentially growing level scaling
+        expNeeded = level1Cost * Math.Pow(level, levelScaling); // multiplies a base level cost by an exponentially growing level scaling
         if (experience + amount > expNeeded)
         { 
             LevelUp();
@@ -102,6 +126,16 @@ public partial class playerData : Node
         else
         {
             experience += amount;
+
+            if(increaseExpBar) // in the middle of increasing already
+            {
+                expGained += (int)amount;
+            }
+            else
+            {
+                expGained = (int)amount;
+                increaseExpBar = true;
+            }
         }
     }
 
