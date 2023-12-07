@@ -9,6 +9,7 @@ public partial class MainMenu : Node2D
 	public override void _Ready()
 	{
 		Input.SetCustomMouseCursor(cursor, Input.CursorShape.Arrow, new Vector2(32, 32));
+		
 	}
 
 	public override void _Process(double delta)
