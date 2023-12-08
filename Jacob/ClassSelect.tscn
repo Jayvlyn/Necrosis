@@ -23,7 +23,7 @@ script = ExtResource("1_e81lj")
 [node name="Global" parent="." instance=ExtResource("2_fo5ul")]
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(645.499, 346)
+position = Vector2(646, 363)
 scale = Vector2(1.31153, 1)
 texture = ExtResource("1_a5825")
 
@@ -40,9 +40,9 @@ flat = true
 modulate = Color(0.454902, 0.454902, 0.454902, 1)
 layout_mode = 0
 offset_left = 31.0
-offset_top = -92.0
+offset_top = -116.0
 offset_right = 280.0
-offset_bottom = 122.0
+offset_bottom = 98.0
 theme_override_fonts/font = ExtResource("5_mvhmw")
 theme_override_font_sizes/font_size = 23
 text = "SOLDIER
@@ -67,9 +67,9 @@ flat = true
 modulate = Color(0.454902, 0.454902, 0.454902, 1)
 layout_mode = 0
 offset_left = 38.0
-offset_top = 299.0
+offset_top = 315.0
 offset_right = 287.0
-offset_bottom = 513.0
+offset_bottom = 529.0
 theme_override_fonts/font = ExtResource("5_mvhmw")
 theme_override_font_sizes/font_size = 25
 text = "SPRINTER
@@ -94,9 +94,9 @@ flat = true
 modulate = Color(0.454902, 0.454902, 0.454902, 1)
 layout_mode = 0
 offset_left = 17.0
-offset_top = 302.0
+offset_top = 318.0
 offset_right = 266.0
-offset_bottom = 516.0
+offset_bottom = 532.0
 theme_override_fonts/font = ExtResource("5_mvhmw")
 theme_override_font_sizes/font_size = 25
 text = "TANKER

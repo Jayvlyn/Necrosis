@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://4un26qu0c83t"]
+[gd_scene load_steps=6 format=3 uid="uid://4un26qu0c83t"]
 
 [ext_resource type="Script" path="res://Jacob/MainMenu.cs" id="1_0t30x"]
-[ext_resource type="Texture2D" uid="uid://ddnoyqcvd721m" path="res://Athens/PinkTileset.png" id="1_q5woq"]
-[ext_resource type="Texture2D" uid="uid://dbx1trq7wii7g" path="res://Athens/NecrosisTitle.png" id="2_7s2di"]
 [ext_resource type="Texture2D" uid="uid://dj4eracqnmw1v" path="res://Athens/CrosshairCircle.png" id="2_h4sqx"]
+[ext_resource type="Texture2D" uid="uid://dl2jqfumhtan1" path="res://Athens/TitleScreen.png" id="3_5l6e5"]
 [ext_resource type="Texture2D" uid="uid://cphwqestciqge" path="res://Athens/NecrosisStartButton.png" id="4_vypih"]
 [ext_resource type="Texture2D" uid="uid://b2imamewe4hbb" path="res://Jacob/JacobAssets/QuitButton.png" id="6_klchn"]
 
@@ -11,32 +10,26 @@
 script = ExtResource("1_0t30x")
 cursor = ExtResource("2_h4sqx")
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(2240, 1262)
-scale = Vector2(24.5592, 13.8973)
-texture = ExtResource("1_q5woq")
-
-[node name="Title" type="Sprite2D" parent="."]
-position = Vector2(639, 147)
-scale = Vector2(0.696429, 0.696429)
-texture = ExtResource("2_7s2di")
+[node name="TitleScreen" type="Sprite2D" parent="."]
+position = Vector2(639, 360)
+texture = ExtResource("3_5l6e5")
 
 [node name="StartButton" type="Button" parent="."]
-offset_left = 448.0
-offset_top = 252.0
-offset_right = 1036.0
-offset_bottom = 510.0
-scale = Vector2(0.75, 0.75)
+offset_left = 458.0
+offset_top = 309.0
+offset_right = 1046.0
+offset_bottom = 567.0
+scale = Vector2(0.6, 0.6)
 focus_mode = 0
 icon = ExtResource("4_vypih")
 flat = true
 
 [node name="QuitButton" type="Button" parent="."]
-offset_left = 470.0
-offset_top = 454.0
-offset_right = 1130.0
-offset_bottom = 762.0
-scale = Vector2(0.6, 0.6)
+offset_left = 471.0
+offset_top = 495.0
+offset_right = 1131.0
+offset_bottom = 803.0
+scale = Vector2(0.5, 0.5)
 focus_mode = 0
 text = "
 "

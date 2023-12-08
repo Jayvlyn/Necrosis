@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cjhttdbpa12kv"]
+[gd_scene load_steps=27 format=3 uid="uid://cjhttdbpa12kv"]
 
 [ext_resource type="Script" path="res://Jacob/PlayerController.cs" id="1_laqyd"]
 [ext_resource type="Script" path="res://Jacob/Mass.cs" id="2_6sgvg"]
@@ -21,12 +21,12 @@
 [ext_resource type="PackedScene" uid="uid://ee1ehpxaqkf3" path="res://Xandyr/Upgrades/Tier2/SniperT2.tscn" id="20_gplg3"]
 [ext_resource type="Texture2D" uid="uid://cgp1i2i7uoyr2" path="res://Athens/Syringe1.png" id="21_3iu8o"]
 [ext_resource type="PackedScene" uid="uid://bw2305x0e0xuc" path="res://Xandyr/Upgrades/Tier2/SteroidsT2.tscn" id="21_grbgs"]
+[ext_resource type="Texture2D" uid="uid://re7ab8tvbv88" path="res://Athens/UpgradeScreen.png" id="22_5pxjn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gv2bd"]
 radius = 31.0549
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2u4t2"]
-bg_color = Color(0.839216, 0, 0.164706, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u1hyd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t78g5"]
 bg_color = Color(0.509804, 0, 0.0627451, 0.25098)
@@ -85,7 +85,12 @@ offset_left = -15.0
 offset_top = 78.0
 offset_right = 1314.0
 offset_bottom = 735.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_2u4t2")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_u1hyd")
+
+[node name="UpgradeScreen" type="Sprite2D" parent="UI/UpgradePanel"]
+position = Vector2(655, 283)
+scale = Vector2(1.00156, 1.00278)
+texture = ExtResource("22_5pxjn")
 
 [node name="TitleLabel" type="Label" parent="UI/UpgradePanel"]
 layout_mode = 0

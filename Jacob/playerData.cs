@@ -199,6 +199,7 @@ public partial class playerData : Node
         if (experience + amount > expNeeded)
         { 
             LevelUp();
+            bloodBar.Value = 0;
         }
         else
         {
@@ -221,6 +222,7 @@ public partial class playerData : Node
         experience = 0; // Reset experience on level up
         level++;
         upgradePanel.Visible = true;
+        bloodBar.Visible = false;
         SetTree();
         SetScreen();
     }

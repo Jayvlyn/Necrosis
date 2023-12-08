@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class Upgrade : Button
 {
@@ -29,7 +30,7 @@ public partial class Upgrade : Button
     private bool applied = false;
 
     public bool ApplyUpgrade()
-    {
+    { 
         if(pd != null)
         {
             pd.moveSpeed += moveSpeedChange;
@@ -70,6 +71,8 @@ public partial class Upgrade : Button
             }
             Disabled = true;
             Panel upgradePanel = player.GetNode<CanvasLayer>("UI").GetNode<Panel>("UpgradePanel");
+            ProgressBar bloodBar = upgradePanel.GetParent().GetNode<ProgressBar>("BloodBar");
+            bloodBar.Visible = true;
             upgradePanel.Hide();
         }
     }
