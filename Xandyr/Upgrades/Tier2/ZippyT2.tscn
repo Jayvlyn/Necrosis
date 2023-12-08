@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjvwr5ol16xsc"]
 
-[ext_resource type="Texture2D" uid="uid://c3mfehpi0go2h" path="res://Athens/UpgradeStrongerBullets.png" id="1_8tjie"]
+[ext_resource type="Texture2D" uid="uid://xx7qull5yio3" path="res://Athens/UpgradeZippy.png" id="1_j36ra"]
 [ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_5vobf"]
 
 [node name="UpgradeTest" type="Button"]
-icon = ExtResource("1_8tjie")
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_j36ra")
 flat = true
 script = ExtResource("2_5vobf")
 name = "ZippyT2"

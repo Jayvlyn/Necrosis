@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2tkk8kvefsc8"]
+
+[ext_resource type="Texture2D" uid="uid://87dyq2vj1bhe" path="res://Athens/UpgradeMassiveBullet.png" id="1_65kvk"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_5w0qs"]
+
+[node name="UpgradeTest" type="Button"]
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_65kvk")
+flat = true
+script = ExtResource("2_5w0qs")
+name = "MassiveBulletsT4"
+tier = 4
+massPerBulletChange = 2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

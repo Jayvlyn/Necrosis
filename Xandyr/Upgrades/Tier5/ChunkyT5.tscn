@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://chw6limqbyog2"]
+
+[ext_resource type="Texture2D" uid="uid://vt7ckocn0vxo" path="res://Athens/UpgradeChunky.png" id="1_6gvju"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_jj6ud"]
+
+[node name="UpgradeTest" type="Button"]
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_6gvju")
+flat = true
+script = ExtResource("2_jj6ud")
+name = "ChunkyT5"
+tier = 5
+maxMassChange = 30
+massPerBulletChange = -2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

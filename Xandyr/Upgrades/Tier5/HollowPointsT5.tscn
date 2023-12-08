@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcenfcu31w1pw"]
+
+[ext_resource type="Texture2D" uid="uid://hqkr4dx4874x" path="res://Athens/UpgradeHollowPoints.png" id="1_od88d"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_7h2hx"]
+
+[node name="UpgradeTest" type="Button"]
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_od88d")
+flat = true
+script = ExtResource("2_7h2hx")
+name = "HollowPointsT5"
+tier = 5
+bulletSpeedChange = 40.0
+massPerBulletChange = -1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

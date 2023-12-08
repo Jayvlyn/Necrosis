@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_yi1x2"]
 
 [node name="UpgradeTest" type="Button"]
+scale = Vector2(0.5, 0.5)
 icon = ExtResource("1_kx22v")
 flat = true
 script = ExtResource("2_yi1x2")

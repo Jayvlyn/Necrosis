@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://i47x4jjnkefx"]
+
+[ext_resource type="Texture2D" uid="uid://lludn64ns88" path="res://Athens/UpgradeHEATAmmo.png" id="1_rnxji"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_bgtmh"]
+
+[node name="UpgradeTest" type="Button"]
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_rnxji")
+flat = true
+script = ExtResource("2_bgtmh")
+name = "HEATAmmoT5"
+tier = 5
+bulletSpeedChange = 40.0
+bulletDamageChange = 6.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

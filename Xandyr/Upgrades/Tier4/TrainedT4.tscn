@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://big03h12pww08"]
+
+[ext_resource type="Texture2D" uid="uid://dg3jbqw8ytdlr" path="res://Athens/UpgradeTrained.png" id="1_iigu7"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_mdkvb"]
+
+[node name="UpgradeTest" type="Button"]
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_iigu7")
+flat = true
+script = ExtResource("2_mdkvb")
+name = "TrainedT4"
+tier = 4
+bulletDamageChange = 10.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

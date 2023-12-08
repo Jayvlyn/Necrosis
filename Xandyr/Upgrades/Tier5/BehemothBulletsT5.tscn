@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://6rg2d0k674dn"]
+
+[ext_resource type="Texture2D" uid="uid://ddx7xlaqnn4md" path="res://Athens/UpgradeBehemothBullets.png" id="1_ttosu"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_fg0vm"]
+
+[node name="UpgradeTest" type="Button"]
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_ttosu")
+flat = true
+script = ExtResource("2_fg0vm")
+name = "BehemothBulletsT5"
+tier = 5
+bulletSpeedChange = -30.0
+bpsChange = -1.0
+bulletTravelChange = 0.2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

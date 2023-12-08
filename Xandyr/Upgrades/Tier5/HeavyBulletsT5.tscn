@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b16s0ihm3nf3s"]
+
+[ext_resource type="Texture2D" uid="uid://comit32764kye" path="res://Athens/UpgradeHeavyBullets.png" id="1_xwcnx"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_svv03"]
+
+[node name="UpgradeTest" type="Button"]
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_xwcnx")
+flat = true
+script = ExtResource("2_svv03")
+name = "HeavyBulletsT5"
+tier = 5
+moveSpeedChange = -30.0
+bulletDamageChange = 10.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3qoiquvvjw4d"]
+
+[ext_resource type="Texture2D" uid="uid://cvkvcv7uo4g2a" path="res://Athens/UpgradeArmorPiercing.png" id="1_xks2k"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_2t62k"]
+
+[node name="UpgradeTest" type="Button"]
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_xks2k")
+flat = true
+script = ExtResource("2_2t62k")
+name = "ArmorPiercingT2"
+tier = 2
+bulletSpeedChange = 20.0
+bulletDamageChange = 3.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

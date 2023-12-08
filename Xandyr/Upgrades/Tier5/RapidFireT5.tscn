@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://0483k0jm62iq"]
+
+[ext_resource type="Texture2D" uid="uid://bhgs2rvyh3ex" path="res://Athens/UpgradeRapidFire.png" id="1_o5ag5"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_q8t88"]
+
+[node name="UpgradeTest" type="Button"]
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_o5ag5")
+flat = true
+script = ExtResource("2_q8t88")
+name = "RapidFireT5"
+tier = 5
+bpsChange = 4.0
+bulletDamageChange = -10.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

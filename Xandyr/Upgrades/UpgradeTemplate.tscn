@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="1_1f4pv"]
 
 [node name="UpgradeTest" type="Button"]
+focus_mode = 0
 script = ExtResource("1_1f4pv")
 tier = 1
 

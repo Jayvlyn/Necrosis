@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4no0vadtumu1"]
+
+[ext_resource type="Texture2D" uid="uid://w8jw8l822r4w" path="res://Athens/UpgradeStreamlined.png" id="1_jmtwk"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_retjl"]
+
+[node name="UpgradeTest" type="Button"]
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_jmtwk")
+flat = true
+script = ExtResource("2_retjl")
+name = "StreamlinedT4"
+tier = 4
+moveSpeedChange = 100.0
+maxMassChange = -10
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

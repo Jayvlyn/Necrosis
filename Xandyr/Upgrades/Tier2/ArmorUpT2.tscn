@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://sfxbb10kr6d1"]
+
+[ext_resource type="Texture2D" uid="uid://b0chq6wxtpn6o" path="res://Athens/UpgradeArmorUp.png" id="1_lcbr6"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_ks734"]
+
+[node name="UpgradeTest" type="Button"]
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_lcbr6")
+flat = true
+script = ExtResource("2_ks734")
+name = "ArmorUpT2"
+tier = 2
+moveSpeedChange = -80.0
+maxMassChange = 20
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

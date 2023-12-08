@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv3cycsendrrg"]
+
+[ext_resource type="Texture2D" uid="uid://brvb88j71jiky" path="res://Athens/UpgradeLightSpeed.png" id="1_cmlsa"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_3sbng"]
+
+[node name="UpgradeTest" type="Button"]
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_cmlsa")
+flat = true
+script = ExtResource("2_3sbng")
+name = "LightspeedT3"
+tier = 3
+moveSpeedChange = 60.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

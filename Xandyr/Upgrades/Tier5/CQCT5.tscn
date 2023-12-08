@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8vpmvcwxpj0l"]
+
+[ext_resource type="Texture2D" uid="uid://cmu23b874cq3v" path="res://Athens/UpgradeCQC.png" id="1_5nga0"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_5s7l1"]
+
+[node name="UpgradeTest" type="Button"]
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_5nga0")
+flat = true
+script = ExtResource("2_5s7l1")
+name = "CQCT5"
+tier = 4
+bulletDamageChange = 15.0
+bulletTravelChange = -0.2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

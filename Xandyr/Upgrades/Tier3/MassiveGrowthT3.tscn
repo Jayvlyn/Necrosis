@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dha4fvc06077c"]
+
+[ext_resource type="Texture2D" uid="uid://c5s21ceimach2" path="res://Athens/UpgradeMassiveGrowth.png" id="1_ef2lh"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_5qlh5"]
+
+[node name="UpgradeTest" type="Button"]
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_ef2lh")
+flat = true
+script = ExtResource("2_5qlh5")
+name = "MassiveGrowthT3"
+tier = 3
+maxMassChange = 20
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvhwiufka0egk"]
+
+[ext_resource type="Texture2D" uid="uid://378vq264bdaa" path="res://Athens/UpgradeBulkUp.png" id="1_bna0q"]
+[ext_resource type="Script" path="res://Xandyr/Upgrades/Upgrade.cs" id="2_kooy8"]
+
+[node name="UpgradeTest" type="Button"]
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_bna0q")
+flat = true
+script = ExtResource("2_kooy8")
+name = "BulkUpT5"
+tier = 5
+maxMassChange = 20
+massPerBulletChange = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
