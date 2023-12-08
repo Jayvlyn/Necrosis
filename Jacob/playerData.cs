@@ -223,6 +223,7 @@ public partial class playerData : Node
         level++;
         upgradePanel.Visible = true;
         bloodBar.Visible = false;
+        GetTree().Paused = true;
         SetTree();
         SetScreen();
     }

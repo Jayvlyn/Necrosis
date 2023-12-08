@@ -62,6 +62,7 @@ public partial class Upgrade : Button
 
     private void _on_pressed()
     {
+        GetTree().Paused = false;
         if(!applied)
         {
             if (ApplyUpgrade())
