@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cjhttdbpa12kv"]
+[gd_scene load_steps=86 format=3 uid="uid://cjhttdbpa12kv"]
 
 [ext_resource type="Script" path="res://Jacob/PlayerController.cs" id="1_laqyd"]
 [ext_resource type="Script" path="res://Jacob/Mass.cs" id="2_6sgvg"]
@@ -28,9 +28,57 @@
 [ext_resource type="Texture2D" uid="uid://cjby71ctkee6r" path="res://Athens/NecrosisPaused.png" id="24_sodh3"]
 [ext_resource type="Script" path="res://Jacob/AllUpgrades.cs" id="27_n457t"]
 [ext_resource type="AudioStream" uid="uid://cxfbtq121dh35" path="res://Piper/glunchShoot.wav" id="27_qd28k"]
+[ext_resource type="PackedScene" uid="uid://dtmnoyr0ptppq" path="res://Xandyr/Upgrades/Tier1/BiggerBulletsT1.tscn" id="28_gb5fs"]
 [ext_resource type="AudioStream" uid="uid://denawvmis8vd7" path="res://Piper/poppp.wav" id="28_t6s3n"]
 [ext_resource type="AudioStream" uid="uid://chl1hlrjjwotc" path="res://Piper/playerDeath.wav" id="29_jonts"]
+[ext_resource type="PackedScene" uid="uid://ijiu0h0k0dc6" path="res://Xandyr/Upgrades/Tier1/SpeedingBulletT1.tscn" id="29_uv57e"]
+[ext_resource type="PackedScene" uid="uid://cwyo5pjyqojw3" path="res://Xandyr/Upgrades/Tier1/StrongerBulletsT1.tscn" id="30_ebju1"]
 [ext_resource type="AudioStream" uid="uid://ck6s8l813jyjn" path="res://Piper/playerHurt.wav" id="30_pysyu"]
+[ext_resource type="PackedScene" uid="uid://c201l24f6obq6" path="res://Xandyr/Upgrades/Tier1/ZippyT1.tscn" id="31_i6qqi"]
+[ext_resource type="PackedScene" uid="uid://b3qoiquvvjw4d" path="res://Xandyr/Upgrades/Tier2/ArmorPiercingT2.tscn" id="32_guohq"]
+[ext_resource type="PackedScene" uid="uid://sfxbb10kr6d1" path="res://Xandyr/Upgrades/Tier2/ArmorUpT2.tscn" id="33_jkqte"]
+[ext_resource type="PackedScene" uid="uid://dl2gippo3o0k8" path="res://Xandyr/Upgrades/Tier2/BetterFireRateT2.tscn" id="34_1blyp"]
+[ext_resource type="PackedScene" uid="uid://defaj2l3t2eib" path="res://Xandyr/Upgrades/Tier2/BiggerBodyT2.tscn" id="35_c8700"]
+[ext_resource type="PackedScene" uid="uid://8evasjauo6o5" path="res://Xandyr/Upgrades/Tier2/BiggerBulletsT2.tscn" id="36_rm0hx"]
+[ext_resource type="PackedScene" uid="uid://dqdbpk0ddhuxp" path="res://Xandyr/Upgrades/Tier2/FartherBulletsT2.tscn" id="37_gku1g"]
+[ext_resource type="PackedScene" uid="uid://1rqe20jnopw2" path="res://Xandyr/Upgrades/Tier2/StrongerBulletsT2.tscn" id="38_h6n7l"]
+[ext_resource type="PackedScene" uid="uid://bjvwr5ol16xsc" path="res://Xandyr/Upgrades/Tier2/ZippyT2.tscn" id="39_k4mdi"]
+[ext_resource type="PackedScene" uid="uid://cx0m1auk7s7gy" path="res://Xandyr/Upgrades/Tier3/ArmorPiercingT3.tscn" id="40_cfk53"]
+[ext_resource type="PackedScene" uid="uid://5u0vkqemv6pb" path="res://Xandyr/Upgrades/Tier3/ArmorUpT3.tscn" id="41_2t65n"]
+[ext_resource type="PackedScene" uid="uid://d0btum3ljx8or" path="res://Xandyr/Upgrades/Tier3/BetterFireRateT3.tscn" id="42_e2h4e"]
+[ext_resource type="PackedScene" uid="uid://fa4u6ac84ffg" path="res://Xandyr/Upgrades/Tier3/EnergizedT3.tscn" id="43_bhjlu"]
+[ext_resource type="PackedScene" uid="uid://dv3cycsendrrg" path="res://Xandyr/Upgrades/Tier3/LightspeedT3.tscn" id="44_u0nhd"]
+[ext_resource type="PackedScene" uid="uid://bme5j8pfdffdd" path="res://Xandyr/Upgrades/Tier3/MassiveBulletsT3.tscn" id="45_73grm"]
+[ext_resource type="PackedScene" uid="uid://dha4fvc06077c" path="res://Xandyr/Upgrades/Tier3/MassiveGrowthT3.tscn" id="46_ddksk"]
+[ext_resource type="PackedScene" uid="uid://dhshd5eujvky4" path="res://Xandyr/Upgrades/Tier3/RageT3.tscn" id="47_f88jt"]
+[ext_resource type="PackedScene" uid="uid://cw6w84u3fvcd4" path="res://Xandyr/Upgrades/Tier3/SniperT3.tscn" id="48_bfqp8"]
+[ext_resource type="PackedScene" uid="uid://c1ooava7j6t8q" path="res://Xandyr/Upgrades/Tier3/SteroidsT3.tscn" id="49_mo384"]
+[ext_resource type="PackedScene" uid="uid://bytncfuxn8e0x" path="res://Xandyr/Upgrades/Tier3/StreamlinedT3.tscn" id="50_l4jc6"]
+[ext_resource type="PackedScene" uid="uid://dvbn3f74g7o6h" path="res://Xandyr/Upgrades/Tier3/TrainedT3.tscn" id="51_qysp8"]
+[ext_resource type="PackedScene" uid="uid://dtupscc8mrh7t" path="res://Xandyr/Upgrades/Tier4/CarefulT4.tscn" id="52_pwpdn"]
+[ext_resource type="PackedScene" uid="uid://c36smm025saau" path="res://Xandyr/Upgrades/Tier4/CQCT4.tscn" id="53_o5cmr"]
+[ext_resource type="PackedScene" uid="uid://bmj7bipxyl8u7" path="res://Xandyr/Upgrades/Tier4/HeavyBulletsT4.tscn" id="54_lhnw1"]
+[ext_resource type="PackedScene" uid="uid://c37bqqx7qwjqe" path="res://Xandyr/Upgrades/Tier4/HollowPointsT4.tscn" id="55_2roih"]
+[ext_resource type="PackedScene" uid="uid://ccxgl4kcfu5w" path="res://Xandyr/Upgrades/Tier4/LightspeedT4.tscn" id="56_517vj"]
+[ext_resource type="PackedScene" uid="uid://b2tkk8kvefsc8" path="res://Xandyr/Upgrades/Tier4/MassiveBulletsT4.tscn" id="57_4bpr0"]
+[ext_resource type="PackedScene" uid="uid://bo6vhyiq4elo4" path="res://Xandyr/Upgrades/Tier4/MassiveGrowthT4.tscn" id="58_d21sk"]
+[ext_resource type="PackedScene" uid="uid://y8o578mlcux" path="res://Xandyr/Upgrades/Tier4/PatienceT4.tscn" id="59_hlsxp"]
+[ext_resource type="PackedScene" uid="uid://bjhi0ugp6a310" path="res://Xandyr/Upgrades/Tier4/QuickerT4.tscn" id="60_niiry"]
+[ext_resource type="PackedScene" uid="uid://dlgvnyy0yt424" path="res://Xandyr/Upgrades/Tier4/RapidFireT4.tscn" id="61_0fqyb"]
+[ext_resource type="PackedScene" uid="uid://c4no0vadtumu1" path="res://Xandyr/Upgrades/Tier4/StreamlinedT4.tscn" id="62_uj3f8"]
+[ext_resource type="PackedScene" uid="uid://big03h12pww08" path="res://Xandyr/Upgrades/Tier4/TrainedT4.tscn" id="63_4kcid"]
+[ext_resource type="PackedScene" uid="uid://6rg2d0k674dn" path="res://Xandyr/Upgrades/Tier5/BehemothBulletsT5.tscn" id="64_3kasa"]
+[ext_resource type="PackedScene" uid="uid://dvhwiufka0egk" path="res://Xandyr/Upgrades/Tier5/BulkUpT5.tscn" id="65_cdojs"]
+[ext_resource type="PackedScene" uid="uid://jlwmjidqubav" path="res://Xandyr/Upgrades/Tier5/CarefulT5.tscn" id="66_5syl8"]
+[ext_resource type="PackedScene" uid="uid://chw6limqbyog2" path="res://Xandyr/Upgrades/Tier5/ChunkyT5.tscn" id="67_77t2n"]
+[ext_resource type="PackedScene" uid="uid://b8vpmvcwxpj0l" path="res://Xandyr/Upgrades/Tier5/CQCT5.tscn" id="68_cwbom"]
+[ext_resource type="PackedScene" uid="uid://i47x4jjnkefx" path="res://Xandyr/Upgrades/Tier5/HEATAmmoT5.tscn" id="69_8q6j4"]
+[ext_resource type="PackedScene" uid="uid://b16s0ihm3nf3s" path="res://Xandyr/Upgrades/Tier5/HeavyBulletsT5.tscn" id="70_pko0q"]
+[ext_resource type="PackedScene" uid="uid://bcenfcu31w1pw" path="res://Xandyr/Upgrades/Tier5/HollowPointsT5.tscn" id="71_swkyi"]
+[ext_resource type="PackedScene" uid="uid://cuh5u6vntgch4" path="res://Xandyr/Upgrades/Tier5/PatienceT5.tscn" id="72_kg5ra"]
+[ext_resource type="PackedScene" uid="uid://gxdryhi702cg" path="res://Xandyr/Upgrades/Tier5/QuickerT5.tscn" id="73_0tupj"]
+[ext_resource type="PackedScene" uid="uid://0483k0jm62iq" path="res://Xandyr/Upgrades/Tier5/RapidFireT5.tscn" id="74_reooo"]
+[ext_resource type="PackedScene" uid="uid://dexgkdor6ylxu" path="res://Xandyr/Upgrades/Tier5/Spray&PrayT5.tscn" id="75_ijb8q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gv2bd"]
 radius = 31.0549
@@ -271,6 +319,437 @@ offset_bottom = 164.0
 theme_override_fonts/font = ExtResource("14_c04r1")
 theme_override_font_sizes/font_size = 100
 text = "ALL UPGRADES"
+
+[node name="UpgradeTest" parent="UI/AllUpgradesPanel" instance=ExtResource("15_dr1k5")]
+offset_left = 394.0
+offset_top = 544.0
+offset_right = 658.0
+offset_bottom = 808.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest2" parent="UI/AllUpgradesPanel" instance=ExtResource("28_gb5fs")]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 543.0
+offset_right = 754.0
+offset_bottom = 807.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest3" parent="UI/AllUpgradesPanel" instance=ExtResource("17_kjf4x")]
+layout_mode = 0
+offset_left = 583.0
+offset_top = 542.0
+offset_right = 847.0
+offset_bottom = 806.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest4" parent="UI/AllUpgradesPanel" instance=ExtResource("29_uv57e")]
+layout_mode = 0
+offset_left = 679.0
+offset_top = 541.0
+offset_right = 943.0
+offset_bottom = 805.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest5" parent="UI/AllUpgradesPanel" instance=ExtResource("30_ebju1")]
+layout_mode = 0
+offset_left = 776.0
+offset_top = 542.0
+offset_right = 1040.0
+offset_bottom = 806.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest6" parent="UI/AllUpgradesPanel" instance=ExtResource("31_i6qqi")]
+layout_mode = 0
+offset_left = 871.0
+offset_top = 541.0
+offset_right = 1135.0
+offset_bottom = 805.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest7" parent="UI/AllUpgradesPanel" instance=ExtResource("32_guohq")]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 452.0
+offset_right = 347.0
+offset_bottom = 716.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest8" parent="UI/AllUpgradesPanel" instance=ExtResource("33_jkqte")]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 452.0
+offset_right = 437.0
+offset_bottom = 716.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest9" parent="UI/AllUpgradesPanel" instance=ExtResource("34_1blyp")]
+layout_mode = 0
+offset_left = 263.0
+offset_top = 453.0
+offset_right = 527.0
+offset_bottom = 717.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest10" parent="UI/AllUpgradesPanel" instance=ExtResource("35_c8700")]
+layout_mode = 0
+offset_left = 356.0
+offset_top = 452.0
+offset_right = 620.0
+offset_bottom = 716.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest11" parent="UI/AllUpgradesPanel" instance=ExtResource("36_rm0hx")]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 451.0
+offset_right = 713.0
+offset_bottom = 715.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest12" parent="UI/AllUpgradesPanel" instance=ExtResource("18_s2pky")]
+layout_mode = 0
+offset_left = 543.0
+offset_top = 450.0
+offset_right = 807.0
+offset_bottom = 714.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest13" parent="UI/AllUpgradesPanel" instance=ExtResource("37_gku1g")]
+layout_mode = 0
+offset_left = 637.0
+offset_top = 448.0
+offset_right = 901.0
+offset_bottom = 712.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest14" parent="UI/AllUpgradesPanel" instance=ExtResource("19_41pyc")]
+layout_mode = 0
+offset_left = 734.0
+offset_top = 449.0
+offset_right = 998.0
+offset_bottom = 713.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest15" parent="UI/AllUpgradesPanel" instance=ExtResource("20_gplg3")]
+layout_mode = 0
+offset_left = 834.0
+offset_top = 449.0
+offset_right = 1098.0
+offset_bottom = 713.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest16" parent="UI/AllUpgradesPanel" instance=ExtResource("21_grbgs")]
+layout_mode = 0
+offset_left = 932.0
+offset_top = 450.0
+offset_right = 1196.0
+offset_bottom = 714.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest17" parent="UI/AllUpgradesPanel" instance=ExtResource("38_h6n7l")]
+layout_mode = 0
+offset_left = 1030.0
+offset_top = 449.0
+offset_right = 1294.0
+offset_bottom = 713.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest18" parent="UI/AllUpgradesPanel" instance=ExtResource("39_k4mdi")]
+layout_mode = 0
+offset_left = 1126.0
+offset_top = 449.0
+offset_right = 1390.0
+offset_bottom = 713.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest19" parent="UI/AllUpgradesPanel" instance=ExtResource("40_cfk53")]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 357.0
+offset_right = 340.0
+offset_bottom = 621.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest20" parent="UI/AllUpgradesPanel" instance=ExtResource("41_2t65n")]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 356.0
+offset_right = 436.0
+offset_bottom = 620.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest21" parent="UI/AllUpgradesPanel" instance=ExtResource("42_e2h4e")]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 357.0
+offset_right = 535.0
+offset_bottom = 621.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest22" parent="UI/AllUpgradesPanel" instance=ExtResource("43_bhjlu")]
+layout_mode = 0
+offset_left = 367.0
+offset_top = 358.0
+offset_right = 631.0
+offset_bottom = 622.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest23" parent="UI/AllUpgradesPanel" instance=ExtResource("44_u0nhd")]
+layout_mode = 0
+offset_left = 466.0
+offset_top = 359.0
+offset_right = 730.0
+offset_bottom = 623.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest24" parent="UI/AllUpgradesPanel" instance=ExtResource("45_73grm")]
+layout_mode = 0
+offset_left = 563.0
+offset_top = 359.0
+offset_right = 827.0
+offset_bottom = 623.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest25" parent="UI/AllUpgradesPanel" instance=ExtResource("46_ddksk")]
+layout_mode = 0
+offset_left = 663.0
+offset_top = 360.0
+offset_right = 927.0
+offset_bottom = 624.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest26" parent="UI/AllUpgradesPanel" instance=ExtResource("47_f88jt")]
+layout_mode = 0
+offset_left = 759.0
+offset_top = 359.0
+offset_right = 1023.0
+offset_bottom = 623.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest27" parent="UI/AllUpgradesPanel" instance=ExtResource("48_bfqp8")]
+layout_mode = 0
+offset_left = 857.0
+offset_top = 359.0
+offset_right = 1121.0
+offset_bottom = 623.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest28" parent="UI/AllUpgradesPanel" instance=ExtResource("49_mo384")]
+layout_mode = 0
+offset_left = 952.0
+offset_top = 357.0
+offset_right = 1216.0
+offset_bottom = 621.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest29" parent="UI/AllUpgradesPanel" instance=ExtResource("50_l4jc6")]
+layout_mode = 0
+offset_left = 1047.0
+offset_top = 358.0
+offset_right = 1311.0
+offset_bottom = 622.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest30" parent="UI/AllUpgradesPanel" instance=ExtResource("51_qysp8")]
+layout_mode = 0
+offset_left = 1137.0
+offset_top = 358.0
+offset_right = 1401.0
+offset_bottom = 622.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest31" parent="UI/AllUpgradesPanel" instance=ExtResource("52_pwpdn")]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 264.0
+offset_right = 333.0
+offset_bottom = 528.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest32" parent="UI/AllUpgradesPanel" instance=ExtResource("53_o5cmr")]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 265.0
+offset_right = 430.0
+offset_bottom = 529.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest33" parent="UI/AllUpgradesPanel" instance=ExtResource("54_lhnw1")]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 266.0
+offset_right = 529.0
+offset_bottom = 530.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest34" parent="UI/AllUpgradesPanel" instance=ExtResource("55_2roih")]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 267.0
+offset_right = 626.0
+offset_bottom = 531.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest35" parent="UI/AllUpgradesPanel" instance=ExtResource("56_517vj")]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 267.0
+offset_right = 724.0
+offset_bottom = 531.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest36" parent="UI/AllUpgradesPanel" instance=ExtResource("57_4bpr0")]
+layout_mode = 0
+offset_left = 559.0
+offset_top = 266.0
+offset_right = 823.0
+offset_bottom = 530.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest37" parent="UI/AllUpgradesPanel" instance=ExtResource("58_d21sk")]
+layout_mode = 0
+offset_left = 660.0
+offset_top = 266.0
+offset_right = 924.0
+offset_bottom = 530.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest38" parent="UI/AllUpgradesPanel" instance=ExtResource("59_hlsxp")]
+layout_mode = 0
+offset_left = 759.0
+offset_top = 262.0
+offset_right = 1023.0
+offset_bottom = 526.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest39" parent="UI/AllUpgradesPanel" instance=ExtResource("60_niiry")]
+layout_mode = 0
+offset_left = 855.0
+offset_top = 261.0
+offset_right = 1119.0
+offset_bottom = 525.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest40" parent="UI/AllUpgradesPanel" instance=ExtResource("61_0fqyb")]
+layout_mode = 0
+offset_left = 952.0
+offset_top = 261.0
+offset_right = 1216.0
+offset_bottom = 525.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest41" parent="UI/AllUpgradesPanel" instance=ExtResource("62_uj3f8")]
+layout_mode = 0
+offset_left = 1045.0
+offset_top = 260.0
+offset_right = 1309.0
+offset_bottom = 524.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest42" parent="UI/AllUpgradesPanel" instance=ExtResource("63_4kcid")]
+layout_mode = 0
+offset_left = 1135.0
+offset_top = 262.0
+offset_right = 1399.0
+offset_bottom = 526.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest43" parent="UI/AllUpgradesPanel" instance=ExtResource("64_3kasa")]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 173.0
+offset_right = 342.0
+offset_bottom = 437.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest44" parent="UI/AllUpgradesPanel" instance=ExtResource("65_cdojs")]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 172.0
+offset_right = 428.0
+offset_bottom = 436.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest45" parent="UI/AllUpgradesPanel" instance=ExtResource("66_5syl8")]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 172.0
+offset_right = 520.0
+offset_bottom = 436.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest46" parent="UI/AllUpgradesPanel" instance=ExtResource("67_77t2n")]
+layout_mode = 0
+offset_left = 348.0
+offset_top = 173.0
+offset_right = 612.0
+offset_bottom = 437.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest47" parent="UI/AllUpgradesPanel" instance=ExtResource("68_cwbom")]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 173.0
+offset_right = 707.0
+offset_bottom = 437.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest48" parent="UI/AllUpgradesPanel" instance=ExtResource("69_8q6j4")]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 174.0
+offset_right = 799.0
+offset_bottom = 438.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest49" parent="UI/AllUpgradesPanel" instance=ExtResource("70_pko0q")]
+layout_mode = 0
+offset_left = 626.0
+offset_top = 174.0
+offset_right = 890.0
+offset_bottom = 438.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest50" parent="UI/AllUpgradesPanel" instance=ExtResource("71_swkyi")]
+layout_mode = 0
+offset_left = 719.0
+offset_top = 175.0
+offset_right = 983.0
+offset_bottom = 439.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest51" parent="UI/AllUpgradesPanel" instance=ExtResource("72_kg5ra")]
+layout_mode = 0
+offset_left = 810.0
+offset_top = 174.0
+offset_right = 1074.0
+offset_bottom = 438.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest52" parent="UI/AllUpgradesPanel" instance=ExtResource("73_0tupj")]
+layout_mode = 0
+offset_left = 901.0
+offset_top = 171.0
+offset_right = 1165.0
+offset_bottom = 435.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest53" parent="UI/AllUpgradesPanel" instance=ExtResource("74_reooo")]
+layout_mode = 0
+offset_left = 993.0
+offset_top = 171.0
+offset_right = 1257.0
+offset_bottom = 435.0
+scale = Vector2(0.3, 0.3)
+
+[node name="UpgradeTest54" parent="UI/AllUpgradesPanel" instance=ExtResource("75_ijb8q")]
+layout_mode = 0
+offset_left = 1103.0
+offset_top = 170.0
+offset_right = 1367.0
+offset_bottom = 434.0
+scale = Vector2(0.3, 0.3)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708

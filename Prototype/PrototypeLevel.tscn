@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1aggu4jmtxhk"]
+[gd_scene load_steps=7 format=3 uid="uid://c1aggu4jmtxhk"]
 
 [ext_resource type="Script" path="res://Prototype/PrototypeLevel.gd" id="1_xslmt"]
 [ext_resource type="PackedScene" uid="uid://dc2d5ql1msnxw" path="res://Jacob/Global.tscn" id="2_go61f"]
 [ext_resource type="AudioStream" uid="uid://er5g0d8icy2l" path="res://Prototype/Title Screen - Necrosis.wav" id="3_8widq"]
 [ext_resource type="AudioStream" uid="uid://c6hti1pnismqd" path="res://Piper/assets/MainLoop - Necrosis.wav" id="4_47owv"]
-[ext_resource type="PackedScene" uid="uid://csf7n3welc4tp" path="res://Jacob/BigWhiteEnemy.tscn" id="6_5fk4l"]
 [ext_resource type="PackedScene" uid="uid://cjhttdbpa12kv" path="res://Jacob/PlayerController2.tscn" id="7_hoqb7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkko0"]
@@ -34,9 +33,6 @@ shape = SubResource("RectangleShape2D_mkko0")
 
 [node name="PlayerController" parent="." instance=ExtResource("7_hoqb7")]
 position = Vector2(465, 327)
-
-[node name="Enemy" parent="." instance=ExtResource("6_5fk4l")]
-position = Vector2(-235, 45)
 
 [connection signal="body_entered" from="MusicArea" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="MusicArea" to="." method="_on_area_2d_body_exited"]

@@ -13,14 +13,14 @@ position = Vector2(640, 360)
 texture = ExtResource("1_naghp")
 
 [node name="SucessLabel" type="Label" parent="."]
-offset_left = 101.0
-offset_top = 82.0
-offset_right = 1198.0
-offset_bottom = 190.0
+offset_left = 85.0
+offset_top = 85.0
+offset_right = 1205.0
+offset_bottom = 193.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_j2ma2")
 theme_override_font_sizes/font_size = 128
-text = "Necrosis Sucessful"
+text = "Necrosis Successful"
 horizontal_alignment = 1
 
 [node name="InfoLabel" type="Label" parent="."]
