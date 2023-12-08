@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d4ebmyiy0g2ee" path="res://Jacob/JacobAssets/NecrosisTriangleClass.png" id="4_4i54q"]
 [ext_resource type="Texture2D" uid="uid://dbbchksjvtukp" path="res://Jacob/JacobAssets/NecrosisSquareClass.png" id="5_h4j4o"]
 [ext_resource type="FontFile" uid="uid://bgpjta5wvm2sq" path="res://Athens/Necrosiscapitalsnumbers-Regular.ttf" id="5_mvhmw"]
-[ext_resource type="Texture2D" uid="uid://cphwqestciqge" path="res://Athens/NecrosisStartButton.png" id="6_23vpa"]
+[ext_resource type="Texture2D" uid="uid://dixall75801kt" path="res://Athens/WhiteButton2.png" id="8_yg24u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mb22"]
 bg_color = Color(0.407843, 0, 0.0392157, 0.294118)
@@ -40,9 +40,13 @@ flat = true
 modulate = Color(0.454902, 0.454902, 0.454902, 1)
 layout_mode = 0
 offset_left = 31.0
-offset_top = -116.0
+offset_top = -148.0
 offset_right = 280.0
-offset_bottom = 98.0
+offset_bottom = 66.0
+theme_override_colors/font_shadow_color = Color(0.14902, 0.14902, 0.14902, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/line_spacing = 10
 theme_override_fonts/font = ExtResource("5_mvhmw")
 theme_override_font_sizes/font_size = 23
 text = "SOLDIER
@@ -70,6 +74,10 @@ offset_left = 38.0
 offset_top = 315.0
 offset_right = 287.0
 offset_bottom = 529.0
+theme_override_colors/font_shadow_color = Color(0.14902, 0.14902, 0.14902, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/line_spacing = 10
 theme_override_fonts/font = ExtResource("5_mvhmw")
 theme_override_font_sizes/font_size = 25
 text = "SPRINTER
@@ -97,6 +105,10 @@ offset_left = 17.0
 offset_top = 318.0
 offset_right = 266.0
 offset_bottom = 532.0
+theme_override_colors/font_shadow_color = Color(0.14902, 0.14902, 0.14902, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/line_spacing = 10
 theme_override_fonts/font = ExtResource("5_mvhmw")
 theme_override_font_sizes/font_size = 25
 text = "TANKER
@@ -115,8 +127,18 @@ offset_right = 1086.0
 offset_bottom = 794.0
 scale = Vector2(0.5, 0.5)
 focus_mode = 0
-icon = ExtResource("6_23vpa")
+theme_override_colors/font_color = Color(0.14902, 0.14902, 0.14902, 1)
+theme_override_colors/font_hover_color = Color(0.14902, 0.14902, 0.14902, 1)
+theme_override_colors/icon_normal_color = Color(0.498039, 0.0196078, 0.0156863, 1)
+theme_override_colors/icon_pressed_color = Color(0.14902, 0.14902, 0.14902, 1)
+theme_override_colors/icon_hover_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.14902, 0.14902, 0.14902, 1)
+theme_override_fonts/font = ExtResource("5_mvhmw")
+theme_override_font_sizes/font_size = 200
+text = "Start"
+icon = ExtResource("8_yg24u")
 flat = true
+icon_alignment = 1
 
 [connection signal="pressed" from="CircleButton" to="." method="_on_circle_button_pressed"]
 [connection signal="pressed" from="TriangleButton" to="." method="_on_triangle_button_pressed"]

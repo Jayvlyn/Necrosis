@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://4un26qu0c83t"]
+[gd_scene load_steps=7 format=3 uid="uid://4un26qu0c83t"]
 
 [ext_resource type="Script" path="res://Jacob/MainMenu.cs" id="1_0t30x"]
 [ext_resource type="Texture2D" uid="uid://dj4eracqnmw1v" path="res://Athens/CrosshairCircle.png" id="2_h4sqx"]
 [ext_resource type="Texture2D" uid="uid://dl2jqfumhtan1" path="res://Athens/TitleScreen.png" id="3_5l6e5"]
-[ext_resource type="Texture2D" uid="uid://cphwqestciqge" path="res://Athens/NecrosisStartButton.png" id="4_vypih"]
-[ext_resource type="Texture2D" uid="uid://b2imamewe4hbb" path="res://Jacob/JacobAssets/QuitButton.png" id="6_klchn"]
+[ext_resource type="FontFile" uid="uid://bgpjta5wvm2sq" path="res://Athens/Necrosiscapitalsnumbers-Regular.ttf" id="4_iqs03"]
+[ext_resource type="Texture2D" uid="uid://dixall75801kt" path="res://Athens/WhiteButton2.png" id="5_tyxs7"]
+[ext_resource type="Texture2D" uid="uid://byhj6jj7ueugk" path="res://Athens/WhiteButton3.png" id="6_16xtt"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_0t30x")
@@ -15,14 +16,24 @@ position = Vector2(639, 360)
 texture = ExtResource("3_5l6e5")
 
 [node name="StartButton" type="Button" parent="."]
-offset_left = 458.0
-offset_top = 309.0
-offset_right = 1046.0
-offset_bottom = 567.0
-scale = Vector2(0.6, 0.6)
+offset_left = 399.0
+offset_top = 301.0
+offset_right = 1079.0
+offset_bottom = 559.0
+scale = Vector2(0.7, 0.7)
 focus_mode = 0
-icon = ExtResource("4_vypih")
+theme_override_colors/font_color = Color(0.14902, 0.14902, 0.14902, 1)
+theme_override_colors/font_hover_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/icon_normal_color = Color(0.498039, 0.0196078, 0.0156863, 1)
+theme_override_colors/icon_pressed_color = Color(0.14902, 0.14902, 0.14902, 1)
+theme_override_colors/icon_hover_color = Color(0.207843, 0.207843, 0.207843, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.14902, 0.14902, 0.14902, 1)
+theme_override_fonts/font = ExtResource("4_iqs03")
+theme_override_font_sizes/font_size = 216
+text = "Start"
+icon = ExtResource("5_tyxs7")
 flat = true
+icon_alignment = 1
 
 [node name="QuitButton" type="Button" parent="."]
 offset_left = 471.0
@@ -31,10 +42,18 @@ offset_right = 1131.0
 offset_bottom = 803.0
 scale = Vector2(0.5, 0.5)
 focus_mode = 0
-text = "
-"
-icon = ExtResource("6_klchn")
+theme_override_colors/font_color = Color(0.14902, 0.14902, 0.14902, 1)
+theme_override_colors/font_hover_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/icon_normal_color = Color(0.498039, 0.0196078, 0.0156863, 1)
+theme_override_colors/icon_pressed_color = Color(0.14902, 0.14902, 0.14902, 1)
+theme_override_colors/icon_hover_color = Color(0.207843, 0.207843, 0.207843, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.14902, 0.14902, 0.14902, 1)
+theme_override_fonts/font = ExtResource("4_iqs03")
+theme_override_font_sizes/font_size = 300
+text = "Quit"
+icon = ExtResource("6_16xtt")
 flat = true
+icon_alignment = 1
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
