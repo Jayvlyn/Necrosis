@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cjhttdbpa12kv"]
+[gd_scene load_steps=38 format=3 uid="uid://cjhttdbpa12kv"]
 
 [ext_resource type="Script" path="res://Jacob/PlayerController.cs" id="1_laqyd"]
 [ext_resource type="Script" path="res://Jacob/Mass.cs" id="2_6sgvg"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://Jacob/PauseMenu.cs" id="22_ocwoy"]
 [ext_resource type="Texture2D" uid="uid://dixall75801kt" path="res://Athens/WhiteButton2.png" id="23_0bsin"]
 [ext_resource type="Texture2D" uid="uid://cjby71ctkee6r" path="res://Athens/NecrosisPaused.png" id="24_sodh3"]
+[ext_resource type="Script" path="res://Jacob/AllUpgrades.cs" id="27_n457t"]
 [ext_resource type="AudioStream" uid="uid://cxfbtq121dh35" path="res://Piper/glunchShoot.wav" id="27_qd28k"]
 [ext_resource type="AudioStream" uid="uid://denawvmis8vd7" path="res://Piper/poppp.wav" id="28_t6s3n"]
 [ext_resource type="AudioStream" uid="uid://chl1hlrjjwotc" path="res://Piper/playerDeath.wav" id="29_jonts"]
@@ -43,6 +44,8 @@ bg_color = Color(0.788235, 0, 0.0235294, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u1hyd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbbpa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rxl2"]
 
 [node name="PlayerController" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
@@ -113,7 +116,6 @@ texture = ExtResource("21_3iu8o")
 
 [node name="UpgradePanel" type="Panel" parent="UI"]
 process_mode = 3
-visible = false
 offset_left = -15.0
 offset_top = 78.0
 offset_right = 1314.0
@@ -121,7 +123,7 @@ offset_bottom = 735.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_u1hyd")
 
 [node name="UpgradeScreen" type="Sprite2D" parent="UI/UpgradePanel"]
-position = Vector2(655, 283)
+position = Vector2(656, 283)
 scale = Vector2(1.00156, 1.00278)
 texture = ExtResource("22_5pxjn")
 
@@ -187,7 +189,7 @@ offset_bottom = 418.0
 focus_mode = 0
 button_mask = 0
 
-[node name="PausePanel" type="Panel" parent="UI" node_paths=PackedStringArray("UpgradePanel")]
+[node name="PausePanel" type="Panel" parent="UI" node_paths=PackedStringArray("UpgradePanel", "AllUpgradesPanel")]
 process_mode = 3
 visible = false
 offset_left = 1.0
@@ -196,6 +198,7 @@ offset_bottom = 719.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pbbpa")
 script = ExtResource("22_ocwoy")
 UpgradePanel = NodePath("../UpgradePanel")
+AllUpgradesPanel = NodePath("../AllUpgradesPanel")
 
 [node name="PauseBackground" type="Sprite2D" parent="UI/PausePanel"]
 position = Vector2(639, 360)
@@ -246,6 +249,28 @@ icon_alignment = 1
 position = Vector2(666, 140)
 scale = Vector2(0.554545, 0.554545)
 texture = ExtResource("24_sodh3")
+
+[node name="AllUpgradesPanel" type="Panel" parent="UI"]
+process_mode = 3
+visible = false
+offset_right = 1283.0
+offset_bottom = 726.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0rxl2")
+script = ExtResource("27_n457t")
+
+[node name="UpgradeBackground" type="Sprite2D" parent="UI/AllUpgradesPanel"]
+position = Vector2(641, 361)
+scale = Vector2(1.00156, 1.00278)
+texture = ExtResource("22_5pxjn")
+
+[node name="TitleLabel" type="Label" parent="UI/AllUpgradesPanel"]
+offset_left = 372.0
+offset_top = 79.0
+offset_right = 937.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("14_c04r1")
+theme_override_font_sizes/font_size = 100
+text = "ALL UPGRADES"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
