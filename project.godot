@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Necrosis"
+config/description="Small top down shooter where you play as a deadly cell who's job it is to destroy the red and white blood cells inside a body."
 run/main_scene="res://Jacob/MainMenu.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [display]
 
