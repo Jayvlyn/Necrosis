@@ -2,7 +2,6 @@ extends Node2D
 
 var redEnemy = preload("res://Jacob/RedEnemy.tscn")
 var whiteEnemy = preload("res://Jacob/WhiteEnemy.tscn")
-var bigWhite = preload("res://Jacob/BigWhiteEnemy.tscn")
 
 @onready var map
 @onready var roomPos
@@ -26,13 +25,14 @@ func _on_room_area_body_entered(body):
 	if (body.is_in_group("Player") && !roomGenerated):
 		var roomOrigin = map.local_to_map(to_local(roomPos.position))
 		roomSetup()
-		print("start of spawn")
+		print("start of final spawn")
 		await get_tree().create_timer(0.2).timeout
 		
-		#var instance = bigWhite.instantiate()
-		#instance.position = Vector2((-roomOrigin.x + rng.randi_range(3, 12)) * 64, (-roomOrigin.y + rng.randi_range(3, 12)) * 64)
-		#get_parent().call_deferred("add_child", instance)
-		#enemies += 1
+		var bigWhite = load("res://Jacob/BigWhiteEnemy.tscn")
+		var instance = bigWhite.instantiate()
+		instance.position = Vector2((-roomOrigin.x + rng.randi_range(3, 12)) * 64, (-roomOrigin.y + rng.randi_range(3, 12)) * 64)
+		get_parent().call_deferred("add_child", instance)
+		enemies += 1
 		
 		for n in rng.randi_range(6, 8):
 			enemySpawn()
