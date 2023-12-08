@@ -1,10 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://dsq0unww631hw"]
+[gd_scene load_steps=20 format=3 uid="uid://dsq0unww631hw"]
 
 [ext_resource type="Script" path="res://Jacob/WhiteEnemy.cs" id="1_lkgvf"]
 [ext_resource type="Script" path="res://Jacob/Health.cs" id="2_4epnp"]
 [ext_resource type="PackedScene" uid="uid://olhqcqnhmeac" path="res://Jacob/EnemyBullet.tscn" id="2_dsxiy"]
 [ext_resource type="Texture2D" uid="uid://cm1sfdvkrierk" path="res://Athens/WhiteCellDeath.png" id="3_kguhy"]
 [ext_resource type="Texture2D" uid="uid://dokjc3tq7nex3" path="res://Athens/WhiteBloodCell.png" id="4_nqf5q"]
+[ext_resource type="AudioStream" uid="uid://wro8l8k4wyf1" path="res://Piper/enemyHurt.wav" id="6_s6q3j"]
+[ext_resource type="AudioStream" uid="uid://dxou3rpx760in" path="res://Piper/enemyDeath.wav" id="7_gles1"]
+[ext_resource type="AudioStream" uid="uid://cxfbtq121dh35" path="res://Piper/glunchShoot.wav" id="8_p11ea"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nfrxe"]
 atlas = ExtResource("3_kguhy")
@@ -81,14 +84,17 @@ radius = 22.2036
 [sub_resource type="CircleShape2D" id="CircleShape2D_c2aej"]
 radius = 365.153
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("shootSound", "deathSound") groups=["Enemy"]]
 motion_mode = 1
 script = ExtResource("1_lkgvf")
+shootSound = NodePath("Shoot")
 bulletScene = ExtResource("2_dsxiy")
+deathSound = NodePath("Death")
 expValue = 25
 
-[node name="Health" type="Node2D" parent="."]
+[node name="Health" type="Node2D" parent="." node_paths=PackedStringArray("hurtSound")]
 script = ExtResource("2_4epnp")
+hurtSound = NodePath("../Hurt")
 maxHealth = 20.0
 
 [node name="BulletSpawn" type="Node2D" parent="."]
@@ -111,6 +117,18 @@ shape = SubResource("CircleShape2D_c2aej")
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 1)
+stream = ExtResource("6_s6q3j")
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_gles1")
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_p11ea")
+volume_db = -4.034
+pitch_scale = 1.5
 
 [connection signal="body_entered" from="AttackRange" to="." method="OnAttackRangeEnter"]
 [connection signal="body_exited" from="AttackRange" to="." method="OnAttackRangeExit"]

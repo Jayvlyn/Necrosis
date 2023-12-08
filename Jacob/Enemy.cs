@@ -8,6 +8,8 @@ public abstract partial class Enemy : CharacterBody2D
     protected playerData pd;
     protected Health health;
 
+    [Export] AudioStreamPlayer2D deathSound;
+
     [Export] public float speed = 250.0f;
     [Export] public float damage = 10.0f;
     [Export] public float attacksPerSecond = 2.0f;
@@ -72,6 +74,7 @@ public abstract partial class Enemy : CharacterBody2D
 
     public async void OnDeath()
     {
+        deathSound.Play();
         dead = true;
         
         GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("death");

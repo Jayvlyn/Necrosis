@@ -6,6 +6,11 @@ using System.Net;
 public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the health, size, and ammo for the player
 {
     // References
+    [Export] AudioStreamPlayer2D shootSound;
+    [Export] AudioStreamPlayer2D pickupSound;
+    [Export] AudioStreamPlayer2D deathSound;
+    [Export] AudioStreamPlayer2D hurtSound;
+
     [Export] public CharacterBody2D player;
     private playerData data;
     
@@ -82,6 +87,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
     {
         if (Input.IsActionPressed("shoot") && fireTimer <= 0 && CanShootMass())
         {
+            shootSound.Play();
             // Start fireTimer, this disables ability to shoot again until fire timer reaches 0 again
             fireTimer = fireRate;
 
@@ -111,6 +117,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 
     public void TakeDamage(uint damage)
     {
+        hurtSound.Play();
         LoseMass(damage);
 
         // spit out mass that you can pick back up
@@ -144,6 +151,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 
     public void GainMass(uint amount)
     {
+        pickupSound.Play();
         if(currentMass + amount <= maxMass)
         {
             currentMass += amount;
@@ -167,6 +175,7 @@ public partial class Mass : Node2D // Mass acts as a 3-in-1 to represent the hea
 
     public void OnDeath()
     {
+        deathSound.Play();
         ct = 0;
         camZoom = true;
         GetParent().GetNode<AnimatedSprite2D>("Sprite").Play("death");

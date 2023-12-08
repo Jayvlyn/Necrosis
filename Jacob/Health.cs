@@ -3,7 +3,8 @@ using System;
 
 public partial class Health : Node2D
 {
-	[Export] public float maxHealth = 100f;
+    [Export] AudioStreamPlayer2D hurtSound;
+    [Export] public float maxHealth = 100f;
 	public float health;
 
 	public override void _Ready()
@@ -13,6 +14,7 @@ public partial class Health : Node2D
 
 	public void Damage(float damage)
 	{
+		hurtSound.Play();
 		health -= damage;
 	}
 }

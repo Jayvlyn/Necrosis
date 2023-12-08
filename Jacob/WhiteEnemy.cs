@@ -5,6 +5,8 @@ using System.Security.Cryptography.X509Certificates;
 
 public partial class WhiteEnemy : Enemy
 {
+    [Export] AudioStreamPlayer2D shootSound;
+
     [Export] PackedScene bulletScene;
     [Export] public float bulletSpeed = 300.0f;
     private Node2D bulletSpawn;
@@ -53,6 +55,7 @@ public partial class WhiteEnemy : Enemy
 
     public override void Attack()
     {
+        shootSound.Play();
         // Create and fire bullet
         Bullet bullet = bulletScene.Instantiate<Bullet>();
         bullet.Init((uint)damage);

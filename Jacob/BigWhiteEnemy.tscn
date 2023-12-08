@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://csf7n3welc4tp"]
+[gd_scene load_steps=19 format=3 uid="uid://csf7n3welc4tp"]
 
 [ext_resource type="Script" path="res://Jacob/WhiteEnemy.cs" id="1_b8ue8"]
 [ext_resource type="PackedScene" uid="uid://olhqcqnhmeac" path="res://Jacob/EnemyBullet.tscn" id="2_lp1gg"]
 [ext_resource type="Script" path="res://Jacob/Health.cs" id="3_85qu1"]
 [ext_resource type="Texture2D" uid="uid://cm1sfdvkrierk" path="res://Athens/WhiteCellDeath.png" id="4_sl3c3"]
 [ext_resource type="Texture2D" uid="uid://dokjc3tq7nex3" path="res://Athens/WhiteBloodCell.png" id="5_ow7u4"]
+[ext_resource type="AudioStream" uid="uid://wro8l8k4wyf1" path="res://Piper/enemyHurt.wav" id="6_rifve"]
+[ext_resource type="AudioStream" uid="uid://dxou3rpx760in" path="res://Piper/enemyDeath.wav" id="7_d80us"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nfrxe"]
 atlas = ExtResource("4_sl3c3")
@@ -81,15 +83,17 @@ radius = 22.2036
 [sub_resource type="CircleShape2D" id="CircleShape2D_c2aej"]
 radius = 365.153
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("deathSound") groups=["Enemy"]]
 scale = Vector2(1.5, 1.5)
 motion_mode = 1
 script = ExtResource("1_b8ue8")
 bulletScene = ExtResource("2_lp1gg")
+deathSound = NodePath("Death")
 expValue = 25
 
-[node name="Health" type="Node2D" parent="."]
+[node name="Health" type="Node2D" parent="." node_paths=PackedStringArray("hurtSound")]
 script = ExtResource("3_85qu1")
+hurtSound = NodePath("../Hurt")
 maxHealth = 40.0
 
 [node name="BulletSpawn" type="Node2D" parent="."]
@@ -112,6 +116,15 @@ shape = SubResource("CircleShape2D_c2aej")
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 0.666667)
+scale = Vector2(0.666667, 0.666667)
+stream = ExtResource("6_rifve")
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(0.666667, 0.666667)
+stream = ExtResource("7_d80us")
 
 [connection signal="body_entered" from="AttackRange" to="." method="OnAttackRangeEnter"]
 [connection signal="body_exited" from="AttackRange" to="." method="OnAttackRangeExit"]

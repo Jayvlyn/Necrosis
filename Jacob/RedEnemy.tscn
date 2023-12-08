@@ -1,9 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://vp40vynobc4y"]
+[gd_scene load_steps=20 format=3 uid="uid://vp40vynobc4y"]
 
 [ext_resource type="Script" path="res://Jacob/RedEnemy.cs" id="1_wwnd5"]
 [ext_resource type="Script" path="res://Jacob/Health.cs" id="2_i35du"]
 [ext_resource type="Texture2D" uid="uid://dsi7rfebb1s4p" path="res://Athens/RedBloodCell.png" id="3_tkne5"]
 [ext_resource type="Texture2D" uid="uid://r0h1gkl567ua" path="res://Athens/RedCellDeath.png" id="4_ae50m"]
+[ext_resource type="AudioStream" uid="uid://wro8l8k4wyf1" path="res://Piper/enemyHurt.wav" id="5_o3dt2"]
+[ext_resource type="AudioStream" uid="uid://dxou3rpx760in" path="res://Piper/enemyDeath.wav" id="6_qekos"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_er6bo"]
 atlas = ExtResource("4_ae50m")
@@ -90,12 +92,14 @@ radius = 56.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_urkm4"]
 radius = 172.073
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("deathSound") groups=["Enemy"]]
 motion_mode = 1
 script = ExtResource("1_wwnd5")
+deathSound = NodePath("Death")
 
-[node name="Health" type="Node2D" parent="."]
+[node name="Health" type="Node2D" parent="." node_paths=PackedStringArray("hurtSound")]
 script = ExtResource("2_i35du")
+hurtSound = NodePath("../Hurt")
 maxHealth = 10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -120,6 +124,13 @@ shape = SubResource("CircleShape2D_urkm4")
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.6
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 1)
+stream = ExtResource("5_o3dt2")
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_qekos")
 
 [connection signal="body_entered" from="AttackRange" to="." method="OnAttackRangeEnter"]
 [connection signal="body_exited" from="AttackRange" to="." method="OnAttackRangeExit"]
