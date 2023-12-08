@@ -181,7 +181,6 @@ public partial class playerData : Node
         base._Process(delta);
         if (increaseExpBar)
         {
-            Debug.WriteLine("gain timer: " + gainTimer);
             bloodBar.Value = Mathf.Lerp((experience - expGained) / expNeeded, experience / expNeeded, gainTimer);
 
             gainTimer += (float)delta;
