@@ -74,22 +74,22 @@ func enemySpawn():
 func roomComplete():
 	var roomOrigin = map.local_to_map(to_local(roomPos.position))
 	
-	map.set_cell(0, Vector2i(0, 0 + 7), 0, Vector2i(3, 1)) #left tiles
+	map.set_cell(0, Vector2i(0, 0 + 7), 0, Vector2i(4, 1)) #left tiles
 	map.set_cell(0, Vector2i(0, 0 + 8), 0, Vector2i(1, 1))
 	map.set_cell(0, Vector2i(0, 0 + 9), 0, Vector2i(1, 1))
-	map.set_cell(0, Vector2i(0, 0 + 10), 0, Vector2i(3, 2))
+	map.set_cell(0, Vector2i(0, 0 + 10), 0, Vector2i(4, 0))
 	
 	map.set_cell(0, Vector2i(0 + 17, 0 + 7), 0, Vector2i(3, 1)) #right tiles
 	map.set_cell(0, Vector2i(0 + 17, 0 + 8), 0, Vector2i(1, 1))
 	map.set_cell(0, Vector2i(0 + 17, 0 + 9), 0, Vector2i(1, 1))
-	map.set_cell(0, Vector2i(0 + 17, 0 + 10), 0, Vector2i(3, 2))
+	map.set_cell(0, Vector2i(0 + 17, 0 + 10), 0, Vector2i(3, 0))
 	
-	map.set_cell(0, Vector2i(0 + 7, 0), 0, Vector2i(2, 3)) #top tiles
+	map.set_cell(0, Vector2i(0 + 7, 0), 0, Vector2i(3, 3)) #top tiles
 	map.set_cell(0, Vector2i(0 + 8, 0), 0, Vector2i(1, 1))
 	map.set_cell(0, Vector2i(0 + 9, 0), 0, Vector2i(1, 1))
-	map.set_cell(0, Vector2i(0 + 10,0), 0, Vector2i(0, 3))
+	map.set_cell(0, Vector2i(0 + 10,0), 0, Vector2i(2, 3))
 	
-	map.set_cell(0, Vector2i(0 + 7, 0 + 17), 0, Vector2i(2, 3)) #bottom tiles
+	map.set_cell(0, Vector2i(0 + 7, 0 + 17), 0, Vector2i(1, 3)) #bottom tiles
 	map.set_cell(0, Vector2i(0 + 8, 0 + 17), 0, Vector2i(1, 1))
 	map.set_cell(0, Vector2i(0 + 9, 0 + 17), 0, Vector2i(1, 1))
 	map.set_cell(0, Vector2i(0 + 10, 0 + 17), 0, Vector2i(0, 3))

@@ -32,7 +32,6 @@ func _on_room_area_body_entered(body):
 		var instance = bigWhite.instantiate()
 		instance.position = Vector2((-roomOrigin.x + rng.randi_range(3, 12)) * 64, (-roomOrigin.y + rng.randi_range(3, 12)) * 64)
 		get_parent().call_deferred("add_child", instance)
-		
 		for n in rng.randi_range(6, 8):
 			enemySpawn()
 		roomGenerated = true
@@ -81,7 +80,7 @@ func roomComplete():
 	map.set_cell(0, Vector2i(0, 0 + 7), 1, Vector2i(4, 1)) #left tiles
 	map.set_cell(0, Vector2i(0, 0 + 8), 1, Vector2i(1, 1))
 	map.set_cell(0, Vector2i(0, 0 + 9), 1, Vector2i(1, 1))
-	map.set_cell(0, Vector2i(0, 0 + 10), 1, Vector2i(4, 1))
+	map.set_cell(0, Vector2i(0, 0 + 10), 1, Vector2i(4, 0))
 	
 	map.set_cell(0, Vector2i(0 + 17, 0 + 7), 1, Vector2i(3, 1)) #right tiles
 	map.set_cell(0, Vector2i(0 + 17, 0 + 8), 1, Vector2i(1, 1))
@@ -93,7 +92,7 @@ func roomComplete():
 	map.set_cell(0, Vector2i(0 + 9, 0), 1, Vector2i(1, 1))
 	map.set_cell(0, Vector2i(0 + 10,0), 1, Vector2i(2, 3))
 	
-	map.set_cell(0, Vector2i(0 + 7, 0 + 17), 1, Vector2i(2, 3)) #bottom tiles
+	map.set_cell(0, Vector2i(0 + 7, 0 + 17), 1, Vector2i(1, 3)) #bottom tiles
 	map.set_cell(0, Vector2i(0 + 8, 0 + 17), 1, Vector2i(1, 1))
 	map.set_cell(0, Vector2i(0 + 9, 0 + 17), 1, Vector2i(1, 1))
 	map.set_cell(0, Vector2i(0 + 10, 0 + 17), 1, Vector2i(0, 3))
