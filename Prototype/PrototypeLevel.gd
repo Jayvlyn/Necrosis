@@ -19,7 +19,6 @@ func _ready():
 	#Input.set_custom_mouse_cursor(cursorTest,Input.CURSOR_ARROW, Vector2(12,12))
 	$Layer1.play()
 	$Layer2.play()
-	playLayerOne()
 	
 	randomize()
 	dungeon = dungeonGeneration.generate(randi_range(-1000, 1000))
