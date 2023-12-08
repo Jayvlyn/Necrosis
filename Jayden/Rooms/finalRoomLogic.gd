@@ -9,7 +9,7 @@ var bigWhite = preload("res://Jacob/BigWhiteEnemy.tscn")
 
 var roomGenerated = false
 
-var enemies = 0
+var enemies = 1
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -29,9 +29,11 @@ func _on_room_area_body_entered(body):
 		print("start of spawn")
 		await get_tree().create_timer(0.2).timeout
 		
-		var instance = bigWhite.instantiate()
-		instance.position = Vector2((-roomOrigin.x + rng.randi_range(3, 12)) * 64, (-roomOrigin.y + rng.randi_range(3, 12)) * 64)
-		get_parent().call_deferred("add_child", instance)
+		#var instance = bigWhite.instantiate()
+		#instance.position = Vector2((-roomOrigin.x + rng.randi_range(3, 12)) * 64, (-roomOrigin.y + rng.randi_range(3, 12)) * 64)
+		#get_parent().call_deferred("add_child", instance)
+		#enemies += 1
+		
 		for n in rng.randi_range(6, 8):
 			enemySpawn()
 		roomGenerated = true
@@ -76,6 +78,9 @@ func enemySpawn():
 
 func roomComplete():
 	var roomOrigin = map.local_to_map(to_local(roomPos.position))
+	
+	get_tree().change_scene_to_file("res://Jacob/WinScreen.tscn");
+	hide();
 	
 	map.set_cell(0, Vector2i(0, 0 + 7), 1, Vector2i(4, 1)) #left tiles
 	map.set_cell(0, Vector2i(0, 0 + 8), 1, Vector2i(1, 1))
