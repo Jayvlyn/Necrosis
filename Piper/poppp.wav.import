@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://ran83i6kmmiu"
-path="res://.godot/imported/poppp.wav-60c568601d57d213a664adf05bd1063b.sample"
+uid="uid://denawvmis8vd7"
+path="res://.godot/imported/poppp.wav-c2d1a14c21d53ce68828bfa9fb5a01c2.sample"
 
 [deps]
 
-source_file="res://Piper/assets/poppp.wav"
-dest_files=["res://.godot/imported/poppp.wav-60c568601d57d213a664adf05bd1063b.sample"]
+source_file="res://Piper/poppp.wav"
+dest_files=["res://.godot/imported/poppp.wav-c2d1a14c21d53ce68828bfa9fb5a01c2.sample"]
 
 [params]
 
