@@ -19,6 +19,7 @@ layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 65537, 0, 2, 65537, 0, 3, 65537
 position = Vector2(36, 25)
 
 [node name="RoomArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomArea"]
 position = Vector2(576.5, 571.5)
