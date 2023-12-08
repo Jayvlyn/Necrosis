@@ -9,7 +9,7 @@ icon = ExtResource("1_5nga0")
 flat = true
 script = ExtResource("2_5s7l1")
 name = "CQCT5"
-tier = 4
+tier = 5
 bulletDamageChange = 15.0
 bulletTravelChange = -0.2
 
