@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://4un26qu0c83t"]
+[gd_scene load_steps=8 format=3 uid="uid://4un26qu0c83t"]
 
 [ext_resource type="Script" path="res://Jacob/MainMenu.cs" id="1_0t30x"]
 [ext_resource type="Texture2D" uid="uid://dj4eracqnmw1v" path="res://Athens/CrosshairCircle.png" id="2_h4sqx"]
@@ -6,10 +6,12 @@
 [ext_resource type="FontFile" uid="uid://bgpjta5wvm2sq" path="res://Athens/Necrosiscapitalsnumbers-Regular.ttf" id="4_iqs03"]
 [ext_resource type="Texture2D" uid="uid://dixall75801kt" path="res://Athens/WhiteButton2.png" id="5_tyxs7"]
 [ext_resource type="Texture2D" uid="uid://byhj6jj7ueugk" path="res://Athens/WhiteButton3.png" id="6_16xtt"]
+[ext_resource type="AudioStream" uid="uid://i2ogj3bijk64" path="res://Piper/assets/Title Screen - Necrosis.wav" id="7_dj4v6"]
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("mainmenu")]
 script = ExtResource("1_0t30x")
 cursor = ExtResource("2_h4sqx")
+mainmenu = NodePath("MenuLoop")
 
 [node name="TitleScreen" type="Sprite2D" parent="."]
 position = Vector2(639, 360)
@@ -54,6 +56,10 @@ text = "Quit"
 icon = ExtResource("6_16xtt")
 flat = true
 icon_alignment = 1
+
+[node name="MenuLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_dj4v6")
+bus = &"Title"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

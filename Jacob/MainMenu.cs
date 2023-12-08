@@ -5,10 +5,12 @@ using System.Diagnostics;
 public partial class MainMenu : Node2D
 {
 	[Export] Resource cursor;
+	[Export] AudioStreamPlayer mainmenu;
 
-	public override void _Ready()
+    public override void _Ready()
 	{
-		Input.SetCustomMouseCursor(cursor, Input.CursorShape.Arrow, new Vector2(32, 32));
+		mainmenu.Play();
+        Input.SetCustomMouseCursor(cursor, Input.CursorShape.Arrow, new Vector2(32, 32));
 		
 	}
 
