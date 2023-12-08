@@ -1,6 +1,8 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 public partial class playerData : Node
 {
@@ -50,6 +52,17 @@ public partial class playerData : Node
     private int expGained = 0;
     private float gainTimer = 0;
 
+    // Skill Tree
+    List<string> tier1Upgrades;
+    List<string> tier2Upgrades;
+    List<string> tier3Upgrades;
+    List<string> tier4Upgrades;
+    List<string> tier5Upgrades;
+    List<string> upgradeChoices;
+    List<string> leftTreeUpgrades;
+    List<string> rightTreeUpgrades;
+    int lastUpgrade;
+
     public override void _Ready()
     {
         playerController = (PlayerController)GetParent();
@@ -97,6 +110,70 @@ public partial class playerData : Node
                 break;
         }
 
+        // Upgrade set
+        // |Tier 1|
+        tier1Upgrades.Add("BiggerBody");
+        tier1Upgrades.Add("BiggerBullets");
+        tier1Upgrades.Add("FartherBullets");
+        tier1Upgrades.Add("SpeedingBullet");
+        tier1Upgrades.Add("StrongerBullets");
+        tier1Upgrades.Add("Zippy");
+
+        // |Tier 2|
+        tier2Upgrades.Add("ArmorPiercing");
+        tier2Upgrades.Add("ArmorUp");
+        tier2Upgrades.Add("BetterFireRate");
+        tier2Upgrades.Add("BiggerBody");
+        tier2Upgrades.Add("BiggerBullets");
+        tier2Upgrades.Add("Energized");
+        tier2Upgrades.Add("FartherBullets");
+        tier2Upgrades.Add("Rage");
+        tier2Upgrades.Add("Sniper");
+        tier2Upgrades.Add("Steroids");
+        tier2Upgrades.Add("StrongerBullets");
+        tier2Upgrades.Add("Zippy");
+
+        // |Tier 3|
+        tier3Upgrades.Add("ArmorPiercing");
+        tier3Upgrades.Add("ArmorUp");
+        tier3Upgrades.Add("BetterFireRate");
+        tier3Upgrades.Add("Energized");
+        tier3Upgrades.Add("Lightspeed");
+        tier3Upgrades.Add("MassiveBullets");
+        tier3Upgrades.Add("MassiveGrowth");
+        tier3Upgrades.Add("Rage");
+        tier3Upgrades.Add("Sniper");
+        tier3Upgrades.Add("Steroids");
+        tier3Upgrades.Add("Streamlined");
+        tier3Upgrades.Add("Trained");
+
+        // |Tier 4|
+        tier4Upgrades.Add("Careful");
+        tier4Upgrades.Add("CQC");
+        tier4Upgrades.Add("HeavyBullets");
+        tier4Upgrades.Add("HollowPoints");
+        tier4Upgrades.Add("Lightspeed");
+        tier4Upgrades.Add("MassiveBullets");
+        tier4Upgrades.Add("MassiveGrowth");
+        tier4Upgrades.Add("Patience");
+        tier4Upgrades.Add("Quicker");
+        tier4Upgrades.Add("RapidFire");
+        tier4Upgrades.Add("Streamlined");
+        tier4Upgrades.Add("Trained");
+
+        // |Tier 5|
+        tier5Upgrades.Add("BehemothBullets");
+        tier5Upgrades.Add("BulkUp");
+        tier5Upgrades.Add("Careful");
+        tier5Upgrades.Add("Chunky");
+        tier5Upgrades.Add("CQC");
+        tier5Upgrades.Add("HEATAmmo");
+        tier5Upgrades.Add("HeavyBullets");
+        tier5Upgrades.Add("HollowPoints");
+        tier5Upgrades.Add("Patience");
+        tier5Upgrades.Add("Quicker");
+        tier5Upgrades.Add("RapidFire");
+        tier5Upgrades.Add("Spray&Pray");
     }
 
     public override void _Process(double delta)
@@ -144,6 +221,8 @@ public partial class playerData : Node
         experience = 0; // Reset experience on level up
         level++;
         upgradePanel.Visible = true;
+        SetTree();
+        SetScreen();
     }
 
     public void UpdateData()
@@ -151,5 +230,191 @@ public partial class playerData : Node
         playerController.UpdateData();
         playerMass.UpdateData();
         // Mass pickup range & bullet dmg grabbed from playerData when they are spawned, nothing to update
+    }
+
+    public void SetTree()
+    {
+        Random random = new Random();
+        int randomUpgrade;
+        switch (level)
+        {
+            case 2:
+                // Set Choices
+                upgradeChoices.Clear();
+                randomUpgrade = random.Next(0, tier1Upgrades.Count() - 1);
+                upgradeChoices[0] = tier1Upgrades[randomUpgrade];
+                tier1Upgrades.RemoveAt(randomUpgrade);
+                upgradeChoices[1] = tier1Upgrades[random.Next(0, tier1Upgrades.Count() - 1)];
+                tier1Upgrades.Clear();
+
+                // Set follow-up trees
+                for (int i = 0; i < 4; i++) {
+                    randomUpgrade = random.Next(0, tier2Upgrades.Count() - 1);
+                    if(i < 2)
+                    {
+                        leftTreeUpgrades.Add(tier2Upgrades[randomUpgrade]);
+                    }
+                    else
+                    {
+                        rightTreeUpgrades.Add(tier2Upgrades[randomUpgrade]);
+                    }
+                    tier2Upgrades.RemoveAt(randomUpgrade);
+                }
+                tier2Upgrades.Clear();
+
+                break;
+            case 3:
+                // Set Choices
+                upgradeChoices.Clear();
+                if(lastUpgrade == 0)
+                {
+                    upgradeChoices = leftTreeUpgrades;
+                }
+                else if(lastUpgrade == 1)
+                {
+                    upgradeChoices = rightTreeUpgrades;
+                }
+                leftTreeUpgrades.Clear();
+                rightTreeUpgrades.Clear();
+
+                // Set follow-up trees
+                for (int i = 0; i < 4; i++)
+                {
+                    randomUpgrade = random.Next(0, tier3Upgrades.Count() - 1);
+                    if (i < 2)
+                    {
+                        leftTreeUpgrades.Add(tier3Upgrades[randomUpgrade]);
+                    }
+                    else
+                    {
+                        rightTreeUpgrades.Add(tier3Upgrades[randomUpgrade]);
+                    }
+                    tier3Upgrades.RemoveAt(randomUpgrade);
+                }
+                tier3Upgrades.Clear();
+
+                break;
+            case 4:
+                // Set Choices
+                upgradeChoices.Clear();
+                if (lastUpgrade == 0)
+                {
+                    upgradeChoices = leftTreeUpgrades;
+                }
+                else if (lastUpgrade == 1)
+                {
+                    upgradeChoices = rightTreeUpgrades;
+                }
+                leftTreeUpgrades.Clear();
+                rightTreeUpgrades.Clear();
+
+                // Set follow-up trees
+                for (int i = 0; i < 4; i++)
+                {
+                    randomUpgrade = random.Next(0, tier4Upgrades.Count() - 1);
+                    if (i < 2)
+                    {
+                        leftTreeUpgrades.Add(tier4Upgrades[randomUpgrade]);
+                    }
+                    else
+                    {
+                        rightTreeUpgrades.Add(tier4Upgrades[randomUpgrade]);
+                    }
+                    tier4Upgrades.RemoveAt(randomUpgrade);
+                }
+                tier4Upgrades.Clear();
+
+                break;
+            case 5:
+                // Set Choices
+                upgradeChoices.Clear();
+                if (lastUpgrade == 0)
+                {
+                    upgradeChoices = leftTreeUpgrades;
+                }
+                else if (lastUpgrade == 1)
+                {
+                    upgradeChoices = rightTreeUpgrades;
+                }
+                leftTreeUpgrades.Clear();
+                rightTreeUpgrades.Clear();
+
+                // Set follow-up trees
+                for (int i = 0; i < 4; i++)
+                {
+                    randomUpgrade = random.Next(0, tier5Upgrades.Count() - 1);
+                    if (i < 2)
+                    {
+                        leftTreeUpgrades.Add(tier5Upgrades[randomUpgrade]);
+                    }
+                    else
+                    {
+                        rightTreeUpgrades.Add(tier5Upgrades[randomUpgrade]);
+                    }
+                    tier5Upgrades.RemoveAt(randomUpgrade);
+                }
+                tier5Upgrades.Clear();
+
+                break;
+            case 6:
+                // Set Choices
+                upgradeChoices.Clear();
+                if (lastUpgrade == 0)
+                {
+                    upgradeChoices = leftTreeUpgrades;
+                }
+                else if (lastUpgrade == 1)
+                {
+                    upgradeChoices = rightTreeUpgrades;
+                }
+                leftTreeUpgrades.Clear();
+                rightTreeUpgrades.Clear();
+
+                //Set follow-up trees
+                
+
+                break;
+            default:
+                upgradePanel.Hide();
+                GD.Print("No Upgrade");
+                break;
+        }
+    }
+
+    public void SetScreen()
+    {
+        // Left Choice
+        Upgrade upgrade = FindUpgrade(upgradeChoices[0], (int)(level - 1));
+        GetParent().GetNode<Upgrade>("LeftChoice").Name = "PreviousLeftChoice";
+        upgrade.Name = "LeftChoice";
+        GetParent().GetNode<Panel>("UpgradePanel").AddChild(upgrade);
+        GetParent().GetNode<Upgrade>("PreviousLeftChoice").QueueFree();
+
+        // Left Tree 1
+        upgrade = FindUpgrade(upgradeChoices[1], (int)(level - 1));
+        GetParent().GetNode<Upgrade>("RightChoice").Name = "PreviousRightChoice";
+        upgrade.Name = "RightChoice";
+        GetParent().GetNode<Panel>("UpgradePanel").AddChild(upgrade);
+        GetParent().GetNode<Upgrade>("PreviousRightChoice").QueueFree();
+
+        // Right Choice
+        upgrade = FindUpgrade(upgradeChoices[1], (int)(level - 1));
+        GetParent().GetNode<Upgrade>("RightChoice").Name = "PreviousRightChoice";
+        upgrade.Name = "RightChoice";
+        GetParent().GetNode<Panel>("UpgradePanel").AddChild(upgrade);
+        GetParent().GetNode<Upgrade>("PreviousRightChoice").QueueFree();
+
+        // Right Choice
+        upgrade = FindUpgrade(upgradeChoices[1], (int)(level - 1));
+        GetParent().GetNode<Upgrade>("RightChoice").Name = "PreviousRightChoice";
+        upgrade.Name = "RightChoice";
+        GetParent().GetNode<Panel>("UpgradePanel").AddChild(upgrade);
+        GetParent().GetNode<Upgrade>("PreviousRightChoice").QueueFree();
+
+    }
+
+    public Upgrade FindUpgrade(string name, int tier)
+    {
+        return null;
     }
 }

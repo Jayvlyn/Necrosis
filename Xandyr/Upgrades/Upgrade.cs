@@ -63,7 +63,11 @@ public partial class Upgrade : Button
     {
         if(!applied)
         {
-            if(ApplyUpgrade()) applied = true;
+            if (ApplyUpgrade())
+            {
+                applied = true;
+                GD.Print("Successful Upgrade");
+            }
             Disabled = true;
             Panel upgradePanel = player.GetNode<CanvasLayer>("UI").GetNode<Panel>("UpgradePanel");
             upgradePanel.Hide();

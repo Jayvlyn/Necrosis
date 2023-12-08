@@ -44,6 +44,4 @@ public partial class PlayerController : CharacterBody2D
 			speed = data.moveSpeed;
 		}
 	}
-
-
 }
