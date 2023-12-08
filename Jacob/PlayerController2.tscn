@@ -19,8 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://bpoeim0h1jt35" path="res://Xandyr/Upgrades/Tier2/EnergizedT2.tscn" id="18_s2pky"]
 [ext_resource type="PackedScene" uid="uid://bx8rk1ywno3ob" path="res://Xandyr/Upgrades/Tier2/RageT2.tscn" id="19_41pyc"]
 [ext_resource type="PackedScene" uid="uid://ee1ehpxaqkf3" path="res://Xandyr/Upgrades/Tier2/SniperT2.tscn" id="20_gplg3"]
+[ext_resource type="Texture2D" uid="uid://cgp1i2i7uoyr2" path="res://Athens/Syringe1.png" id="21_3iu8o"]
 [ext_resource type="PackedScene" uid="uid://bw2305x0e0xuc" path="res://Xandyr/Upgrades/Tier2/SteroidsT2.tscn" id="21_grbgs"]
-[ext_resource type="Script" path="res://Jacob/BloodBar.cs" id="21_ht466"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gv2bd"]
 radius = 31.0549
@@ -29,7 +29,7 @@ radius = 31.0549
 bg_color = Color(0.839216, 0, 0.164706, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t78g5"]
-bg_color = Color(0.509804, 0, 0.0627451, 1)
+bg_color = Color(0.509804, 0, 0.0627451, 0.25098)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7f3wh"]
 bg_color = Color(0.788235, 0, 0.0235294, 1)
@@ -51,6 +51,8 @@ soldierCursor = ExtResource("6_hp2vc")
 tankerCursor = ExtResource("7_1qmjk")
 sprinterCursor = ExtResource("8_jcjme")
 bulletTravel = 0.985
+levelScaling = 1
+level1Cost = 25
 
 [node name="Mass" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(31, 0)
@@ -148,15 +150,21 @@ focus_mode = 0
 button_mask = 0
 
 [node name="BloodBar" type="ProgressBar" parent="UI"]
-offset_right = 1280.0
-offset_bottom = 27.0
+offset_left = 49.0
+offset_top = 2.0
+offset_right = 1188.0
+offset_bottom = 54.0
 theme_override_colors/font_color = Color(0, 0, 0, 0)
 theme_override_styles/background = SubResource("StyleBoxFlat_t78g5")
 theme_override_styles/fill = SubResource("StyleBoxFlat_7f3wh")
 max_value = 1.0
 step = 0.001
 show_percentage = false
-script = ExtResource("21_ht466")
+
+[node name="Syringe1" type="Sprite2D" parent="UI/BloodBar"]
+position = Vector2(590.17, 26.5)
+scale = Vector2(1.01406, 0.73)
+texture = ExtResource("21_3iu8o")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
