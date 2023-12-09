@@ -62,14 +62,11 @@ tankerCursor = ExtResource("7_1qmjk")
 sprinterCursor = ExtResource("8_jcjme")
 bulletTravel = 0.985
 levelScaling = 1
+biggerBodyT1Upgrade = ExtResource("15_dr1k5")
 
-[node name="Mass" type="Node2D" parent="." node_paths=PackedStringArray("shootSound", "pickupSound", "deathSound", "hurtSound", "player")]
+[node name="Mass" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(31, 0)
 script = ExtResource("2_6sgvg")
-shootSound = NodePath("../Shoot")
-pickupSound = NodePath("../Pickup")
-deathSound = NodePath("../Death")
-hurtSound = NodePath("../Hurt")
 player = NodePath("..")
 camZoomTarget = 7.0
 bulletScene = ExtResource("5_2eolp")
@@ -113,7 +110,6 @@ texture = ExtResource("21_3iu8o")
 
 [node name="UpgradePanel" type="Panel" parent="UI"]
 process_mode = 3
-visible = false
 offset_left = -15.0
 offset_top = 78.0
 offset_right = 1314.0
@@ -187,6 +183,24 @@ offset_bottom = 418.0
 focus_mode = 0
 button_mask = 0
 
+[node name="LeftChoicePos" type="Node2D" parent="UI/UpgradePanel"]
+position = Vector2(259, 433)
+
+[node name="LeftTree1Pos" type="Node2D" parent="UI/UpgradePanel"]
+position = Vector2(116, 166)
+
+[node name="LeftTree2Pos" type="Node2D" parent="UI/UpgradePanel"]
+position = Vector2(381, 168)
+
+[node name="RightChoicePos" type="Node2D" parent="UI/UpgradePanel"]
+position = Vector2(921, 432)
+
+[node name="RightTree1Pos" type="Node2D" parent="UI/UpgradePanel"]
+position = Vector2(778, 172)
+
+[node name="RightTree2Pos" type="Node2D" parent="UI/UpgradePanel"]
+position = Vector2(1067, 168)
+
 [node name="PausePanel" type="Panel" parent="UI" node_paths=PackedStringArray("UpgradePanel")]
 process_mode = 3
 visible = false
@@ -195,7 +209,7 @@ offset_right = 1280.0
 offset_bottom = 719.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pbbpa")
 script = ExtResource("22_ocwoy")
-UpgradePanel = NodePath("../UpgradePanel")
+UpgradePanel = NodePath("")
 
 [node name="PauseBackground" type="Sprite2D" parent="UI/PausePanel"]
 position = Vector2(639, 360)
@@ -265,6 +279,7 @@ stream = ExtResource("29_jonts")
 volume_db = 3.138
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(4, 2)
 stream = ExtResource("30_pysyu")
 volume_db = -16.041
 
