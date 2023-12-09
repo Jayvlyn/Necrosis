@@ -63,8 +63,6 @@ public partial class playerData : Node
     List<string> rightTreeUpgrades;
     int lastUpgrade;
 
-    [Export] PackedScene biggerBodyT1Upgrade;
-
     public override void _Ready()
     {
         playerController = (PlayerController)GetParent();
@@ -81,7 +79,7 @@ public partial class playerData : Node
 
         Sprite2D playerSprite = GetParent().GetNode<Sprite2D>("Sprite2D");
         AnimatedSprite2D playerAnim = GetParent().GetNode<AnimatedSprite2D>("Sprite");
-        switch (playerClass)
+        switch(playerClass)
         {
             case Global.Class.Sprinter:
                 playerSprite.Texture = (Texture2D)sprinterSprite;
@@ -198,7 +196,7 @@ public partial class playerData : Node
     {
         expNeeded = level1Cost * Math.Pow(level, levelScaling); // multiplies a base level cost by an exponentially growing level scaling
         if (experience + amount > expNeeded)
-        {
+        { 
             LevelUp();
             bloodBar.Value = 0;
         }
@@ -206,7 +204,7 @@ public partial class playerData : Node
         {
             experience += amount;
 
-            if (increaseExpBar) // in the middle of increasing already
+            if(increaseExpBar) // in the middle of increasing already
             {
                 expGained += (int)amount;
             }
@@ -252,10 +250,9 @@ public partial class playerData : Node
                 tier1Upgrades.Clear();
 
                 // Set follow-up trees
-                for (int i = 0; i < 4; i++)
-                {
+                for (int i = 0; i < 4; i++) {
                     randomUpgrade = random.Next(0, tier2Upgrades.Count() - 1);
-                    if (i < 2)
+                    if(i < 2)
                     {
                         leftTreeUpgrades.Add(tier2Upgrades[randomUpgrade]);
                     }
@@ -271,11 +268,11 @@ public partial class playerData : Node
             case 3:
                 // Set Choices
                 upgradeChoices.Clear();
-                if (lastUpgrade == 0)
+                if(lastUpgrade == 0)
                 {
                     upgradeChoices = leftTreeUpgrades;
                 }
-                else if (lastUpgrade == 1)
+                else if(lastUpgrade == 1)
                 {
                     upgradeChoices = rightTreeUpgrades;
                 }
@@ -376,7 +373,7 @@ public partial class playerData : Node
                 rightTreeUpgrades.Clear();
 
                 //Set follow-up trees
-
+                
 
                 break;
             default:
@@ -388,8 +385,38 @@ public partial class playerData : Node
 
     public void SetScreen()
     {
-        GetParent().GetNode<Upgrade>("LeftChoice").Free();
-        Upgrade leftChoice = biggerBodyT1Upgrade.Instantiate<Upgrade>();
-        leftChoice.Position = GetParent().GetNode<Node2D>("LeftChoicePos").Position;
+        // Left Choice
+        Upgrade upgrade = FindUpgrade(upgradeChoices[0], (int)(level - 1));
+        GetParent().GetNode<Upgrade>("LeftChoice").Name = "PreviousLeftChoice";
+        upgrade.Name = "LeftChoice";
+        GetParent().GetNode<Panel>("UpgradePanel").AddChild(upgrade);
+        GetParent().GetNode<Upgrade>("PreviousLeftChoice").QueueFree();
+
+        // Left Tree 1
+        upgrade = FindUpgrade(upgradeChoices[1], (int)(level - 1));
+        GetParent().GetNode<Upgrade>("RightChoice").Name = "PreviousRightChoice";
+        upgrade.Name = "RightChoice";
+        GetParent().GetNode<Panel>("UpgradePanel").AddChild(upgrade);
+        GetParent().GetNode<Upgrade>("PreviousRightChoice").QueueFree();
+
+        // Right Choice
+        upgrade = FindUpgrade(upgradeChoices[1], (int)(level - 1));
+        GetParent().GetNode<Upgrade>("RightChoice").Name = "PreviousRightChoice";
+        upgrade.Name = "RightChoice";
+        GetParent().GetNode<Panel>("UpgradePanel").AddChild(upgrade);
+        GetParent().GetNode<Upgrade>("PreviousRightChoice").QueueFree();
+
+        // Right Choice
+        upgrade = FindUpgrade(upgradeChoices[1], (int)(level - 1));
+        GetParent().GetNode<Upgrade>("RightChoice").Name = "PreviousRightChoice";
+        upgrade.Name = "RightChoice";
+        GetParent().GetNode<Panel>("UpgradePanel").AddChild(upgrade);
+        GetParent().GetNode<Upgrade>("PreviousRightChoice").QueueFree();
+
+    }
+
+    public Upgrade FindUpgrade(string name, int tier)
+    {
+        return null;
     }
 }
