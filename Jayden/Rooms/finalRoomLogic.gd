@@ -2,13 +2,14 @@ extends Node2D
 
 var redEnemy = preload("res://Jacob/RedEnemy.tscn")
 var whiteEnemy = preload("res://Jacob/WhiteEnemy.tscn")
+var bigWhite = preload("res://Jacob/BigWhiteEnemy.tscn")
 
 @onready var map
 @onready var roomPos
 
 var roomGenerated = false
 
-var enemies = 1
+var enemies = 0
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -25,15 +26,12 @@ func _on_room_area_body_entered(body):
 	if (body.is_in_group("Player") && !roomGenerated):
 		var roomOrigin = map.local_to_map(to_local(roomPos.position))
 		roomSetup()
-		print("start of final spawn")
+		print("start of spawn")
 		await get_tree().create_timer(0.2).timeout
 		
-		var bigWhite = load("res://Jacob/BigWhiteEnemy.tscn")
 		var instance = bigWhite.instantiate()
 		instance.position = Vector2((-roomOrigin.x + rng.randi_range(3, 12)) * 64, (-roomOrigin.y + rng.randi_range(3, 12)) * 64)
 		get_parent().call_deferred("add_child", instance)
-		enemies += 1
-		
 		for n in rng.randi_range(6, 8):
 			enemySpawn()
 		roomGenerated = true
@@ -78,9 +76,6 @@ func enemySpawn():
 
 func roomComplete():
 	var roomOrigin = map.local_to_map(to_local(roomPos.position))
-	
-	get_tree().change_scene_to_file("res://Jacob/WinScreen.tscn");
-	hide();
 	
 	map.set_cell(0, Vector2i(0, 0 + 7), 1, Vector2i(4, 1)) #left tiles
 	map.set_cell(0, Vector2i(0, 0 + 8), 1, Vector2i(1, 1))

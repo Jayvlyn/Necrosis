@@ -8,7 +8,7 @@ var whiteEnemy = preload("res://Jacob/WhiteEnemy.tscn")
 
 var roomGenerated = false
 
-var enemies = 1
+var enemies = 0
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -62,6 +62,7 @@ func enemySpawn():
 	else:
 		instance = redEnemy.instantiate()
 	
+	#instance.position = Vector2((roomOrigin.x + rng.randi_range(3, 12)) * 64, (roomOrigin.y + rng.randi_range(3, 12)) * 64)
 	instance.position = Vector2((-roomOrigin.x + rng.randi_range(3, 12)) * 64, (-roomOrigin.y + rng.randi_range(3, 12)) * 64)
 	print(instance.position / 64)
 	

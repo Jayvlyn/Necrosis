@@ -4,7 +4,17 @@ using System;
 public partial class PauseMenu : Panel
 {
     [Export] public Panel UpgradePanel;
-    [Export] public Panel AllUpgradesPanel;
+
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+    }
 
     public override void _Input(InputEvent @event)
     {
@@ -20,13 +30,11 @@ public partial class PauseMenu : Panel
         {
             GetTree().Paused = false;
             UpgradePanel.Visible = false;
-            AllUpgradesPanel.Visible = false;
             Visible = false;
         }
         else
         {
             GetTree().Paused = true;
-            UpgradePanel.Visible = false;
             Visible = true;
         }
     }

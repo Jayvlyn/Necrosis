@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://csf7n3welc4tp"]
+[gd_scene load_steps=19 format=3 uid="uid://csf7n3welc4tp"]
 
 [ext_resource type="Script" path="res://Jacob/WhiteEnemy.cs" id="1_b8ue8"]
 [ext_resource type="PackedScene" uid="uid://olhqcqnhmeac" path="res://Jacob/EnemyBullet.tscn" id="2_lp1gg"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dokjc3tq7nex3" path="res://Athens/WhiteBloodCell.png" id="5_ow7u4"]
 [ext_resource type="AudioStream" uid="uid://wro8l8k4wyf1" path="res://Piper/enemyHurt.wav" id="6_rifve"]
 [ext_resource type="AudioStream" uid="uid://dxou3rpx760in" path="res://Piper/enemyDeath.wav" id="7_d80us"]
-[ext_resource type="AudioStream" uid="uid://cxfbtq121dh35" path="res://Piper/glunchShoot.wav" id="8_wcdd3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nfrxe"]
 atlas = ExtResource("4_sl3c3")
@@ -84,11 +83,10 @@ radius = 22.2036
 [sub_resource type="CircleShape2D" id="CircleShape2D_c2aej"]
 radius = 365.153
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("shootSound", "deathSound") groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("deathSound") groups=["Enemy"]]
 scale = Vector2(1.5, 1.5)
 motion_mode = 1
 script = ExtResource("1_b8ue8")
-shootSound = NodePath("Shoot")
 bulletScene = ExtResource("2_lp1gg")
 deathSound = NodePath("Death")
 expValue = 25
@@ -127,11 +125,6 @@ stream = ExtResource("6_rifve")
 [node name="Death" type="AudioStreamPlayer2D" parent="."]
 scale = Vector2(0.666667, 0.666667)
 stream = ExtResource("7_d80us")
-
-[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_wcdd3")
-volume_db = -4.034
-pitch_scale = 1.5
 
 [connection signal="body_entered" from="AttackRange" to="." method="OnAttackRangeEnter"]
 [connection signal="body_exited" from="AttackRange" to="." method="OnAttackRangeExit"]

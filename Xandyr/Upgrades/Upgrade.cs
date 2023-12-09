@@ -62,6 +62,7 @@ public partial class Upgrade : Button
 
     private void _on_pressed()
     {
+        GetTree().Paused = false;
         if(!applied)
         {
             if (ApplyUpgrade())
@@ -73,11 +74,7 @@ public partial class Upgrade : Button
             Panel upgradePanel = player.GetNode<CanvasLayer>("UI").GetNode<Panel>("UpgradePanel");
             ProgressBar bloodBar = upgradePanel.GetParent().GetNode<ProgressBar>("BloodBar");
             bloodBar.Visible = true;
-            if(upgradePanel.Visible)
-            {
-                upgradePanel.Hide();
-                GetTree().Paused = false;
-            }
+            upgradePanel.Hide();
         }
     }
 }
